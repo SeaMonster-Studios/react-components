@@ -18,12 +18,18 @@
   },
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start": "npm run storybook"
   },
   "dependencies": {
     "@storybook/react": "^3.4.8",
     "babel-core": "^6.26.3",
+    "faker": "^4.1.0",
+    "jest": "^23.4.1",
+    "lodash": "^4.17.10",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-emotion": "^9.2.5",
+    "react-testing-library": "^4.1.2"
   }
 }
