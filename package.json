@@ -1,0 +1,29 @@
+{
+  "name": "@seamonster-studios/react-components",
+  "version": "0.0.1",
+  "description": "Reusable React components by SeaMonster Studios",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeaMonster-Studios/react-components.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "library"
+  ],
+  "author": "Logan Call @ SeaMonster Studios",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SeaMonster-Studios/react-components/issues"
+  },
+  "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "dependencies": {
+    "@storybook/react": "^3.4.8",
+    "babel-core": "^6.26.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  }
+}
