@@ -1,7 +1,7 @@
 import { configure } from '@storybook/react'
 
 function loadStories() {
-  require('../lib/es6_global/src/HelloWorld/HelloWorldStories.js')
+  require('../components/Cta/index.stories.js')
   // You can require as many stories as you need.
 }
 

@@ -1,43 +1,35 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.1.0",
-  "scripts": {
-    "start:bsb": "bsb -make-world -w",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "start": "concurrently --kill-others-on-fail \"npm run start:bsb\" \"npm run storybook\"",
-    "clean": "bsb -clean-world",
-    "build": "bsb -make-world"
-  },
-  "keywords": [
-    "bucklescript, reason"
-  ],
-  "author": "Logan @ SeaMonster Studios",
+  "version": "0.0.1",
+  "description": "Reusable React components by SeaMonster Studios",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SeaMonster-Studios/react-components.git"
   },
+  "keywords": [
+    "react",
+    "components",
+    "library"
+  ],
+  "author": "Logan Call @ SeaMonster Studios",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SeaMonster-Studios/react-components/issues"
   },
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "react": ">=16.4.1",
-    "react-dom": ">=16.4.1"
-  },
-  "devDependencies": {
-    "@storybook/react": "^3.4.8",
-    "bs-platform": "^4.0.0",
-    "bs-storybook": "^0.2.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "reason-react": "^0.4.2",
-    "babel-core": "^6.26.3"
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start": "npm run storybook"
   },
   "dependencies": {
-    "concurrently": "^3.6.0"
+    "@storybook/react": "^3.4.8",
+    "babel-core": "^6.26.3",
+    "faker": "^4.1.0",
+    "jest": "^23.4.1",
+    "lodash": "^4.17.10",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-emotion": "^9.2.5",
+    "react-testing-library": "^4.1.2"
   }
 }
