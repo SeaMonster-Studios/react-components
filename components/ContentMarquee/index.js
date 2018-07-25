@@ -1,9 +1,15 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 //
 import { Styled } from './styled'
 
-export function ContentMarquee({ children, ...props }) {
+type tProps = {
+  image: string,
+  gradient?: string,
+  children: any,
+  styles: string,
+}
+
+export function ContentMarquee({ children, ...props }: tProps) {
   const defaults = {
     gradient: 'linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))',
   }
@@ -19,11 +25,4 @@ export function ContentMarquee({ children, ...props }) {
       {children}
     </Styled>
   )
-}
-
-ContentMarquee.propTypes = {
-  image: PropTypes.string.isRequired,
-  gradient: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  styles: PropTypes.string.isRequired,
 }

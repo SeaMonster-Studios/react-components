@@ -20,6 +20,7 @@
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
     "start": "npm run storybook",
+    "typecheck": "flow-watch",
     "test": "jest --watch"
   },
   "jest": {
@@ -32,7 +33,9 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "emotion": "^9.2.6",
     "eslint": "^5.2.0",
@@ -40,15 +43,18 @@
     "eslint-plugin-jest": "^21.18.0",
     "eslint-plugin-react": "^7.10.0",
     "faker": "^4.1.0",
+    "flow-bin": "^0.77.0",
     "jest": "^23.4.1",
     "jest-emotion": "^9.2.6",
     "lodash": "^4.17.10",
-    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.5",
     "react-test-renderer": "^16.4.1",
     "react-testing-library": "^4.1.2",
     "regenerator-runtime": "^0.12.0"
+  },
+  "devDependencies": {
+    "flow-watch": "^1.1.3"
   }
 }
