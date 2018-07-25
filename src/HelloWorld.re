@@ -7,7 +7,10 @@ let make = (~name, _children) => {
 };
 
 [@bs.deriving abstract]
-type jsProps = {name: string};
+
+type jsProps = {
+  name: string
+};
 
 let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>

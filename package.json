@@ -4,7 +4,7 @@
   "scripts": {
     "start:bsb": "bsb -make-world -w",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "start": "concurrently --kill-others-on-fail \"npm run start:bsb\" \"npm run storybook\"",
+    "start": "bsb -clean-world && concurrently --kill-others-on-fail \"npm run start:bsb\" \"npm run storybook\"",
     "clean": "bsb -clean-world",
     "build": "bsb -make-world"
   },
