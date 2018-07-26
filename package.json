@@ -19,9 +19,9 @@
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "start": "npm run storybook",
     "typecheck": "flow-watch",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "start": "concurrently \"npm run storybook\" \"npm run typecheck\""
   },
   "jest": {
     "collectCoverageFrom": [
@@ -37,6 +37,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.6.1",
     "emotion": "^9.2.6",
     "eslint": "^5.2.0",
     "eslint-plugin-babel": "^5.1.0",

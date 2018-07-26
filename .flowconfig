@@ -1,7 +1,6 @@
 [ignore]
+.*__snapshots__/.*
+<PROJECT_ROOT>/.storybook/.*
 
 [include]
-components/
-
-[options]
-all=true
+<PROJECT_ROOT>/components/**
