@@ -2,8 +2,10 @@ import React from 'react'
 import { createSerializer } from 'jest-emotion'
 import * as emotion from 'emotion'
 //
-import { render } from 'react-testing-library'
+import { render, cleanup } from 'react-testing-library'
 import { ContentMarquee } from './'
+
+afterEach(cleanup)
 
 expect.addSnapshotSerializer(createSerializer(emotion))
 

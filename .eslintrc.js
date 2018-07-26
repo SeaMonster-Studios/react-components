@@ -7,10 +7,12 @@ module.exports = {
   globals: {
     Raven: true,
     Promise: true,
+    SyntheticEvent: true,
   },
   env: {
     node: true,
     browser: true,
+    jest: true,
   },
   parser: 'babel-eslint',
   plugins: ['babel', 'react', 'jest'],
@@ -19,5 +21,6 @@ module.exports = {
     'arrow-body-style': 0,
     'class-methods-use-this': 0,
     'max-len': 0,
+    'no-console': 0,
   },
 }
