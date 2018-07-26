@@ -11,7 +11,7 @@ type nonLinkTagTypes = 'button' | 'input'
 
 type tProps = {
   tagType: linkTagTypes | nonLinkTagTypes,
-  link: string,
+  link?: string,
   children: React.Node,
   baseColor: string,
   textColor: string,
@@ -97,7 +97,11 @@ export class Button extends React.Component<tProps, tState> {
       case 'input':
         return (
           <Input {...buttonProps}>
-            <input onChange={this.handleInputChange} {...inputAttrs} />
+            <input
+              onChange={this.handleInputChange}
+              {...inputAttrs}
+              data-testid="component-button-input"
+            />
             <span>{children}</span>
           </Input>
         )

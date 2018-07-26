@@ -1,9 +1,10 @@
 // @flow
 import React from 'react'
 import faker from 'faker'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup, fireEvent } from 'react-testing-library'
 //
 import { Button } from './'
+import * as io from '../../utils/io'
 
 afterEach(cleanup)
 
@@ -36,13 +37,48 @@ describe('Button Component Test', () => {
 
     expect(button.nodeName).toBe('BUTTON')
   })
+
+  it('Renders with input type of file, and provides user file data via onFileChange prop', async () => {
+    const fileContents = 'dummy content'
+    const file = new File([fileContents], 'example.png', { type: 'image/png' })
+
+    io.readUploadedFileAsText = jest.fn(() => Promise.resolve(fileContents))
+
+    const onFileChangeMock = jest.fn()
+
+    const { getByTestId } = renderSetup({
+      tagType: 'input',
+      onFileChange: onFileChangeMock,
+      inputAttrs: {
+        type: 'file',
+      },
+    })
+
+    const button = getByTestId('component-button')
+    const input = getByTestId('component-button-input')
+
+    Object.defineProperty(input, 'files', {
+      value: [file],
+    })
+
+    fireEvent.change(input)
+
+    await expect(io.readUploadedFileAsText).toHaveBeenCalled()
+    expect(onFileChangeMock).toHaveBeenCalled()
+    expect(onFileChangeMock).toHaveBeenCalledWith(
+      expect.any(Object), // the event, but not sure how to get that here yet.
+      fileContents,
+    )
+    expect(button.nodeName).toBeDefined()
+    expect(input.nodeName).toBe('INPUT')
+  })
 })
 
 function renderSetup(overrides) {
   const props = {
     children: 'Contact Us',
-    baseColor: '255,255,255',
-    textColor: '255,255,255',
+    baseColor: 'rgb(255,255,255)',
+    textColor: 'rgb(255,255,255)',
     ...overrides,
   }
 

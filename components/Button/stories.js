@@ -29,7 +29,6 @@ storiesOf('Button', module)
         {...{
           ...common,
           type: 'submit',
-          link: '/contact',
           tagType: 'button',
           onClick: action('button click'),
         }}
@@ -71,7 +70,6 @@ storiesOf('Button', module)
       <Button
         {...{
           ...common,
-          link: '/contact',
           tagType: 'input',
           onFileChange: (event, fileContents) =>
             console.log(
@@ -95,7 +93,6 @@ storiesOf('Button', module)
         {...{
           ...common,
           type: 'submit',
-          link: '/contact',
           tagType: 'button',
           hoverEffect: 'ripple',
           onClick: action('button click'),
@@ -111,7 +108,6 @@ storiesOf('Button', module)
         {...{
           ...common,
           type: 'submit',
-          link: '/contact',
           tagType: 'button',
           inverse: true,
           onClick: action('button click'),
