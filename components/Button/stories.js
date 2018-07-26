@@ -5,82 +5,87 @@ import { Router } from 'react-static'
 import { action } from '@storybook/addon-actions'
 import { css } from 'react-emotion'
 //
+import { color, font } from '../../styles'
 import { Button } from './'
+import { Center } from '../../styles/stories'
 
 const common = {
-  baseColor: '255,89,89',
-  textColor: '255,255,255',
-  hoverEffect: 'ripple',
+  baseColor: color.rgb.red[1],
+  hoverBaseColor: color.rgb.red[2],
+  textColor: color.rgb.white[1],
   styles: css`
     transition: 0.5s ease;
-    padding: 8px 25px;
-    text-transform: uppercase;
-    font-size: 14px;
+    padding: 20px 35px;
+    font-size: 22px;
+    font-weight: 300;
+    font-family: ${font.family.sans};
   `,
 }
 
 storiesOf('Button', module)
   .add('button tag', () => (
-    <Button
-      {...{
-        ...common,
-        type: 'submit',
-        inverse: true,
-        link: '/contact',
-        tagType: 'button',
-        onClick: action('button click'),
-      }}
-    >
-      Hello
-    </Button>
-  ))
-  .add('a tag', () => (
-    <Button
-      {...{
-        ...common,
-        link: '/contact',
-        tagType: 'a',
-        hoverBaseColor: '184,68,72',
-        hoverEffect: 'default',
-        styles: css`
-          ${common.styles} text-transform: none;
-        `,
-      }}
-    >
-      Hello
-    </Button>
-  ))
-  .add('Link tag', () => (
-    <Router>
+    <Center>
       <Button
         {...{
           ...common,
+          type: 'submit',
           link: '/contact',
-          tagType: 'Link',
+          tagType: 'button',
+          onClick: action('button click'),
         }}
       >
         Hello
       </Button>
-    </Router>
+    </Center>
+  ))
+  .add('a tag', () => (
+    <Center>
+      <Button
+        {...{
+          ...common,
+          link: '/contact',
+          tagType: 'a',
+        }}
+      >
+        Hello
+      </Button>
+    </Center>
+  ))
+  .add('Link tag', () => (
+    <Center>
+      <Router>
+        <Button
+          {...{
+            ...common,
+            link: '/contact',
+            tagType: 'Link',
+          }}
+        >
+          Hello
+        </Button>
+      </Router>
+    </Center>
   ))
   .add('File upload', () => (
-    <Button
-      {...{
-        ...common,
-        link: '/contact',
-        tagType: 'input',
-        onFileChange: (event, fileContents) =>
-          console.log(
-            '---event---\n',
-            event,
-            '\n---fileContents---\n',
-            fileContents,
-          ),
-        inputAttrs: {
-          type: 'file',
-        },
-      }}
-    >
-      File Upload
-    </Button>
+    <Center>
+      <Button
+        {...{
+          ...common,
+          link: '/contact',
+          tagType: 'input',
+          onFileChange: (event, fileContents) =>
+            console.log(
+              '---event---\n',
+              event,
+              '\n---fileContents---\n',
+              fileContents,
+            ),
+          inputAttrs: {
+            type: 'file',
+          },
+        }}
+      >
+        File Upload
+      </Button>
+    </Center>
   ))

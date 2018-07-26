@@ -39,7 +39,7 @@ export const Input = styled('span')`
 
 const buttonProps = props => css`
   text-decoration: none;
-  border-color: rgb(${props.baseColor});
+  border-color: ${props.baseColor};
   cursor: pointer;
 
   ${colorProps(props)} ${hoverProps(props)} ${props.styles};
@@ -51,19 +51,19 @@ function colorProps(props) {
       case 'transparent':
         return css`
           background-color: rgba(255, 255, 255, 0);
-          color: rgb(${props.baseColor});
+          color: ${props.baseColor};
         `
       case 'default':
       default:
         return css`
-          background-color: rgb(${props.textColor});
-          color: rgb(${props.baseColor});
+          background-color: ${props.textColor};
+          color: ${props.baseColor};
         `
     }
   } else {
     return css`
-      background-color: rgb(${props.baseColor});
-      color: rgb(${props.textColor});
+      background-color: ${props.baseColor};
+      color: ${props.textColor};
     `
   }
 }
@@ -100,8 +100,8 @@ function hoverProps(props) {
         &:hover,
         &:focus {
           text-decoration: none;
-          color: rgb(${props.textColor});
-          background-color: rgb(${props.baseColor});
+          color: ${props.textColor};
+          background-color: ${props.baseColor};
 
           &::after {
             animation: ${rippleOut} 0.5s;
@@ -111,22 +111,22 @@ function hoverProps(props) {
     case 'default':
     default:
       return css`
-          text-decoration: none;
-          color: rgb(${props.textColor})
-          background-color: rgb(${
-            props.inverse
-              ? props.baseColor
-              : props.hoverBaseColor
-                ? props.hoverBaseColor
-                : props.inverse
-          })
-          border-color: rgb(${
-            props.inverse
-              ? props.baseColor
-              : props.hoverBaseColor
-                ? props.hoverBaseColor
-                : props.inverse
-          })
-        `
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: ${props.textColor};
+          background-color: ${props.inverse
+            ? props.baseColor
+            : props.hoverBaseColor
+              ? props.hoverBaseColor
+              : props.inverse};
+          border-color: ${props.inverse
+            ? props.baseColor
+            : props.hoverBaseColor
+              ? props.hoverBaseColor
+              : props.inverse};
+        }
+      `
   }
 }

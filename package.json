@@ -55,7 +55,8 @@
     "react-static": "^5.9.7",
     "react-test-renderer": "^16.4.1",
     "react-testing-library": "^4.1.2",
-    "regenerator-runtime": "^0.12.0"
+    "regenerator-runtime": "^0.12.0",
+    "reset-css": "^4.0.1"
   },
   "devDependencies": {
     "flow-watch": "^1.1.3"
