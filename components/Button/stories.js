@@ -89,3 +89,54 @@ storiesOf('Button', module)
       </Button>
     </Center>
   ))
+  .add('With ripple hover effect', () => (
+    <Center>
+      <Button
+        {...{
+          ...common,
+          type: 'submit',
+          link: '/contact',
+          tagType: 'button',
+          hoverEffect: 'ripple',
+          onClick: action('button click'),
+        }}
+      >
+        Hello
+      </Button>
+    </Center>
+  ))
+  .add('With inverse style', () => (
+    <Center>
+      <Button
+        {...{
+          ...common,
+          type: 'submit',
+          link: '/contact',
+          tagType: 'button',
+          inverse: true,
+          onClick: action('button click'),
+        }}
+      >
+        Hello
+      </Button>
+    </Center>
+  ))
+
+  .add('With transparent inverse style, and ripple hover effect', () => (
+    <Center>
+      <Button
+        {...{
+          ...common,
+          type: 'submit',
+          link: '/contact',
+          tagType: 'button',
+          inverse: true,
+          inverseStyle: 'transparent',
+          hoverEffect: 'ripple',
+          onClick: action('button click'),
+        }}
+      >
+        Hello
+      </Button>
+    </Center>
+  ))
