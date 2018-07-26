@@ -3,6 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Router } from 'react-static'
 import { action } from '@storybook/addon-actions'
+import { css } from 'react-emotion'
 //
 import { Button } from './'
 
@@ -10,12 +11,12 @@ const common = {
   baseColor: '255,89,89',
   textColor: '255,255,255',
   hoverEffect: 'ripple',
-  styles: {
-    transition: '0.5s ease',
-    padding: '8px 25px',
-    textTransform: 'uppercase',
-    fontSize: 14,
-  },
+  styles: css`
+    transition: 0.5s ease;
+    padding: 8px 25px;
+    text-transform: uppercase;
+    font-size: 14px;
+  `,
 }
 
 storiesOf('Button', module)
@@ -41,10 +42,9 @@ storiesOf('Button', module)
         tagType: 'a',
         hoverBaseColor: '184,68,72',
         hoverEffect: 'default',
-        styles: {
-          ...common.styles,
-          textTransform: 'none',
-        },
+        styles: css`
+          ${common.styles} text-transform: none;
+        `,
       }}
     >
       Hello

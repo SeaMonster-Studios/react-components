@@ -20,7 +20,7 @@ type tProps = {
   inverseStyle?: 'default' | 'transparent',
   hoverEffect?: 'default' | 'ripple',
   inputAttrs?: {},
-  styles?: {}, // Emotion style object
+  styles?: string, // Emotion style object
   onFileChange?: (
     event: SyntheticEvent<HTMLInputElement>,
     fileContents: string,
