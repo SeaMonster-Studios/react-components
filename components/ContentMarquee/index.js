@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 //
-import { Styled } from './styled'
+import { Wrapper } from './styled'
 
 type tProps = {
   image: string,
@@ -10,13 +10,13 @@ type tProps = {
   styles: string,
 }
 
-export function ContentMarquee({ children, ...props }: tProps) {
-  const defaults = {
-    gradient: 'linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))',
-  }
+const defaults = {
+  gradient: 'linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))',
+}
 
+export function ContentMarquee({ children, ...props }: tProps) {
   return (
-    <Styled
+    <Wrapper
       {...{
         ...defaults,
         ...props,
@@ -24,6 +24,6 @@ export function ContentMarquee({ children, ...props }: tProps) {
       data-testid="component-content-marquee"
     >
       {children}
-    </Styled>
+    </Wrapper>
   )
 }

@@ -1,6 +1,6 @@
 import styled from 'react-emotion'
 
-export const Styled = styled('div')`
+export const Wrapper = styled('div')`
   ${({ gradient, image, styles }) =>
     `
     background: ${gradient}, url(${image});
