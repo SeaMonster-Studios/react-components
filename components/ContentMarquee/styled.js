@@ -1,11 +1,13 @@
-import styled from 'react-emotion'
+// @flow
+import styled, { css } from 'react-emotion'
 
 export const Wrapper = styled('div')`
   ${({ gradient, image, styles }) =>
-    `
-    background: ${gradient}, url(${image});
-    background-size: cover;
-    background-position: center center;
+    css`
+      background: ${gradient}, url(${image});
+      background-size: cover;
+      background-position: center center;
 
-    ` + styles};
+      ${styles};
+    `};
 `

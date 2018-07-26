@@ -1,11 +1,13 @@
+// @flow
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { css } from 'react-emotion'
 //
 import { ContentMarquee } from './'
 
 const common = {
   image: 'https://picsum.photos/1200/500',
-  styles: `
+  styles: css`
     padding: 50px 100px;
     color: #fff;
     font-family: sans-serif;
