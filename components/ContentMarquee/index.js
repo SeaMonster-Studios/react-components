@@ -6,7 +6,7 @@ import { Wrapper } from './styled'
 type tProps = {
   image: string,
   gradient?: string,
-  children: any,
+  children: React.Node,
   styles: string,
 }
 

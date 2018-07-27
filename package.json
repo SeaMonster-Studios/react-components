@@ -19,6 +19,7 @@
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "start": "npm run storybook",
     "typecheck": "flow-watch",
     "test": "jest --watch"
   },
@@ -49,6 +50,7 @@
     "jest": "^23.4.1",
     "jest-emotion": "^9.2.6",
     "lodash": "^4.17.10",
+    "raven-js": "^3.26.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.5",
