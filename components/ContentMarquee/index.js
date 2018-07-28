@@ -7,7 +7,7 @@ type tProps = {
   image: string,
   gradient?: string,
   children: React.Node,
-  styles: string,
+  styles: string, // emotion css string
 }
 
 const defaults = {

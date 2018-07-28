@@ -50,6 +50,7 @@
     "jest": "^23.4.1",
     "jest-emotion": "^9.2.6",
     "lodash": "^4.17.10",
+    "object-fit-images": "^3.2.3",
     "raven-js": "^3.26.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

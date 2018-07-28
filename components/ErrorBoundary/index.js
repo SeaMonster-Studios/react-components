@@ -6,7 +6,7 @@ import { Wrapper } from './style'
 
 type tProps = {
   children: React.Node,
-  styles?: string,
+  styles?: string, // emotion css string
 }
 
 type tState = { hasError: boolean }
