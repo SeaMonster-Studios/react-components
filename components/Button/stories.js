@@ -65,28 +65,6 @@ storiesOf('Button', module)
       </Router>
     </Center>
   ))
-  // .add('File upload', () => (
-  //   <Center>
-  //     <Button
-  //       {...{
-  //         ...common,
-  //         tagType: 'input',
-  //         onFileChange: (event, fileContents) =>
-  //           console.log(
-  //             '---event---\n',
-  //             event,
-  //             '\n---fileContents---\n',
-  //             fileContents,
-  //           ),
-  //         input: {
-  //           type: 'file',
-  //         },
-  //       }}
-  //     >
-  //       File Upload
-  //     </Button>
-  //   </Center>
-  // ))
   .add('With ripple hover effect', () => (
     <Center>
       <Button

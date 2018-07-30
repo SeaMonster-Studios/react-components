@@ -1,10 +1,9 @@
 // @flow
 import React from 'react'
 import faker from 'faker'
-import { render, cleanup, fireEvent } from 'react-testing-library'
+import { render, cleanup } from 'react-testing-library'
 //
 import { Button } from './'
-import * as io from '../../utils/io'
 
 afterEach(cleanup)
 
@@ -38,41 +37,6 @@ describe('Button Component Test', () => {
 
     expect(button.nodeName).toBe('BUTTON')
   })
-
-  // it('Renders with input type of file, and provides user file data via onFileChange prop', async () => {
-  //   const fileContents = 'dummy content'
-  //   const file = new File([fileContents], 'example.png', { type: 'image/png' })
-
-  //   io.readUploadedFileAsText = jest.fn(() => Promise.resolve(fileContents))
-
-  //   const onFileChangeMock = jest.fn()
-
-  //   const { getByTestId } = renderSetup({
-  //     tagType: 'input',
-  //     onFileChange: onFileChangeMock,
-  //     input: {
-  //       type: 'file',
-  //     },
-  //   })
-
-  //   const button = getByTestId('component-button')
-  //   const input = getByTestId('component-button-input')
-
-  //   Object.defineProperty(input, 'files', {
-  //     value: [file],
-  //   })
-
-  //   fireEvent.change(input)
-
-  //   await expect(io.readUploadedFileAsText).toHaveBeenCalled()
-  //   expect(onFileChangeMock).toHaveBeenCalled()
-  //   expect(onFileChangeMock).toHaveBeenCalledWith(
-  //     expect.any(Object), // the event, but not sure how to get that here yet.
-  //     fileContents,
-  //   )
-  //   expect(button.nodeName).toBeDefined()
-  //   expect(input.nodeName).toBe('INPUT')
-  // })
 })
 
 function renderSetup(overrides) {
@@ -83,7 +47,6 @@ function renderSetup(overrides) {
     ...overrides,
   }
 
-  // $FlowFixMe
   const wrapper = render(<Button {...props} />)
 
   return {
