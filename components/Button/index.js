@@ -15,15 +15,30 @@ export type tButton = {
   styles?: string, // emotion css string
 }
 
-export class Button extends React.Component<tButton> {
-  defaults = {
-    hoverEffect: 'default',
-    inverse: false,
-    inverseStyle: 'default',
-  }
-  render() {
-    const {
-      tagType,
+export const defaultsProps = {
+  hoverEffect: 'default',
+  inverse: false,
+  inverseStyle: 'default',
+}
+
+export const Button = (props: tButton) => {
+  const {
+    tagType,
+    baseColor,
+    textColor,
+    inverse,
+    inverseStyle,
+    hoverEffect,
+    hoverBaseColor,
+    styles,
+    children,
+    ...attrs
+  } = props
+
+  const buttonProps = {
+    'data-testid': 'component-button',
+    options: {
+      ...defaultsProps,
       baseColor,
       textColor,
       inverse,
@@ -31,44 +46,28 @@ export class Button extends React.Component<tButton> {
       hoverEffect,
       hoverBaseColor,
       styles,
-      children,
-      ...props
-    } = this.props
+    },
+  }
 
-    const buttonProps = {
-      'data-testid': 'component-button',
-      options: {
-        ...this.defaults,
-        baseColor,
-        textColor,
-        inverse,
-        inverseStyle,
-        hoverEffect,
-        hoverBaseColor,
-        styles,
-      },
-    }
-
-    switch (tagType) {
-      case 'a':
-        return (
-          <A {...buttonProps} {...props}>
-            {children}
-          </A>
-        )
-      case 'button':
-        return (
-          <ButtonStyled {...buttonProps} {...props}>
-            {children}
-          </ButtonStyled>
-        )
-      case 'Link':
-      default:
-        return (
-          <Link {...buttonProps} {...props}>
-            {children}
-          </Link>
-        )
-    }
+  switch (tagType) {
+    case 'a':
+      return (
+        <A {...buttonProps} {...attrs}>
+          {children}
+        </A>
+      )
+    case 'button':
+      return (
+        <ButtonStyled {...buttonProps} {...attrs}>
+          {children}
+        </ButtonStyled>
+      )
+    case 'Link':
+    default:
+      return (
+        <Link {...buttonProps} {...attrs}>
+          {children}
+        </Link>
+      )
   }
 }
