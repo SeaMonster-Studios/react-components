@@ -4,14 +4,17 @@ import Raven from 'raven-js'
 //
 import { Wrapper } from './style'
 
-type tProps = {
+export type tErrorBoundary = {
   children: React.Node,
   styles?: string, // emotion css string
 }
 
-type tState = { hasError: boolean }
+type tErrorBoundaryState = { hasError: boolean }
 
-export class ErrorBoundary extends React.Component<tProps, tState> {
+export class ErrorBoundary extends React.Component<
+  tErrorBoundary,
+  tErrorBoundaryState,
+> {
   state = {
     hasError: false,
   }

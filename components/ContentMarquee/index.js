@@ -3,7 +3,7 @@ import * as React from 'react'
 //
 import { Wrapper } from './styled'
 
-type tProps = {
+export type tContentMarquee = {
   image: string,
   gradient?: string,
   children: React.Node,
@@ -14,7 +14,7 @@ const defaults = {
   gradient: 'linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))',
 }
 
-export function ContentMarquee({ children, ...props }: tProps) {
+export function ContentMarquee({ children, ...props }: tContentMarquee) {
   return (
     <Wrapper
       {...{

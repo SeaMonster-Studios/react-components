@@ -4,13 +4,15 @@ import objectFitImages from 'object-fit-images'
 //
 import { Wrapper } from './style'
 
-export class ImageFit extends React.Component<{
+export type tImageFit = {
   alt: string,
   src: string,
   fit: 'cover' | 'contain' | 'fill' | 'scale-down' | 'none',
   position?: string,
   styles?: string, // emotion css string
-}> {
+}
+
+export class ImageFit extends React.Component<tImageFit> {
   imgRef: ?HTMLImageElement
   componentDidMount() {
     objectFitImages(this.imgRef)
