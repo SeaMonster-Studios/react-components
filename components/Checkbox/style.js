@@ -20,7 +20,7 @@ export const Wrapper = styled('button')`
 `
 
 function setActiveStyles(props) {
-  return props.active
+  return props.isChecked
     ? css`
         background-color: #000;
         ${props.activeStyles};

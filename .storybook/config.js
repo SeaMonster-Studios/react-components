@@ -6,6 +6,7 @@ function loadStories() {
   require('../components/ErrorBoundary/stories.js')
   require('../components/Button/stories.js')
   require('../components/ImageFit/stories.js')
+  require('../components/Checkbox/stories.js')
   // You can require as many stories as you need.
 }
 
