@@ -1,62 +1,29 @@
 // @flow
 import * as React from 'react'
 //
-import { A, Link, Button as ButtonStyled, Input } from './style'
-import { readUploadedFileAsText } from '../../utils/io'
+import { A, Link, Button as ButtonStyled } from './style'
 
-type tState = {}
-
-type linkTagTypes = 'Link' | 'a'
-type nonLinkTagTypes = 'button' | 'input'
-
-type tProps = {
-  tagType: linkTagTypes | nonLinkTagTypes,
-  link?: string,
+export type tButton = {
+  tagType: 'Link' | 'a' | 'button',
   children: React.Node,
   baseColor: string,
   textColor: string,
-  hoverBaseColor?: string,
   inverse?: boolean,
   inverseStyle?: 'default' | 'transparent',
   hoverEffect?: 'default' | 'ripple',
-  inputAttrs?: {},
+  hoverBaseColor?: string,
   styles?: string, // emotion css string
-  onFileChange?: (
-    event: SyntheticEvent<HTMLInputElement>,
-    fileContents: string,
-  ) => any,
 }
-export class Button extends React.Component<tProps, tState> {
+
+export class Button extends React.Component<tButton> {
   defaults = {
     hoverEffect: 'default',
     inverse: false,
     inverseStyle: 'default',
   }
-  handleInputChange = async (event: SyntheticEvent<HTMLInputElement>) => {
-    event.persist()
-    if (event.currentTarget.files.length) {
-      try {
-        const fileContents: string = await readUploadedFileAsText(
-          event.currentTarget.files[0],
-        )
-
-        if (this.props.onFileChange) {
-          this.props.onFileChange(event, fileContents)
-        } else {
-          console.error(
-            "You must provide an onFileChange prop if you're using an tagType of input and it's type is file. ",
-          )
-        }
-      } catch (e) {
-        console.warn(e.message)
-      }
-    }
-  }
   render() {
     const {
-      link,
       tagType,
-      inputAttrs,
       baseColor,
       textColor,
       inverse,
@@ -64,17 +31,14 @@ export class Button extends React.Component<tProps, tState> {
       hoverEffect,
       hoverBaseColor,
       styles,
-      onFileChange,
       children,
-      ...attrs
+      ...props
     } = this.props
 
     const buttonProps = {
-      ...attrs,
       'data-testid': 'component-button',
       options: {
         ...this.defaults,
-        tagType,
         baseColor,
         textColor,
         inverse,
@@ -88,27 +52,20 @@ export class Button extends React.Component<tProps, tState> {
     switch (tagType) {
       case 'a':
         return (
-          <A {...buttonProps} href={link}>
+          <A {...buttonProps} {...props}>
             {children}
           </A>
         )
       case 'button':
-        return <ButtonStyled {...buttonProps}>{children}</ButtonStyled>
-      case 'input':
         return (
-          <Input {...buttonProps}>
-            <input
-              onChange={this.handleInputChange}
-              {...inputAttrs}
-              data-testid="component-button-input"
-            />
-            <span>{children}</span>
-          </Input>
+          <ButtonStyled {...buttonProps} {...props}>
+            {children}
+          </ButtonStyled>
         )
       case 'Link':
       default:
         return (
-          <Link {...buttonProps} to={link}>
+          <Link {...buttonProps} {...props}>
             {children}
           </Link>
         )

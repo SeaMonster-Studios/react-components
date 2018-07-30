@@ -22,5 +22,6 @@ module.exports = {
     'class-methods-use-this': 0,
     'max-len': 0,
     'no-console': 0,
+    'no-case-declarations': 0,
   },
 }

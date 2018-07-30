@@ -42,8 +42,8 @@ storiesOf('Button', module)
       <Button
         {...{
           ...common,
-          link: '/contact',
           tagType: 'a',
+          href: '/contact',
         }}
       >
         Hello
@@ -56,7 +56,7 @@ storiesOf('Button', module)
         <Button
           {...{
             ...common,
-            link: '/contact',
+            to: '/contact',
             tagType: 'Link',
           }}
         >
@@ -65,28 +65,28 @@ storiesOf('Button', module)
       </Router>
     </Center>
   ))
-  .add('File upload', () => (
-    <Center>
-      <Button
-        {...{
-          ...common,
-          tagType: 'input',
-          onFileChange: (event, fileContents) =>
-            console.log(
-              '---event---\n',
-              event,
-              '\n---fileContents---\n',
-              fileContents,
-            ),
-          inputAttrs: {
-            type: 'file',
-          },
-        }}
-      >
-        File Upload
-      </Button>
-    </Center>
-  ))
+  // .add('File upload', () => (
+  //   <Center>
+  //     <Button
+  //       {...{
+  //         ...common,
+  //         tagType: 'input',
+  //         onFileChange: (event, fileContents) =>
+  //           console.log(
+  //             '---event---\n',
+  //             event,
+  //             '\n---fileContents---\n',
+  //             fileContents,
+  //           ),
+  //         input: {
+  //           type: 'file',
+  //         },
+  //       }}
+  //     >
+  //       File Upload
+  //     </Button>
+  //   </Center>
+  // ))
   .add('With ripple hover effect', () => (
     <Center>
       <Button
@@ -124,7 +124,6 @@ storiesOf('Button', module)
         {...{
           ...common,
           type: 'submit',
-          link: '/contact',
           tagType: 'button',
           inverse: true,
           inverseStyle: 'transparent',

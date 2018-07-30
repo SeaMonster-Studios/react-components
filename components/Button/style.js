@@ -14,30 +14,6 @@ export const Button = styled('button')`
   ${({ options }) => buttonProps(options)};
 `
 
-export const Input = styled('span')`
-  position: relative;
-
-  input {
-    font-size: 0;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    rigth: 0;
-    z-index: 2;
-    width: 100%;
-    opacity: 0;
-  }
-
-  > span {
-    position: relative;
-    z-index: 1;
-  }
-
-  ${({ options }) => buttonProps(options)};
-`
-
 const buttonProps = props => css`
   text-decoration: none;
   border-color: ${props.baseColor};
