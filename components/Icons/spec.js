@@ -2,14 +2,18 @@
 import React from 'react'
 import { render, cleanup } from 'react-testing-library'
 //
-import { ArrowDownIcon } from './'
+import * as Icons from './'
 
 afterEach(cleanup)
 
 describe('Icons Tests', () => {
-  it('Renders ArrowDownIcon', () => {
-    const { container } = render(<ArrowDownIcon />)
+  Object.entries(Icons).map(icon => {
+    it(`Renders ${icon[0]}`, () => {
+      const Icon = icon[1]
+      // $FlowFixMe
+      const { container } = render(<Icon />)
 
-    expect(container.firstChild).toMatchSnapshot()
+      expect(container.firstChild).toMatchSnapshot()
+    })
   })
 })

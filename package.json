@@ -55,6 +55,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.5",
+    "react-spring": "^5.5.1",
     "react-static": "^5.9.7",
     "react-test-renderer": "^16.4.1",
     "react-testing-library": "^4.1.2",
