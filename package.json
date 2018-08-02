@@ -2,9 +2,8 @@
   "name": "@seamonster-studios/react-components",
   "version": "0.1.0",
   "scripts": {
-    "start:bsb": "bsb -make-world -w",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "start": "bsb -clean-world && concurrently --kill-others-on-fail \"npm run start:bsb\" \"npm run storybook\"",
+    "start": "npm run clean && bsb -make-world -w",
     "clean": "bsb -clean-world",
     "build": "bsb -make-world"
   },
