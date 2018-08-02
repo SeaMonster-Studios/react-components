@@ -4,6 +4,7 @@ let make = (~image, ~gradient=?, ~styles=?, children) => {
   ...component,
   render: _self =>
     <div
+      className="component-content-marquee"
       style=(
         StyleUtils.combineWithOptionalStyles(
           ~styles=
