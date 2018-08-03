@@ -2,7 +2,6 @@ let component = ReasonReact.statelessComponent("ContentMarquee");
 
 let make = (~image, ~gradient=?, ~style=?, children) => {
   ...component,
-  didMount: _self => Js.log(image),
   render: _self =>
     <div
       className="component-content-marquee"
