@@ -5,7 +5,7 @@ let _module = [%bs.raw "module"];
 BsStorybook.Story.storiesOf("ContentMarquee", _module)
 |. BsStorybook.Story.add("Without gradient", () =>
      <ContentMarquee
-       styles=(
+       style=(
          ReactDOMRe.Style.make(
            ~padding="80px",
            ~fontSize="45px",
@@ -26,7 +26,7 @@ BsStorybook.Story.storiesOf("ContentMarquee", _module)
    )
 |. BsStorybook.Story.add("With gradient", () =>
      <ContentMarquee
-       styles=(
+       style=(
          ReactDOMRe.Style.make(
            ~padding="80px",
            ~fontSize="45px",
