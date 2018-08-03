@@ -38,9 +38,9 @@ let make = (~image, ~gradient=?, ~styles=?, children) => {
 
 [@bs.deriving abstract]
 type jsProps = {
-  styles: string,
-  gradient: string,
-  image: Js.nullable(string),
+  styles: Js.nullable(string),
+  gradient: Js.nullable(string),
+  image: string,
   children: ReasonReact.reactElement,
 };
 
