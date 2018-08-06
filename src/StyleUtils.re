@@ -47,7 +47,7 @@ type jsRgba = {
 let color_of_rgba = color => {
   /* let rgba = rgba_of_js_rgba(color); */
   Js.log("rgba");
-  Js.log(color |. rGet);
+  /* Js.log(color |. rGet); */
 
   Css.rgba(color |. rGet, color |. gGet, color |. bGet, color |. aGet);
   /* Css.rgba(0, 0, 0, 1.0); */

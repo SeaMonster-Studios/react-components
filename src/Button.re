@@ -154,12 +154,12 @@ type jsProps = {
 let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>
     make(
-      ~baseColor=jsProps##baseColor,
-      ~textColor=jsProps##textColor,
-      ~inverse=jsProps##inverse,
-      ~inverseStyle=jsProps##inverseStyle,
-      ~hoverEffect=jsProps##hoverEffect,
-      ~hoverBaseColor=jsProps##hoverBaseColor,
-      jsProps##children,
+      ~baseColor=jsProps |. baseColorGet,
+      ~textColor=jsProps |. textColorGet,
+      ~inverse=jsProps |. inverseGet,
+      ~inverseStyle=jsProps |. inverseStyleGet,
+      ~hoverEffect=jsProps |. hoverEffectGet,
+      ~hoverBaseColor=?Js.Nullable.toOption(jsProps |. hoverBaseColorGet),
+      jsProps |. childrenGet,
     )
   );
