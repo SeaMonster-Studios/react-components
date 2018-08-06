@@ -1,17 +1,7 @@
 open Css;
+open StyleUtils;
 
 let component = ReasonReact.statelessComponent("Button");
-
-/* [@bs.deriving jsConverter]
-   type tagType = [ | `Link | [@bs.as "a"] `A | [@bs.as "button"] `Button]; */
-
-/* [@bs.deriving abstract]
-   type jsProps = {tagType};
-
-   let default =
-     ReasonReact.wrapReasonForJs(~component, jsProps =>
-       make(~tagType=jsProps##tagType, jsProps##children)
-     ); */
 
 [@bs.deriving jsConverter]
 type inverseStyle = [ | `default | `transparent];
@@ -113,9 +103,9 @@ let make =
     (
       ~baseColor,
       ~textColor,
-      ~inverse,
-      ~inverseStyle,
-      ~hoverEffect,
+      ~inverse=false,
+      ~inverseStyle=`default,
+      ~hoverEffect=`default,
       ~hoverBaseColor=?,
       children,
     ) => {
@@ -127,7 +117,7 @@ let make =
         ++ Css.style([
              textDecoration(`none),
              cursor(`pointer),
-             borderColor(baseColor),
+             borderColor(color_of_rgba(baseColor)),
              selector(
                "> *",
                [margin(px(0)), padding(px(0)), textDecoration(`none)],
@@ -136,12 +126,12 @@ let make =
                   ~inverse,
                   ~hoverBaseColor=
                     switch (hoverBaseColor) {
-                    | None => textColor
-                    | Some(value) => value
+                    | None => color_of_rgba(textColor)
+                    | Some(value) => color_of_rgba(value)
                     },
                   ~hoverEffect,
-                  ~baseColor,
-                  ~textColor,
+                  ~baseColor=color_of_rgba(baseColor),
+                  ~textColor=color_of_rgba(textColor),
                   ~inverseStyle,
                 ),
            ])
@@ -150,8 +140,26 @@ let make =
     </button>,
 };
 
-/* [@bs.deriving abstract]
-   type jsProps = {children: ReasonReact.reactElement};
+[@bs.deriving abstract]
+type jsProps = {
+  baseColor: jsRgba,
+  textColor: jsRgba,
+  inverse: bool,
+  inverseStyle,
+  hoverEffect,
+  hoverBaseColor: Js.nullable(jsRgba),
+  children: ReasonReact.reactElement,
+};
 
-   let default =
-     ReasonReact.wrapReasonForJs(~component, jsProps => make(jsProps##children)); */
+let default =
+  ReasonReact.wrapReasonForJs(~component, jsProps =>
+    make(
+      ~baseColor=jsProps##baseColor,
+      ~textColor=jsProps##textColor,
+      ~inverse=jsProps##inverse,
+      ~inverseStyle=jsProps##inverseStyle,
+      ~hoverEffect=jsProps##hoverEffect,
+      ~hoverBaseColor=jsProps##hoverBaseColor,
+      jsProps##children,
+    )
+  );
