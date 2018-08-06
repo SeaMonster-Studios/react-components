@@ -35,15 +35,15 @@ type jsProps = {
   style: Js.nullable(ReactDOMRe.Style.t),
   gradient: Js.nullable(string),
   image: string,
-  children: ReasonReact.reactElement,
+  children: array(ReasonReact.reactElement),
 };
 
 let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>
     make(
-      ~image=jsProps##image,
-      ~gradient=jsProps##gradient,
-      ~style=?jsProps##style,
-      jsProps##children,
+      ~image=jsProps |. imageGet,
+      ~gradient=?Js.Nullable.toOption(jsProps |. gradientGet),
+      ~style=?Js.Nullable.toOption(jsProps |. styleGet),
+      jsProps |. childrenGet,
     )
   );
