@@ -9,7 +9,7 @@
   },
   "package-specs": [
     {
-      "module": "es6-global"
+      "module": "es6"
     }
   ],
   "suffix": ".bs.js",
