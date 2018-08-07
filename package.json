@@ -1,68 +1,42 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.0.1",
-  "description": "Reusable React components by SeaMonster Studios",
+  "version": "0.1.0",
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start": "npm run clean && bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world"
+  },
+  "keywords": [
+    "bucklescript, reason"
+  ],
+  "author": "Logan @ SeaMonster Studios",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SeaMonster-Studios/react-components.git"
   },
-  "keywords": [
-    "react",
-    "components",
-    "library"
-  ],
-  "author": "Logan Call @ SeaMonster Studios",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SeaMonster-Studios/react-components/issues"
   },
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
-  "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "start": "npm run storybook",
-    "typecheck": "flow-watch",
-    "test": "jest --watch"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "./components/**/spec.js"
-    ]
-  },
-  "dependencies": {
-    "@storybook/react": "^3.4.8",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-jest": "^23.4.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "concurrently": "^3.6.1",
-    "emotion": "^9.2.6",
-    "eslint": "^5.2.0",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-jest": "^21.18.0",
-    "eslint-plugin-react": "^7.10.0",
-    "faker": "^4.1.0",
-    "flow-bin": "^0.77.0",
-    "jest": "^23.4.1",
-    "jest-emotion": "^9.2.6",
-    "lodash": "^4.17.10",
-    "object-fit-images": "^3.2.3",
-    "raven-js": "^3.26.4",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-emotion": "^9.2.5",
-    "react-spring": "^5.5.1",
-    "react-static": "^5.9.7",
-    "react-test-renderer": "^16.4.1",
-    "react-testing-library": "^4.1.2",
-    "regenerator-runtime": "^0.12.0",
-    "reset-css": "^4.0.1"
+  "peerDependencies": {
+    "bs-css": "^7.0.1",
+    "react": ">=16.4.1",
+    "react-dom": ">=16.4.1",
+    "reason-react": "^0.5.3"
   },
   "devDependencies": {
-    "flow-watch": "^1.1.3"
+    "@storybook/react": "^3.4.8",
+    "babel-core": "^6.26.3",
+    "bs-css": "^7.0.1",
+    "bs-platform": "^4.0.3",
+    "bs-storybook": "^0.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "reason-react": "^0.5.3"
   }
 }
