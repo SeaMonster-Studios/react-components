@@ -1,6 +1,6 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "start": "npm run clean && bsb -make-world -w",
     "clean": "bsb -clean-world",
@@ -23,16 +23,16 @@
     "access": "public"
   },
   "peerDependencies": {
-    "bs-css": "^7.0.1",
     "react": ">=16.4.1",
-    "react-dom": ">=16.4.1",
-    "reason-react": "^0.5.3"
+    "react-dom": ">=16.4.1"
   },
   "devDependencies": {
     "bs-css": "^7.0.1",
     "bs-platform": "^4.0.3",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "dependencies": {
     "reason-react": "^0.5.3"
   }
 }
