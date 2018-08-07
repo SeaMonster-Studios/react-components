@@ -3,12 +3,6 @@ open StyleUtils;
 
 let component = ReasonReact.statelessComponent("Button");
 
-[@bs.deriving jsConverter]
-type inverseStyle = [ | `default | `transparent];
-
-[@bs.deriving jsConverter]
-type hoverEffect = [ | `default | `ripple];
-
 let rippleOut =
   keyframes([
     (
@@ -23,18 +17,18 @@ let rippleOut =
     ),
   ]);
 
-let hoverProps =
-    (~hoverEffect, ~hoverBaseColor, ~textColor, ~baseColor, ~inverse) =>
+let hoverProps = (~hoverEffect, ~hoverBaseColor, ~hoverTextColor) =>
   switch (hoverEffect) {
-  | `default => [
+  | "ripple" => [
       transformOrigin(`percent(50.0), `percent(50.0)),
       position(`relative),
       after([
-        /* content(""), */
+        transition(~duration=300, "border"),
+        pseudoContent(" "),
         position(`absolute),
         border(px(1), `solid, rgba(0, 0, 0, 0.0)),
-        /* borderRadius(inherit), */
-        /* borderColor(inherit), */
+        cssInherit("borderRadius"),
+        cssInherit("borderColor"),
         top(px(-1)),
         right(px(-1)),
         bottom(px(-1)),
@@ -44,20 +38,22 @@ let hoverProps =
         " &:hover, &:focus",
         [
           textDecoration(`none),
-          color(textColor),
-          backgroundColor(baseColor),
-          after([animationName(rippleOut), animationDuration(5000)]),
+          color(hoverTextColor),
+          selector(" > *", [color(hoverTextColor)]),
+          backgroundColor(hoverBaseColor),
+          after([animationName(rippleOut), animationDuration(500)]),
         ],
       ),
     ]
-  | `ripple => [
+  | _ => [
       textDecoration(`none),
       selector(
         " &:hover, &:focus",
         [
-          color(textColor),
-          backgroundColor(inverse ? baseColor : hoverBaseColor),
-          borderColor(inverse ? baseColor : hoverBaseColor),
+          color(hoverTextColor),
+          selector(" > *", [color(hoverTextColor)]),
+          backgroundColor(hoverBaseColor),
+          borderColor(hoverBaseColor),
         ],
       ),
     ]
@@ -71,47 +67,60 @@ let conditionalStyles =
       ~textColor,
       ~baseColor,
       ~inverse,
+      ~hoverTextColor,
     ) =>
   inverse ?
     switch (inverseStyle) {
-    | `default => [
-        backgroundColor(textColor),
-        color(baseColor),
-        ...hoverProps(
-             ~hoverBaseColor,
-             ~hoverEffect,
-             ~textColor,
-             ~baseColor,
-             ~inverse,
-           ),
-      ]
-    | `transparent => [
+    | "transparent" => [
         backgroundColor(rgba(255, 255, 255, 0.0)),
         color(baseColor),
-        ...hoverProps(
-             ~hoverBaseColor,
-             ~hoverEffect,
-             ~textColor,
-             ~baseColor,
-             ~inverse,
-           ),
+        transition(~duration=300, "all"),
+        selector(
+          " *",
+          [color(baseColor), transition(~duration=300, "all")],
+        ),
+        ...hoverProps(~hoverBaseColor, ~hoverEffect, ~hoverTextColor),
+      ]
+    | _ => [
+        backgroundColor(textColor),
+        color(baseColor),
+        transition(~duration=300, "all"),
+        selector(
+          " *",
+          [color(baseColor), transition(~duration=300, "all")],
+        ),
+        ...hoverProps(~hoverBaseColor, ~hoverEffect, ~hoverTextColor),
       ]
     } :
-    [backgroundColor(baseColor), color(textColor)];
+    [
+      backgroundColor(baseColor),
+      color(textColor),
+      transition(~duration=300, "all"),
+      selector(" *", [color(textColor), transition(~duration=300, "all")]),
+      ...hoverProps(~hoverBaseColor, ~hoverEffect, ~hoverTextColor),
+    ];
 
 let make =
     (
       ~baseColor,
       ~textColor,
       ~inverse=false,
-      ~inverseStyle=`default,
-      ~hoverEffect=`default,
+      ~inverseStyle="default",
+      ~hoverEffect="default",
       ~hoverBaseColor=?,
+      ~hoverTextColor=?,
+      ~style=?,
       children,
     ) => {
   ...component,
   render: _self =>
     <button
+      style=(
+        switch (style) {
+        | None => ReactDOMRe.Style.make()
+        | Some(value) => value
+        }
+      )
       className=(
         "component-button "
         ++ Css.style([
@@ -126,6 +135,11 @@ let make =
                   ~inverse,
                   ~hoverBaseColor=
                     switch (hoverBaseColor) {
+                    | None => color_of_rgba(baseColor)
+                    | Some(value) => color_of_rgba(value)
+                    },
+                  ~hoverTextColor=
+                    switch (hoverTextColor) {
                     | None => color_of_rgba(textColor)
                     | Some(value) => color_of_rgba(value)
                     },
@@ -142,11 +156,12 @@ let make =
 
 [@bs.deriving abstract]
 type jsProps = {
+  style: Js.nullable(ReactDOMRe.Style.t),
   baseColor: jsRgba,
   textColor: jsRgba,
   inverse: bool,
-  inverseStyle,
-  hoverEffect,
+  inverseStyle: string,
+  hoverEffect: string,
   hoverBaseColor: Js.nullable(jsRgba),
   children: ReasonReact.reactElement,
 };
@@ -154,6 +169,7 @@ type jsProps = {
 let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>
     make(
+      ~style=?Js.Nullable.toOption(jsProps |. styleGet),
       ~baseColor=jsProps |. baseColorGet,
       ~textColor=jsProps |. textColorGet,
       ~inverse=jsProps |. inverseGet,
