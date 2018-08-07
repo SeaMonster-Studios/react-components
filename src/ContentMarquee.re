@@ -1,10 +1,18 @@
 let component = ReasonReact.statelessComponent("ContentMarquee");
 
-let make = (~image, ~gradient=?, ~style=?, children) => {
+let make = (~image, ~gradient=?, ~style=?, ~className=?, children) => {
   ...component,
   render: _self =>
     <div
-      className="component-content-marquee"
+      className=(
+        "component-content-marquee "
+        ++ (
+          switch (className) {
+          | None => ""
+          | Some(value) => value
+          }
+        )
+      )
       style=(
         StyleUtils.combineWithOptionalStyles(
           ~styles=
@@ -33,6 +41,7 @@ let make = (~image, ~gradient=?, ~style=?, children) => {
 [@bs.deriving abstract]
 type jsProps = {
   style: Js.nullable(ReactDOMRe.Style.t),
+  className: Js.nullable(string),
   gradient: Js.nullable(string),
   image: string,
   children: array(ReasonReact.reactElement),
@@ -42,6 +51,7 @@ let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>
     make(
       ~image=jsProps |. imageGet,
+      ~className=?Js.Nullable.toOption(jsProps |. classNameGet),
       ~gradient=?Js.Nullable.toOption(jsProps |. gradientGet),
       ~style=?Js.Nullable.toOption(jsProps |. styleGet),
       jsProps |. childrenGet,

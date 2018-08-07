@@ -110,6 +110,7 @@ let make =
       ~inverse=false,
       ~inverseStyle="default",
       ~hoverStyle="default",
+      ~className=?,
       ~hoverBaseColor=?,
       ~hoverTextColor=?,
       ~style=?,
@@ -126,6 +127,12 @@ let make =
       )
       className=(
         "component-button "
+        ++ (
+          switch (className) {
+          | None => ""
+          | Some(value) => value ++ " "
+          }
+        )
         ++ Css.style([
              textDecoration(`none),
              cursor(`pointer),
@@ -161,6 +168,7 @@ let make =
 [@bs.deriving abstract]
 type jsProps = {
   style: Js.nullable(ReactDOMRe.Style.t),
+  className: Js.nullable(string),
   baseColor: jsRgba,
   textColor: jsRgba,
   inverse: bool,
@@ -174,6 +182,7 @@ let default =
   ReasonReact.wrapReasonForJs(~component, jsProps =>
     make(
       ~style=?Js.Nullable.toOption(jsProps |. styleGet),
+      ~className=?Js.Nullable.toOption(jsProps |. classNameGet),
       ~baseColor=jsProps |. baseColorGet,
       ~textColor=jsProps |. textColorGet,
       ~inverse=jsProps |. inverseGet,
