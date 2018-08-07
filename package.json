@@ -1,6 +1,6 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "scripts": {
     "start": "npm run clean && bsb -make-world -w",
     "clean": "bsb -clean-world",
