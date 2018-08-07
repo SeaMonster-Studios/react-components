@@ -17,8 +17,8 @@ let rippleOut =
     ),
   ]);
 
-let hoverProps = (~hoverEffect, ~hoverBaseColor, ~hoverTextColor) =>
-  switch (hoverEffect) {
+let hoverProps = (~hoverStyle, ~hoverBaseColor, ~hoverTextColor) =>
+  switch (hoverStyle) {
   | "ripple" => [
       transformOrigin(`percent(50.0), `percent(50.0)),
       position(`relative),
@@ -39,7 +39,7 @@ let hoverProps = (~hoverEffect, ~hoverBaseColor, ~hoverTextColor) =>
         [
           textDecoration(`none),
           color(hoverTextColor),
-          selector(" > *", [color(hoverTextColor)]),
+          selector("> span > *", [color(hoverTextColor)]),
           backgroundColor(hoverBaseColor),
           after([animationName(rippleOut), animationDuration(500)]),
         ],
@@ -51,7 +51,7 @@ let hoverProps = (~hoverEffect, ~hoverBaseColor, ~hoverTextColor) =>
         " &:hover, &:focus",
         [
           color(hoverTextColor),
-          selector(" > *", [color(hoverTextColor)]),
+          selector("> span > *", [color(hoverTextColor)]),
           backgroundColor(hoverBaseColor),
           borderColor(hoverBaseColor),
         ],
@@ -61,7 +61,7 @@ let hoverProps = (~hoverEffect, ~hoverBaseColor, ~hoverTextColor) =>
 
 let conditionalStyles =
     (
-      ~hoverEffect,
+      ~hoverStyle,
       ~hoverBaseColor,
       ~inverseStyle,
       ~textColor,
@@ -76,28 +76,31 @@ let conditionalStyles =
         color(baseColor),
         transition(~duration=300, "all"),
         selector(
-          " *",
+          " span *",
           [color(baseColor), transition(~duration=300, "all")],
         ),
-        ...hoverProps(~hoverBaseColor, ~hoverEffect, ~hoverTextColor),
+        ...hoverProps(~hoverBaseColor, ~hoverStyle, ~hoverTextColor),
       ]
     | _ => [
         backgroundColor(textColor),
         color(baseColor),
         transition(~duration=300, "all"),
         selector(
-          " *",
+          " span *",
           [color(baseColor), transition(~duration=300, "all")],
         ),
-        ...hoverProps(~hoverBaseColor, ~hoverEffect, ~hoverTextColor),
+        ...hoverProps(~hoverBaseColor, ~hoverStyle, ~hoverTextColor),
       ]
     } :
     [
       backgroundColor(baseColor),
       color(textColor),
       transition(~duration=300, "all"),
-      selector(" *", [color(textColor), transition(~duration=300, "all")]),
-      ...hoverProps(~hoverBaseColor, ~hoverEffect, ~hoverTextColor),
+      selector(
+        " span *",
+        [color(textColor), transition(~duration=300, "all")],
+      ),
+      ...hoverProps(~hoverBaseColor, ~hoverStyle, ~hoverTextColor),
     ];
 
 let make =
@@ -106,7 +109,7 @@ let make =
       ~textColor,
       ~inverse=false,
       ~inverseStyle="default",
-      ~hoverEffect="default",
+      ~hoverStyle="default",
       ~hoverBaseColor=?,
       ~hoverTextColor=?,
       ~style=?,
@@ -127,6 +130,7 @@ let make =
              textDecoration(`none),
              cursor(`pointer),
              borderColor(color_of_rgba(baseColor)),
+             selector(" a", [textDecoration(`none)]),
              selector(
                "> *",
                [margin(px(0)), padding(px(0)), textDecoration(`none)],
@@ -143,14 +147,14 @@ let make =
                     | None => color_of_rgba(textColor)
                     | Some(value) => color_of_rgba(value)
                     },
-                  ~hoverEffect,
+                  ~hoverStyle,
                   ~baseColor=color_of_rgba(baseColor),
                   ~textColor=color_of_rgba(textColor),
                   ~inverseStyle,
                 ),
            ])
       )>
-      children
+      (ReasonReact.createDomElement("span", ~props=Js.Obj.empty(), children))
     </button>,
 };
 
@@ -161,9 +165,9 @@ type jsProps = {
   textColor: jsRgba,
   inverse: bool,
   inverseStyle: string,
-  hoverEffect: string,
+  hoverStyle: string,
   hoverBaseColor: Js.nullable(jsRgba),
-  children: ReasonReact.reactElement,
+  children: array(ReasonReact.reactElement),
 };
 
 let default =
@@ -174,7 +178,7 @@ let default =
       ~textColor=jsProps |. textColorGet,
       ~inverse=jsProps |. inverseGet,
       ~inverseStyle=jsProps |. inverseStyleGet,
-      ~hoverEffect=jsProps |. hoverEffectGet,
+      ~hoverStyle=jsProps |. hoverStyleGet,
       ~hoverBaseColor=?Js.Nullable.toOption(jsProps |. hoverBaseColorGet),
       jsProps |. childrenGet,
     )
