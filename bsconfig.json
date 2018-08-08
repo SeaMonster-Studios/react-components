@@ -9,11 +9,10 @@
   },
   "package-specs": [
     {
-      "module": "es6"
+      "module": "commonjs"
     }
   ],
   "suffix": ".bs.js",
-  "namespace": false,
   "bs-dependencies": ["reason-react", "bs-css"],
   "refmt": 3
 }
