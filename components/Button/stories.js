@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Router } from 'react-static'
 import { action } from '@storybook/addon-actions'
 import { css } from 'react-emotion'
 //
@@ -12,7 +11,8 @@ const common = {
   baseColor: color.rgb.red[1],
   hoverBaseColor: color.rgb.red[2],
   textColor: color.rgb.white[1],
-  styles: css`
+  hoverTextColor: color.rgb.white[0],
+  className: css`
     transition: 0.5s ease;
     padding: 20px 35px;
     font-size: 22px;
@@ -22,7 +22,7 @@ const common = {
 }
 
 storiesOf('Button', module)
-  .add('button tag', () => (
+  .add('default', () => (
     <Center>
       <Button
         {...{
@@ -36,34 +36,6 @@ storiesOf('Button', module)
       </Button>
     </Center>
   ))
-  .add('a tag', () => (
-    <Center>
-      <Button
-        {...{
-          ...common,
-          tagType: 'a',
-          href: '/contact',
-        }}
-      >
-        Hello
-      </Button>
-    </Center>
-  ))
-  .add('Link tag', () => (
-    <Center>
-      <Router>
-        <Button
-          {...{
-            ...common,
-            to: '/contact',
-            tagType: 'Link',
-          }}
-        >
-          Hello
-        </Button>
-      </Router>
-    </Center>
-  ))
   .add('With ripple hover effect', () => (
     <Center>
       <Button
@@ -71,7 +43,7 @@ storiesOf('Button', module)
           ...common,
           type: 'submit',
           tagType: 'button',
-          hoverEffect: 'ripple',
+          hoverStyle: 'ripple',
           onClick: action('button click'),
         }}
       >
@@ -95,7 +67,7 @@ storiesOf('Button', module)
     </Center>
   ))
 
-  .add('With transparent inverse style, and ripple hover effect', () => (
+  .add('With **transparent** inverseStyle, and **ripple** hoverStyle', () => (
     <Center>
       <Button
         {...{
@@ -104,7 +76,7 @@ storiesOf('Button', module)
           tagType: 'button',
           inverse: true,
           inverseStyle: 'transparent',
-          hoverEffect: 'ripple',
+          hoverStyle: 'ripple',
           onClick: action('button click'),
         }}
       >

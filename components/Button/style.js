@@ -1,24 +1,13 @@
 import styled, { keyframes, css } from 'react-emotion'
-import { Link as ReactRouterLink } from 'react-static'
 
-export const A = styled('a')`
-  ${({ options }) => buttonProps(options)};
-`
-
-export const Link = styled(ReactRouterLink)`
-  ${({ options }) => buttonProps(options)};
-`
-
-export const Button = styled('button')`
-  ${({ options }) => buttonProps(options)};
-`
-
-const buttonProps = props => css`
+export const Wrapper = styled('button')`
   text-decoration: none;
-  border-color: ${props.baseColor};
+  border-color: ${props => props.borderColor};
   cursor: pointer;
 
-  ${colorProps(props)} ${hoverProps(props)} ${props.styles};
+  ${props => colorProps(props)};
+  ${props => hoverProps(props)};
+  ${props => props.styles};
 `
 
 function colorProps(props) {
@@ -55,11 +44,12 @@ const rippleOut = keyframes`
 `
 
 function hoverProps(props) {
-  switch (props.hoverEffect) {
+  switch (props.hoverStyle) {
     case 'ripple':
       return css`
         transform-origin: center;
         position: relative;
+        border-color: ${props.hoverBorderColor};
 
         &::after {
           content: '';
@@ -76,8 +66,10 @@ function hoverProps(props) {
         &:hover,
         &:focus {
           text-decoration: none;
-          color: ${props.textColor};
-          background-color: ${props.baseColor};
+          color: ${props.inverse ? props.hoverBaseColor : props.hoverTextColor};
+          background-color: ${props.inverse
+            ? props.hoverTextColor
+            : props.hoverBaseColor};
 
           &::after {
             animation: ${rippleOut} 0.5s;
@@ -91,17 +83,12 @@ function hoverProps(props) {
 
         &:hover,
         &:focus {
-          color: ${props.textColor};
+          color: ${props.inverse ? props.hoverBaseColor : props.hoverTextColor};
           background-color: ${props.inverse
-            ? props.baseColor
-            : props.hoverBaseColor
-              ? props.hoverBaseColor
-              : props.inverse};
-          border-color: ${props.inverse
-            ? props.baseColor
-            : props.hoverBaseColor
-              ? props.hoverBaseColor
-              : props.inverse};
+            ? props.hoverTextColor
+            : props.hoverBaseColor};
+
+          border-color: ${props.hoverBorderColor};
         }
       `
   }

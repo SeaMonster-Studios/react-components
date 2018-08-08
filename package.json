@@ -59,7 +59,6 @@
     "jest": "^23.4.1",
     "jest-emotion": "^9.2.6",
     "lodash": "^4.17.10",
-    "react-static": "^5.9.7",
     "react-test-renderer": "^16.4.1",
     "react-testing-library": "^4.1.2",
     "regenerator-runtime": "^0.12.0"
