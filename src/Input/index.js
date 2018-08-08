@@ -56,7 +56,7 @@ export class Input extends React.Component {
       event.currentTarget.files.length
     ) {
       try {
-        const fileContents: string = await readUploadedFileAsText(
+        const fileContents = await readUploadedFileAsText(
           event.currentTarget.files[0],
         )
         if (this.props.valueHasChanged) {

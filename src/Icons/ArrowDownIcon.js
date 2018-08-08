@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ArrowDownIcon = (props: {}) => {
+export const ArrowDownIcon = () => {
   return (
     <svg
       {...props}

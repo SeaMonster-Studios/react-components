@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CloseIcon = (props: {}) => {
+export const CloseIcon = () => {
   return (
     <svg
       {...props}

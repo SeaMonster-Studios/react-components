@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CheckIcon = (props: {}) => {
+export const CheckIcon = () => {
   return (
     <svg
       {...props}
