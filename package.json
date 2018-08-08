@@ -1,12 +1,12 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scripts": {
     "start": "npm run clean && bsb -make-world -w",
     "clean": "bsb -clean-world",
     "build": "npm run clean && bsb -make-world"
   },
-  "main": "./dist/index.js",
+  "main": "index.js",
   "keywords": [
     "bucklescript, reason, react, reason-react"
   ],
