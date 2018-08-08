@@ -1,11 +1,10 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "start": "npm run clean && bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "build:bsb": "npm run clean && bsb -make-world",
-    "build": "./node_modules/.bin/webpack --mode=production"
+    "build": "npm run clean && bsb -make-world"
   },
   "main": "./dist/index.js",
   "keywords": [
@@ -31,15 +30,6 @@
   "devDependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/preset-env": "^7.0.0-beta.42",
-    "@babel/preset-react": "^7.0.0-beta.42",
-    "babel-core": "6",
-    "babel-loader": "^8.0.0-beta",
-    "parcel-bundler": "^1.6.2",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12",
-    "webpack-node-externals": "^1.6.0",
     "bs-platform": "^4.0.3",
     "bs-css": "^7.0.1",
     "reason-react": "^0.5.3"
