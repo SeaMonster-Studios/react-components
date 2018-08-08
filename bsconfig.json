@@ -13,6 +13,6 @@
     }
   ],
   "suffix": ".bs.js",
-  "bs-dependencies": ["reason-react", "bs-css"],
+  "bs-dependencies": ["reason-react", "bs-css", "bs-webapi"],
   "refmt": 3
 }
