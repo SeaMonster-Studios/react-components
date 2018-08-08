@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import faker from 'faker'
 import { render, cleanup } from 'react-testing-library'

@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { css } from 'react-emotion'
@@ -62,12 +61,7 @@ storiesOf('Checkbox', module)
     </Center>
   ))
 
-class UserControlledState extends React.Component<
-  {},
-  {
-    checked: boolean,
-  },
-> {
+class UserControlledState extends React.Component {
   state = {
     checked: false,
   }

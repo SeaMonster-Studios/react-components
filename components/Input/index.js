@@ -1,58 +1,42 @@
-// TODO: Add flow declaration once figuring out whey it thinks the button props should by on both tInputs union types
 import * as React from 'react'
+import PropTypes from 'prop-types'
 //
 import { readUploadedFileAsText } from '../../utils/io'
 import { Wrapper } from './style'
-import { Button } from '../Button'
-import type { tButton } from '../Button'
 
-export type tValue = number | string | null
-
-export type tEvent = SyntheticEvent<HTMLInputElement>
-
-export type tInputCommon = {
-  valueHasChanged?: (value: tValue | any, fileContents?: string) => any,
-  onChange?: any => any,
-  value?: tValue,
-}
-
-export type tInput = tInputCommon &
-  (
-    | {
-        type:
-          | 'color'
-          | 'date'
-          | 'datetime'
-          | 'datetime-local'
-          | 'email'
-          | 'hidden'
-          | 'month'
-          | 'number'
-          | 'password'
-          | 'range'
-          | 'search'
-          | 'tel'
-          | 'text'
-          | 'time'
-          | 'url'
-          | 'week',
-      }
-    | (tButton & {
-        // children: ({ Input: React.Node }) => React.Node,
-        type: 'button' | 'submit' | 'file',
-      })
-  )
-
-export type tInputState = {
-  value: tValue,
-}
-
-export class Input extends React.Component<tInput, tInputState> {
+export class Input extends React.Component {
+  static propTypes = {
+    type: PropTypes.oneOf([
+      'color',
+      'date',
+      'datetime',
+      'datetime-local',
+      'email',
+      'hidden',
+      'month',
+      'number',
+      'password',
+      'range',
+      'search',
+      'tel',
+      'text',
+      'time',
+      'url',
+      'week',
+      'button',
+      'submit',
+      'file',
+    ]).isRequired,
+    valueHasChanged: PropTypes.func,
+    onChange: PropTypes.func,
+    children: PropTypes.func,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  }
   state = {
     value: '',
   }
   inputRef = React.createRef()
-  handleChange = async (event: tEvent) => {
+  handleChange = async event => {
     event.persist()
     if (event.currentTarget instanceof HTMLInputElement) {
       this.setState({ value: event.currentTarget.value })
@@ -65,7 +49,7 @@ export class Input extends React.Component<tInput, tInputState> {
       }
     }
   }
-  handleFileChange = async (event: tEvent) => {
+  handleFileChange = async event => {
     event.persist()
     if (
       event.currentTarget instanceof HTMLInputElement &&
@@ -88,7 +72,14 @@ export class Input extends React.Component<tInput, tInputState> {
     }
   }
   render() {
-    const { type, value, onChange, valueHasChanged, ...props } = this.props
+    const {
+      type,
+      value,
+      onChange,
+      valueHasChanged,
+      children,
+      ...props
+    } = this.props
 
     const innerProps = {
       'data-testid': 'component-input',
@@ -103,20 +94,10 @@ export class Input extends React.Component<tInput, tInputState> {
       case 'file':
       case 'button':
       case 'submit':
-        // const { children, ...attrs } = props
-        // const { baseColor, textColor, ...attrs } = props
-        return (
-          <Button
-            baseColor={props.baseColor}
-            textColor={props.textColor}
-            {...props}
-            tagType="button"
-          >
-            <Wrapper {...innerProps} />
-            {/* TODO: Need to provide the user with the input component instead of just nesting it, incase they want to put something else in the button (like an icon) */}
-            {/* {children({ Input: <Wrapper {...innerProps} /> })} */}
-          </Button>
-        )
+        if (children) {
+          return children({ Component: Wrapper, props: innerProps })
+        }
+        return <Wrapper {...innerProps} />
       default:
         return (
           <Wrapper

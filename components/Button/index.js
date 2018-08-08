@@ -1,19 +1,7 @@
-// @flow
 import * as React from 'react'
+import PropTypes from 'prop-types'
 //
 import { A, Link, Button as ButtonStyled } from './style'
-
-export type tButton = {
-  tagType: 'Link' | 'a' | 'button',
-  children: React.Node,
-  baseColor: string,
-  textColor: string,
-  inverse?: boolean,
-  inverseStyle?: 'default' | 'transparent',
-  hoverEffect?: 'default' | 'ripple',
-  hoverBaseColor?: string,
-  styles?: string, // emotion css string
-}
 
 export const defaultsProps = {
   hoverEffect: 'default',
@@ -21,7 +9,7 @@ export const defaultsProps = {
   inverseStyle: 'default',
 }
 
-export const Button = (props: tButton) => {
+export const Button = props => {
   const {
     tagType,
     baseColor,
@@ -70,4 +58,16 @@ export const Button = (props: tButton) => {
         </Link>
       )
   }
+}
+
+Button.propTypes = {
+  tagType: PropTypes.oneOf(['Link', 'a', 'button']).isRequired,
+  children: PropTypes.node.isRequired,
+  baseColor: PropTypes.string.isRequired,
+  textColor: PropTypes.string.isRequired,
+  inverse: PropTypes.bool,
+  inverseStyle: PropTypes.oneOf(['default', 'transparent']),
+  hoverEffect: PropTypes.oneOf(['default', 'ripple']),
+  hoverBaseColor: PropTypes.string,
+  styles: PropTypes.string,
 }

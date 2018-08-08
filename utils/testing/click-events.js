@@ -10,11 +10,7 @@ export function clickEvent(el) {
   )
 }
 
-export function changeEvent(
-  el: HTMLElement,
-  newValue: string | number | boolean,
-  property?: string = 'value',
-) {
+export function changeEvent(el, newValue, property) {
   el[property] = newValue
   return fireEvent.change(el)
 }

@@ -1,25 +1,19 @@
-// @flow
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import Raven from 'raven-js'
 //
 import { Wrapper } from './style'
 
-export type tErrorBoundary = {
-  children: React.Node,
-  styles?: string, // emotion css string
-}
-
-type tErrorBoundaryState = { hasError: boolean }
-
-export class ErrorBoundary extends React.Component<
-  tErrorBoundary,
-  tErrorBoundaryState,
-> {
+export class ErrorBoundary extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    styles: PropTypes.string,
+  }
   state = {
     hasError: false,
   }
 
-  componentDidCatch(error: any, info: any) {
+  componentDidCatch(error, info) {
     this.setState(() => {
       return {
         hasError: true,

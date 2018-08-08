@@ -1,4 +1,3 @@
-// @flow
 import styled, { keyframes, css } from 'react-emotion'
 import { Link as ReactRouterLink } from 'react-static'
 

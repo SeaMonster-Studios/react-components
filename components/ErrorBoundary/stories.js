@@ -1,11 +1,10 @@
-// @flow
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 //
 import { ErrorBoundary } from './'
 import { Center } from '../../styles/stories'
 
-class Child extends React.Component<{}, { errorMe: boolean }> {
+class Child extends React.Component {
   state = {
     errorMe: false,
   }
@@ -32,7 +31,7 @@ class Child extends React.Component<{}, { errorMe: boolean }> {
           setup within your app (when the error occurs)
         </span>
 
-        {/* eslint-disable-next-line react/jsx-no-undef $FlowFixMe */}
+        {/* eslint-disable-next-line react/jsx-no-undef */}
         {this.state.errorMe ? <IDontExist /> : <span />}
       </span>
     )

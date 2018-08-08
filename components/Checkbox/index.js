@@ -1,28 +1,23 @@
-// @flow
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import { Transition } from 'react-spring'
 //
 import { Wrapper } from './style'
 
-export type tCheckbox = {
-  size: number,
-  styles?: string, // Emotion css (return value of the function css)
-  activeStyles?: string, // Emotion css (return value of the function css)
-  checked?: boolean,
-  onChange?: any => any,
-  checkedHasChanged?: (checked: boolean) => any,
-  OnIcon?: any, // A Non-rendered React Component, w/e that is...
-  OffIcon?: any, // A Non-rendered React Component, w/e that is...
-  markTransitionFrom?: {},
-  markTransitionEnter?: {},
-  markTransitionLeave?: {},
-}
-
-export type tCheckboxState = {
-  checked: boolean,
-}
-
-export class Checkbox extends React.Component<tCheckbox, tCheckboxState> {
+export class Checkbox extends React.Component {
+  static propTypes = {
+    size: PropTypes.number.isRequired,
+    styles: PropTypes.string,
+    activeStyles: PropTypes.string,
+    checked: PropTypes.bool,
+    onChange: PropTypes.func,
+    checkedHasChanged: PropTypes.func,
+    OnIcon: PropTypes.func,
+    OffIcon: PropTypes.func,
+    markTransitionFrom: PropTypes.shape({}),
+    markTransitionEnter: PropTypes.shape({}),
+    markTransitionLeave: PropTypes.shape({}),
+  }
   state = {
     checked: false,
   }
@@ -38,7 +33,7 @@ export class Checkbox extends React.Component<tCheckbox, tCheckboxState> {
     opacity: 0,
     transform: 'rotate(-90deg)',
   }
-  constructor(props: tCheckbox) {
+  constructor(props) {
     super(props)
 
     if (

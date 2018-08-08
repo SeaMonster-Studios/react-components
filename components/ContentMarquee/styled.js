@@ -1,4 +1,3 @@
-// @flow
 import styled, { css } from 'react-emotion'
 
 export const Wrapper = styled('div')`

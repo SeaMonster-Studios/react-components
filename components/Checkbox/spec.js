@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import { render, cleanup } from 'react-testing-library'
 //
@@ -106,7 +105,6 @@ function renderSetup(overrides) {
     ...overrides,
   }
 
-  // $FlowFixMe
   const wrapper = render(<Checkbox {...props} />)
 
   return {

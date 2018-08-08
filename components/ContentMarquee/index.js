@@ -1,20 +1,13 @@
-// @flow
 import * as React from 'react'
+import PropTypes from 'prop-types'
 //
 import { Wrapper } from './styled'
-
-export type tContentMarquee = {
-  image: string,
-  gradient?: string,
-  children: React.Node,
-  styles: string, // emotion css string
-}
 
 const defaults = {
   gradient: 'linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))',
 }
 
-export function ContentMarquee({ children, ...props }: tContentMarquee) {
+export function ContentMarquee({ children, ...props }) {
   return (
     <Wrapper
       {...{
@@ -26,4 +19,11 @@ export function ContentMarquee({ children, ...props }: tContentMarquee) {
       {children}
     </Wrapper>
   )
+}
+
+ContentMarquee.propTypes = {
+  image: PropTypes.string.isRequired,
+  gradient: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  styles: PropTypes.string.isRequired,
 }
