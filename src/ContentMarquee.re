@@ -34,7 +34,7 @@ let make = (~image, ~gradient=?, ~style=?, ~className=?, children) => {
           ~styles2=style,
         )
       )>
-      (ReasonReact.createDomElement("div", ~props=Js.Obj.empty(), children))
+      ...children
     </div>,
 };
 

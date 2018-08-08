@@ -1,5 +1,5 @@
 {
-  "name": "react-template",
+  "name": "@seamonster-studios/react-components",
   "reason": {
     "react-jsx": 2
   },
@@ -9,11 +9,10 @@
   },
   "package-specs": [
     {
-      "module": "es6-global"
+      "module": "commonjs"
     }
   ],
-  "suffix": ".js",
-  "namespace": true,
-  "bs-dependencies": ["reason-react", "bs-storybook", "bs-css"],
+  "suffix": ".bs.js",
+  "bs-dependencies": ["reason-react", "bs-css", "bs-webapi"],
   "refmt": 3
 }

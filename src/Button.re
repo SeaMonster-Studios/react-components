@@ -39,7 +39,7 @@ let hoverProps = (~hoverStyle, ~hoverBaseColor, ~hoverTextColor) =>
         [
           textDecoration(`none),
           color(hoverTextColor),
-          selector("> span > *", [color(hoverTextColor)]),
+          selector("> *", [color(hoverTextColor)]),
           backgroundColor(hoverBaseColor),
           after([animationName(rippleOut), animationDuration(500)]),
         ],
@@ -51,7 +51,7 @@ let hoverProps = (~hoverStyle, ~hoverBaseColor, ~hoverTextColor) =>
         " &:hover, &:focus",
         [
           color(hoverTextColor),
-          selector("> span > *", [color(hoverTextColor)]),
+          selector("> *", [color(hoverTextColor)]),
           backgroundColor(hoverBaseColor),
           borderColor(hoverBaseColor),
         ],
@@ -76,7 +76,7 @@ let conditionalStyles =
         color(baseColor),
         transition(~duration=300, "all"),
         selector(
-          " span *",
+          " *",
           [color(baseColor), transition(~duration=300, "all")],
         ),
         ...hoverProps(~hoverBaseColor, ~hoverStyle, ~hoverTextColor),
@@ -86,7 +86,7 @@ let conditionalStyles =
         color(baseColor),
         transition(~duration=300, "all"),
         selector(
-          " span *",
+          " *",
           [color(baseColor), transition(~duration=300, "all")],
         ),
         ...hoverProps(~hoverBaseColor, ~hoverStyle, ~hoverTextColor),
@@ -96,10 +96,7 @@ let conditionalStyles =
       backgroundColor(baseColor),
       color(textColor),
       transition(~duration=300, "all"),
-      selector(
-        " span *",
-        [color(textColor), transition(~duration=300, "all")],
-      ),
+      selector(" *", [color(textColor), transition(~duration=300, "all")]),
       ...hoverProps(~hoverBaseColor, ~hoverStyle, ~hoverTextColor),
     ];
 
@@ -161,7 +158,7 @@ let make =
                 ),
            ])
       )>
-      (ReasonReact.createDomElement("span", ~props=Js.Obj.empty(), children))
+      ...children
     </button>,
 };
 
