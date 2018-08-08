@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageFit Renders with the correct object styles applied from \`fit\` and \`position\` props. 1`] = `
+.emotion-0 {
+  font-family: 'object-fit: cover; object-position: top center';
+  object-fit: cover;
+  object-position: top center;
+}
+
+<img
+  alt="something descriptive about my random image"
+  class="emotion-0"
+  data-ofi-src="https://picsum.photos/1200/500"
+  data-ofi-srcset="null"
+  data-testid="component-image-fit"
+  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='0'%3E%3C/svg%3E"
+  srcset=""
+  style="background-image: url(https://picsum.photos/1200/500); background-position: top center; background-repeat: no-repeat; background-origin: content-box; background-size: cover;"
+/>
+`;
