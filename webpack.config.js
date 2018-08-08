@@ -1,4 +1,3 @@
-const nodeExternals = require('webpack-node-externals')
 const path = require('path')
 
 module.exports = {
@@ -9,11 +8,10 @@ module.exports = {
     library: '',
     libraryTarget: 'commonjs',
   },
-  // externals: [
-  //   nodeExternals({
-  //     whitelist: [/^bs-.*/, 'reason-react'],
-  //   }),
-  // ],
+  externals: {
+    react: 'react',
+    'react-dom': 'react-dom',
+  },
   module: {
     rules: [
       {

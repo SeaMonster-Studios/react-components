@@ -1,6 +1,6 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "scripts": {
     "start": "npm run clean && bsb -make-world -w",
     "clean": "bsb -clean-world",
@@ -39,7 +39,6 @@
     "react-dom": "^16.4.1",
     "reason-react": "^0.5.3",
     "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-cli": "^3.1.0"
   }
 }
