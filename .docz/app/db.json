@@ -1,0 +1,28 @@
+{
+  "config": {
+    "title": "React Components",
+    "description": "Reusable React components by SeaMonster Studios",
+    "themeConfig": {},
+    "ordering": "descending",
+    "version": "0.4.0"
+  },
+  "entries": {
+    "src/Button/docz.mdx": {
+      "name": "Hello world",
+      "id": "01CMDRMX2WQVXB8RKQRYR5WVV1",
+      "filepath": "src/Button/docz.mdx",
+      "link": "https://github.com/SeaMonster-Studios/react-components/tree/master/src/Button/docz.mdx",
+      "slug": "src-button-docz",
+      "route": "/src-button-docz",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "hello-world",
+          "value": "Hello world"
+        }
+      ]
+    }
+  }
+}

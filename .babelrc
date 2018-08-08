@@ -1,5 +1,5 @@
 {
-  "presets": ["env", "react", "stage-1"],
-  "plugins": ["transform-object-rest-spread"],
-  "retainLines": true
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "retainLines": true,
+  "plugins": ["emotion", "@babel/plugin-proposal-class-properties"]
 }
