@@ -94,6 +94,7 @@ export class StickyBar extends React.Component {
     }
   }
   handleScroll = () => {
+    console.log('I am scrolling')
     if (typeof document !== 'undefined') {
       this.setState(prevState => {
         const scrollTop =
