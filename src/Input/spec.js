@@ -48,7 +48,12 @@ describe('Button Component Test', () => {
           <Input type={type}>{({ input }) => <span>{input}</span>}</Input>,
         )
         const input = getByTestId('component-input')
+        const wrapper = getByTestId('component-input-wrapper')
+        const label = getByTestId('component-input-label')
+
         expect(input.type).toBe(type)
+        expect(wrapper).toBeDefined()
+        expect(label).toBeDefined()
       } else {
         const { getByTestId } = render(<Input type={type} />)
         const input = getByTestId('component-input')
