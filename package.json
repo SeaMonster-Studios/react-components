@@ -45,7 +45,7 @@
     "prop-types": "^15.6.2",
     "raven-js": "^3.26.4",
     "react-emotion": "^9.2.5",
-    "react-spring": "^5.5.1",
+    "react-spring": "^5.6.1",
     "reset-css": "^4.0.1"
   },
   "devDependencies": {
@@ -72,6 +72,7 @@
     "react-test-renderer": "^16.4.1",
     "react-testing-library": "^4.1.2",
     "regenerator-runtime": "^0.12.1",
+    "sanitize-html": "^1.18.4",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-node-externals": "^1.7.2"
