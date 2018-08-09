@@ -7,10 +7,20 @@ export class StickyBar extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    /** The return value of emotion's css function */
     activeEmotionClassName: PropTypes.string,
+    /** The return value of emotion's css function */
     readyEmotionClassName: PropTypes.string,
+    /** The return value of emotion's css function */
     hiddenEmotionClassName: PropTypes.string,
     style: PropTypes.object,
+    /** An alternative to emotion-based active styles */
+    activeStyle: PropTypes.object,
+    /** An alternative to emotion-based ready styles */
+    readyStyle: PropTypes.object,
+    /** An alternative to emotion-based hidden styles */
+    hiddenStyle: PropTypes.object,
+    /** In case you need to force a position update */
     forceSelfTopUpdate: PropTypes.bool,
   }
   static defaultProps = {
@@ -19,6 +29,9 @@ export class StickyBar extends React.Component {
     readyEmotionClassName: '',
     hiddenEmotionClassName: '',
     style: {},
+    activeStyle: {},
+    readyStyle: {},
+    hiddenStyle: {},
   }
   state = {
     scrollLast: 0,
@@ -141,6 +154,9 @@ export class StickyBar extends React.Component {
       activeEmotionClassName,
       readyEmotionClassName,
       hiddenEmotionClassName,
+      activeStyle,
+      readyStyle,
+      hiddenStyle,
     } = this.props
 
     return (
@@ -148,7 +164,21 @@ export class StickyBar extends React.Component {
         <Wrapper
           data-testid="component-sticky-bar"
           className={className}
-          style={style}
+          style={{
+            ...style,
+            ...() => {
+              switch (this.state.position) {
+                case 'active':
+                  return activeStyle
+                case 'ready':
+                  return readyStyle
+                case 'hidden':
+                  return hiddenStyle
+                default:
+                  return {}
+              }
+            },
+          }}
           innerRef={containerRef => {
             this.ref = containerRef
           }}
