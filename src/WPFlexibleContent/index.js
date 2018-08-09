@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Trail, animated } from 'react-spring'
 //
+import { Wrapper } from './style'
 import { OneColumn } from './OneColumn'
 import { TwoColumns } from './TwoColumns'
 import { TwoColumnsImageGrid } from './TwoColumnsImageGrid'
@@ -9,6 +10,16 @@ import { TwoColumnsImageLeads } from './TwoColumnsImageLeads'
 import { TwoColumnsStacked } from './TwoColumnsStacked'
 import { TwoColumnsThreeColumnList } from './TwoColumnsThreeColumnList'
 import { Video } from './Video'
+
+const layoutTypes = [
+  'one_column',
+  'two_columns',
+  'two_columns_image_leads',
+  'two_columns_stacked',
+  'two_columns_three_column_list',
+  'two_columns_image_grid',
+  'video',
+]
 
 const FlexibleContentItem = ({ layout, content }) => {
   switch (layout) {
@@ -32,61 +43,119 @@ const FlexibleContentItem = ({ layout, content }) => {
 }
 
 FlexibleContentItem.propTypes = {
-  layout: PropTypes.oneOf([
-    'one_column',
-    'two_columns',
-    'two_columns_image_leads',
-    'two_columns_stacked',
-    'two_columns_three_column_list',
-    'two_columns_image_grid',
-    'video',
-  ]).isRequired,
+  layout: PropTypes.oneOf(layoutTypes).isRequired,
   content: PropTypes.object,
 }
 
-export const WPFlexibleContent = ({ className, items, style }) => (
-  <div
-    data-testid="component-wp-flexible-content"
-    style={style}
-    className={className}
-  >
-    <Trail
-      from={{ opacity: 0, transform: 'scale(0.99)' }}
-      to={{ opacity: 1, transform: 'scale(1)' }}
-      keys={items.map(item => item.key)}
+function getitemsProps(itemsProps, layout, animatedStyles) {
+  const item = itemsProps.filter(item => item.item === layout)[0]
+
+  // There are default times for each item. However, if the user only passes in one prop for that layout type (say a className for one_column) but doesn't pass in the others (say style) then the defaultProp will be completely overridden and style wiill be undefined.
+
+  if (item) {
+    if (item.className && item.style) {
+      return {
+        ...item,
+        className: `${layout} ${item.className} `,
+        style: {},
+      }
+    } else if (!item.style) {
+      return {
+        ...item,
+        lassName: `${layout} ${item.className} `,
+        style: animatedStyles,
+      }
+    } else if (!item.className) {
+      return {
+        ...item,
+        className: layout,
+        style: {
+          ...item.style,
+          ...animatedStyles,
+        },
+      }
+    } else {
+      return { ...item, animatedStyles }
+    }
+  }
+  return { ...item, style: animatedStyles }
+}
+
+export function WPFlexibleContent({
+  className,
+  items,
+  style,
+  rowSpace,
+  columnSpace,
+  breakpoint,
+  itemsProps,
+}) {
+  return (
+    <Wrapper
+      data-testid="component-wp-flexible-content"
+      style={style}
+      className={className}
+      rowSpace={rowSpace}
+      columnSpace={columnSpace}
+      breakpoint={breakpoint}
     >
-      {items.map(({ acf_fc_layout: layout, ...content }, i) => styles => (
-        <animated.section
-          style={styles}
-          key={`${layout}-${i}`}
-          data-testid="component-wp-flexible-content-item"
-        >
-          <FlexibleContentItem {...{ layout, content }} />
-        </animated.section>
-      ))}
-    </Trail>
-  </div>
-)
+      <Trail
+        from={{ opacity: 0, transform: 'scale(0.99)' }}
+        to={{ opacity: 1, transform: 'scale(1)' }}
+        keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
+      >
+        {items.map(({ acf_fc_layout: layout, ...content }) => styles => (
+          <animated.section
+            data-testid="component-wp-flexible-content-item"
+            {...getitemsProps(itemsProps, layout, styles)}
+          >
+            <FlexibleContentItem
+              {...{
+                layout,
+                content: {
+                  ...content,
+                  rowSpace,
+                  columnSpace,
+                  breakpoint,
+                },
+              }}
+            />
+          </animated.section>
+        ))}
+      </Trail>
+    </Wrapper>
+  )
+}
 
 WPFlexibleContent.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      acf_fc_layout: PropTypes.oneOf([
-        'one_column',
-        'two_columns',
-        'two_columns_image_leads',
-        'two_columns_stacked',
-        'two_columns_three_column_list',
-        'two_columns_image_grid',
-        'video',
-      ]).isRequired,
+      acf_fc_layout: PropTypes.oneOf(layoutTypes).isRequired,
     }).isRequired,
   ).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
+  rowSpace: PropTypes.number,
+  columnSpace: PropTypes.number,
+  breakpoint: PropTypes.number,
+  itemsProps: PropTypes.arrayOf(
+    PropTypes.shape({
+      item: PropTypes.oneOf(layoutTypes).isRequired,
+      className: PropTypes.string,
+      style: PropTypes.object,
+    }).isRequired,
+  ),
 }
 
 WPFlexibleContent.defaultProps = {
   className: '',
   style: {},
+  rowSpace: 60,
+  columnSpace: 30,
+  breakpoint: 992,
+  itemsProps: layoutTypes.map(type => ({
+    item: type,
+    className: '',
+    style: {},
+  })),
 }

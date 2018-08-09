@@ -83,13 +83,13 @@
       "acf_fc_layout": "two_columns_image_grid",
       "title": "Optional Title",
       "subtitle": "Optional Subtitle",
-      "content": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</p>\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</p>\n",
+      "content": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</p>\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</p>\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</p>\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</p>\n",
       "images": [
         {
           "title": "test-image-dont-remove",
           "url": "https://picsum.photos/800/500",
           "alt": "",
-          "caption": "",
+          "caption": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "name": "lorem-image",
           "width": 800,
           "height": 500
@@ -98,7 +98,7 @@
           "title": "test2-image-dont-remove",
           "url": "https://picsum.photos/800/500",
           "alt": "",
-          "caption": "",
+          "caption": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "name": "lorem-image",
           "width": 800,
           "height": 500
@@ -107,7 +107,7 @@
           "title": "test3-image-dont-remove",
           "url": "https://picsum.photos/800/500",
           "alt": "",
-          "caption": "",
+          "caption": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "name": "lorem-image",
           "width": 800,
           "height": 500
@@ -116,7 +116,7 @@
           "title": "test4-image-dont-remove",
           "url": "https://picsum.photos/800/500",
           "alt": "",
-          "caption": "",
+          "caption": "Lorem ipsum dolor.",
           "name": "lorem-image",
           "width": 800,
           "height": 500
@@ -125,7 +125,7 @@
           "title": "test5-image-dont-remove",
           "url": "https://picsum.photos/800/500",
           "alt": "",
-          "caption": "",
+          "caption": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           "name": "lorem-image",
           "width": 800,
           "height": 500
