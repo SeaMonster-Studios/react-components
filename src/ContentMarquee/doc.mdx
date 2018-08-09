@@ -1,0 +1,28 @@
+---
+name: Content Marquee
+---
+
+import { Playground, PropsTable } from 'docz'
+import { ContentMarquee } from './'
+
+# ContentMarquee
+
+<PropsTable of={ContentMarquee} />
+
+## Basic usage
+
+<Playground>
+  <ContentMarquee image='https://picsum.photos/1200/500' style={{
+    padding: '50px 100px',
+    color: '#fff',
+  }}><span style={{ fontSize: '32px', color: 'yellow'}}>Banana</span></ContentMarquee>
+</Playground>
+
+## With Gradient
+
+<Playground>
+  <ContentMarquee image='https://picsum.photos/1200/500' gradient='linear-gradient(to right, rgb(74, 194, 154), rgba(189, 255, 243, 0.5))' style={{
+    padding: '50px 100px',
+    color: '#fff',
+  }}><span style={{ fontSize: '32px', color: 'yellow'}}>By Bananarama</span></ContentMarquee>
+</Playground>
