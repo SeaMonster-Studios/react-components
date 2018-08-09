@@ -6,6 +6,26 @@ import { Wrapper } from './style'
 
 export class Input extends React.Component {
   static propTypes = {
+    /** 'color',
+      'date',
+      'datetime',
+      'datetime-local',
+      'email',
+      'hidden',
+      'month',
+      'number',
+      'password',
+      'range',
+      'search',
+      'tel',
+      'text',
+      'time',
+      'url',
+      'week',
+      'button',
+      'submit',
+      'file'
+     */
     type: PropTypes.oneOf([
       'color',
       'date',
@@ -26,16 +46,29 @@ export class Input extends React.Component {
       'button',
       'submit',
       'file',
-    ]).isRequired,
+    ]),
+    /** It's provided the new value each time it changes */
     valueHasChanged: PropTypes.func,
+    /** Used for User/non-component controlled state */
     onChange: PropTypes.func,
+    /** Required for and wsed with types of 'file', 'button', and 'submit' */
     children: PropTypes.func,
+    /** Used for User/non-component controlled state */
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    className: PropTypes.string,
+    style: PropTypes.object,
+    /** Used with type of 'file' */
+    label: PropTypes.string,
+  }
+  static defaultProps = {
+    type: 'text',
+    style: {},
+    label: 'Upload',
+    className: '',
   }
   state = {
     value: '',
   }
-  inputRef = React.createRef()
   handleChange = async event => {
     event.persist()
     if (event.currentTarget instanceof HTMLInputElement) {
@@ -78,14 +111,20 @@ export class Input extends React.Component {
       onChange,
       valueHasChanged,
       children,
-      ...props
+      label,
+      className,
+      style,
     } = this.props
 
-    const innerProps = {
+    const outerProps = {
       'data-testid': 'component-input',
+      className,
+      style,
+    }
+
+    const innerProps = {
       type,
       value: value || this.state.value,
-      ref: this.inputRef,
       onChange:
         type === 'file' ? this.handleFileChange : onChange || this.handleChange,
     }
@@ -95,15 +134,28 @@ export class Input extends React.Component {
       case 'button':
       case 'submit':
         if (children) {
-          return children({ Component: Wrapper, props: innerProps })
+          return children({
+            input: (
+              <Wrapper data-testid="component-input">
+                <input {...innerProps} />
+                <span
+                  data-testid="component-input-label"
+                  className={className}
+                  style={style}
+                >
+                  {label}
+                </span>
+              </Wrapper>
+            ),
+          })
         }
-        return <Wrapper {...innerProps} />
+        return null
       default:
         return (
-          <Wrapper
+          <input
             {...{
               ...innerProps,
-              ...props,
+              ...outerProps,
             }}
           />
         )

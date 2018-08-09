@@ -45,9 +45,7 @@ describe('Button Component Test', () => {
 
       if (type === 'button' || type === 'file' || type === 'submit') {
         const { getByTestId } = render(
-          <Input type={type}>
-            {({ Component, props }) => <Component {...props} />}
-          </Input>,
+          <Input type={type}>{({ input }) => <span>{input}</span>}</Input>,
         )
         const input = getByTestId('component-input')
         expect(input.type).toBe(type)
@@ -69,7 +67,7 @@ describe('Button Component Test', () => {
 
     const { getByTestId } = render(
       <Input type="file" valueHasChanged={valueHasChangedMock}>
-        {({ Component, props }) => <Component {...props} />}
+        {({ input }) => <span>{input}</span>}
       </Input>,
     )
 
@@ -88,7 +86,7 @@ describe('Button Component Test', () => {
       expect.any(Object), // the react ref, but not sure how to get that here yet.
       fileContents,
     )
-    expect(input.nodeName).toBe('INPUT')
+    expect(input.nodeName).toBe('SPAN')
   })
 })
 
