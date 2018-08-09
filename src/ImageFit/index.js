@@ -6,24 +6,36 @@ import { Wrapper } from './style'
 
 export class ImageFit extends React.Component {
   static propTypes = {
-    alt: PropTypes.string.isRequired,
+    alt: PropTypes.string,
     src: PropTypes.string.isRequired,
     fit: PropTypes.oneOf(['cover', 'contain', 'fill', 'scale-down', 'none']),
     position: PropTypes.string,
-    styles: PropTypes.string,
+    style: PropTypes.object,
+    className: PropTypes.string,
+  }
+  static defaultProps = {
+    position: 'center',
+    fit: 'cover',
+    className: '',
+    alt: '',
+    style: {},
   }
   imgRef
   componentDidMount() {
     objectFitImages(this.imgRef)
   }
   render() {
-    const { styles, fit, position, ...attrs } = this.props
+    const { style, fit, position, className, src, alt } = this.props
     return (
       <Wrapper
+        src={src}
+        alt={alt}
         data-testid="component-image-fit"
-        {...attrs}
+        style={style}
+        className={className}
         innerRef={ref => (this.imgRef = ref)}
-        options={{ styles: styles || '', fit, position: position || 'center' }}
+        fit={fit}
+        position={position}
       />
     )
   }
