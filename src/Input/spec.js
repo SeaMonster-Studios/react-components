@@ -86,7 +86,7 @@ describe('Button Component Test', () => {
       expect.any(Object), // the react ref, but not sure how to get that here yet.
       fileContents,
     )
-    expect(input.nodeName).toBe('SPAN')
+    expect(input.nodeName).toBe('INPUT')
   })
 })
 

@@ -2,7 +2,7 @@
 
 exports[`ErrorBoundary Component Test Renders error message and report form when there is an error 1`] = `
 <div
-  class="css-16xsozz"
+  class="css-975bms etl3wss0"
   data-testid="component-error-boundary"
 >
   <div>

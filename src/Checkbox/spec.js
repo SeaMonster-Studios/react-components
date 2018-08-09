@@ -3,7 +3,7 @@ import { render, cleanup } from 'react-testing-library'
 //
 import { changeEvent } from '../../utils/testing/click-events'
 import { Checkbox } from './'
-import { CheckIcon, CloseIcon } from '../Icons'
+import { Check, Close } from '../Icons'
 import { css } from '../../node_modules/emotion'
 
 afterEach(cleanup)
@@ -64,8 +64,8 @@ describe('Checkbox Component Test', () => {
 
   it('Renders with `OnIcon` and `OffIcon` when passed in as props and displays them relevant to the value of `checked`', () => {
     const { getByTestId } = renderSetup({
-      OnIcon: CheckIcon,
-      OffIcon: CloseIcon,
+      OnIcon: Check,
+      OffIcon: Close,
     })
 
     const OffIcon = getByTestId('off-mark')

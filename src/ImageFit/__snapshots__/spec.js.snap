@@ -9,7 +9,7 @@ exports[`ImageFit Renders with the correct object styles applied from \`fit\` an
 
 <img
   alt="something descriptive about my random image"
-  class="emotion-0"
+  class="emotion-0 emotion-1"
   data-ofi-src="https://picsum.photos/1200/500"
   data-ofi-srcset="null"
   data-testid="component-image-fit"

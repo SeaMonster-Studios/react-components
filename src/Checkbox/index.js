@@ -124,13 +124,13 @@ export class Checkbox extends React.Component {
             >
               {isChecked
                 ? styles => (
-                    <div style={styles} className="mark">
-                      <OnIcon data-testid="on-mark" />
+                    <div style={styles} className="mark" data-testid="on-mark">
+                      <OnIcon />
                     </div>
                   )
                 : styles => (
-                    <div style={styles} className="mark">
-                      <OffIcon data-testid="off-mark" />
+                    <div style={styles} className="mark" data-testid="off-mark">
+                      <OffIcon />
                     </div>
                   )}
             </Transition>

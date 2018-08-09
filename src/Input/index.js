@@ -117,12 +117,12 @@ export class Input extends React.Component {
     } = this.props
 
     const outerProps = {
-      'data-testid': 'component-input',
       className,
       style,
     }
 
     const innerProps = {
+      'data-testid': 'component-input',
       type,
       value: value || this.state.value,
       onChange:
@@ -136,7 +136,7 @@ export class Input extends React.Component {
         if (children) {
           return children({
             input: (
-              <Wrapper data-testid="component-input">
+              <Wrapper data-testid="component-input-wrapper">
                 <input {...innerProps} />
                 <span
                   data-testid="component-input-label"

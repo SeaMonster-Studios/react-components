@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icons Tests Renders ArrowDownIcon 1`] = `
+exports[`Icons Tests Renders ArrowDown 1`] = `
 <svg
   height="18"
   viewBox="0 0 18 18"
@@ -17,7 +17,7 @@ exports[`Icons Tests Renders ArrowDownIcon 1`] = `
 </svg>
 `;
 
-exports[`Icons Tests Renders CheckIcon 1`] = `
+exports[`Icons Tests Renders Check 1`] = `
 <svg
   height="24"
   viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ exports[`Icons Tests Renders CheckIcon 1`] = `
 </svg>
 `;
 
-exports[`Icons Tests Renders CloseIcon 1`] = `
+exports[`Icons Tests Renders Close 1`] = `
 <svg
   height="18"
   viewBox="0 0 18 18"
