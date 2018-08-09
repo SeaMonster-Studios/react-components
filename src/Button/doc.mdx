@@ -4,8 +4,6 @@ name: Button
 
 import { Playground, PropsTable } from 'docz'
 import { Button } from './'
-import { color } from '../../styles'
-import { css } from 'react-emotion'
 
 # Button
 
@@ -14,11 +12,23 @@ import { css } from 'react-emotion'
 ## Basic usage
 
 <Playground>
-  <Button hoverBaseColor='rgba(0,0,0,0.65)'>Button</Button>
+  <Button hoverBaseColor='rgba(0,0,0,0.65)'>Banana</Button>
+</Playground>
 
-  <Button baseColor='rgb(255,127,104)' textColor='rgb(232,232,232)' hoverBaseColor='rgb(197,83,55)'  inverse={true} style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}}  >Inverse</Button>
+## With 'ripple' hoverStyle
 
-  <Button baseColor='rgb(255,127,104)' textColor='rgb(232,232,232)' hoverBaseColor='rgb(197,83,55)' inverse={true} inverseStyle='transparent' style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}}  >Inverse &amp; Transparent</Button>
+<Playground>
+  <Button baseColor='rgb(255,127,104)' textColor='rgb(255,255,255)' hoverStyle='ripple' style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}} >By Bananrama</Button>
+</Playground>
 
-  <Button baseColor='rgb(255,127,104)' textColor='rgb(255,255,255)' hoverStyle='ripple' style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}} >Ripple Hover</Button>
+## Inverse
+
+<Playground>
+  <Button baseColor='rgb(255,127,104)' textColor='rgb(232,232,232)' hoverBaseColor='rgb(197,83,55)'  inverse={true} style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}}>Also, a Kind of Pudding</Button>
+</Playground>
+
+## Inverse with 'transparent' inverseStyle
+
+<Playground>
+  <Button baseColor='rgb(255,127,104)' textColor='rgb(232,232,232)' hoverBaseColor='rgb(197,83,55)' inverse={true} inverseStyle='transparent' style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}}>A Delicious Pudding</Button>
 </Playground>

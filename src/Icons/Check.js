@@ -1,9 +1,8 @@
 import React from 'react'
 
-export const CheckIcon = () => {
+export const Check = () => {
   return (
     <svg
-      {...props}
       height="24"
       viewBox="0 0 24 24"
       width="24"

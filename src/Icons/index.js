@@ -1,3 +1,3 @@
-export { ArrowDownIcon } from './ArrowDownIcon'
-export { CheckIcon } from './CheckIcon'
-export { CloseIcon } from './CloseIcon'
+export { ArrowDown } from './ArrowDown'
+export { Check } from './Check'
+export { Close } from './Close'

@@ -1,37 +1,50 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { Transition } from 'react-spring'
+import { Transition, animated } from 'react-spring'
 //
 import { Wrapper } from './style'
 
 export class Checkbox extends React.Component {
   static propTypes = {
-    size: PropTypes.number.isRequired,
-    styles: PropTypes.string,
+    /** Height and Width */
+    size: PropTypes.number,
+    className: PropTypes.string,
+    style: PropTypes.object,
     activeStyles: PropTypes.string,
+    /** For user/non-component controlled state */
     checked: PropTypes.bool,
+    /** For user/non-component controlled state */
     onChange: PropTypes.func,
+    /** Receives new value each time it's updated */
     checkedHasChanged: PropTypes.func,
+    /** Svg (component) used when `checked` is true */
     OnIcon: PropTypes.func,
+    /** Svg (component) used when `checked` is flase */
     OffIcon: PropTypes.func,
-    markTransitionFrom: PropTypes.shape({}),
-    markTransitionEnter: PropTypes.shape({}),
-    markTransitionLeave: PropTypes.shape({}),
+    iconsTransitionFrom: PropTypes.object,
+    iconsTransitionEnter: PropTypes.object,
+    iconsTransitionLeave: PropTypes.object,
+  }
+  static defaultProps = {
+    size: 30,
+    style: {},
+    className: '',
+    activeStyles: '',
+    iconsTransitionFrom: {
+      opacity: 0,
+      transform: 'rotate(90deg)',
+    },
+    iconsTransitionEnter: {
+      opacity: 1,
+      transform: 'rotate(0deg)',
+    },
+    iconsTransitionLeave: {
+      opacity: 0,
+      transform: 'rotate(-90deg)',
+    },
   }
   state = {
     checked: false,
-  }
-  markTransitionFrom = {
-    opacity: 0,
-    transform: 'rotate(90deg)',
-  }
-  markTransitionEnter = {
-    opacity: 1,
-    transform: 'rotate(0deg)',
-  }
-  markTransitionLeave = {
-    opacity: 0,
-    transform: 'rotate(-90deg)',
   }
   constructor(props) {
     super(props)
@@ -56,7 +69,8 @@ export class Checkbox extends React.Component {
   render() {
     const {
       size,
-      styles,
+      style,
+      className,
       activeStyles,
       checked,
       onChange,
@@ -64,24 +78,28 @@ export class Checkbox extends React.Component {
       checkedHasChanged, // destruct so it's not in the attrs object
       OffIcon,
       OnIcon,
-      markTransitionFrom,
-      markTransitionEnter,
-      markTransitionLeave,
+      iconsTransitionFrom,
+      iconsTransitionEnter,
+      iconsTransitionLeave,
       ...attrs
     } = this.props
 
     const isChecked = checked || this.state.checked
 
+    const AnimatedOnIcon = OnIcon ? animated(OnIcon) : null
+    const AnimatedOffIcon = OffIcon ? animated(OffIcon) : null
+
     return (
       <Wrapper
         {...{
           'data-testid': 'component-checkbox',
+          className,
           isChecked,
           size,
           hasOnIcon: OnIcon ? true : false,
           hasOffIcon: OffIcon ? true : false,
-          styles: styles || '',
-          activeStyles: activeStyles || '',
+          style: style,
+          activeStyles: activeStyles,
           ...attrs,
         }}
       >
@@ -99,17 +117,23 @@ export class Checkbox extends React.Component {
 
         {OnIcon &&
           OffIcon && (
-            <div className="mark">
-              <Transition
-                from={markTransitionFrom || this.markTransitionFrom}
-                enter={markTransitionEnter || this.markTransitionEnter}
-                leave={markTransitionLeave || this.markTransitionLeave}
-              >
-                {isChecked
-                  ? styles => <OnIcon data-testid="on-mark" style={styles} />
-                  : styles => <OffIcon data-testid="off-mark" style={styles} />}
-              </Transition>
-            </div>
+            <Transition
+              from={iconsTransitionFrom}
+              enter={iconsTransitionEnter}
+              leave={iconsTransitionLeave}
+            >
+              {isChecked
+                ? styles => (
+                    <div style={styles} className="mark">
+                      <OnIcon data-testid="on-mark" />
+                    </div>
+                  )
+                : styles => (
+                    <div style={styles} className="mark">
+                      <OffIcon data-testid="off-mark" />
+                    </div>
+                  )}
+            </Transition>
           )}
       </Wrapper>
     )

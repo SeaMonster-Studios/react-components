@@ -26,9 +26,9 @@ export const Button = props => {
         baseColor,
         textColor,
         borderColor: borderColor || baseColor,
-        inverse: inverse !== undefined ? inverse : false,
-        inverseStyle: inverseStyle || 'default',
-        hoverStyle: hoverStyle || 'default',
+        inverse: inverse,
+        inverseStyle: inverseStyle,
+        hoverStyle: hoverStyle,
         hoverBaseColor: hoverBaseColor || baseColor,
         hoverTextColor: hoverTextColor || textColor,
         hoverBorderColor: hoverBorderColor || hoverBaseColor || baseColor,
@@ -68,8 +68,9 @@ Button.defaultProps = {
   hoverStyle: 'default',
   textColor: 'rgb(255,255,255)',
   baseColor: 'rgb(0,0,0)',
+  className: '',
   style: {
     transition: 'all 0.5s ease',
-    padding: '10px 30px'
-  }
+    padding: '10px 30px',
+  },
 }
