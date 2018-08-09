@@ -1,0 +1,24 @@
+---
+name: Button
+---
+
+import { Playground, PropsTable } from 'docz'
+import { Button } from './'
+import { color } from '../../styles'
+import { css } from 'react-emotion'
+
+# Button
+
+<PropsTable of={Button} />
+
+## Basic usage
+
+<Playground>
+  <Button hoverBaseColor='rgba(0,0,0,0.65)'>Button</Button>
+
+  <Button baseColor='rgb(255,127,104)' textColor='rgb(232,232,232)' hoverBaseColor='rgb(197,83,55)'  inverse={true} style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}}  >Inverse</Button>
+
+  <Button baseColor='rgb(255,127,104)' textColor='rgb(232,232,232)' hoverBaseColor='rgb(197,83,55)' inverse={true} inverseStyle='transparent' style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}}  >Inverse &amp; Transparent</Button>
+
+  <Button baseColor='rgb(255,127,104)' textColor='rgb(255,255,255)' hoverStyle='ripple' style={{ padding: '10px 30px', margin: '15px', transition: 'all 0.5s ease'}} >Ripple Hover</Button>
+</Playground>

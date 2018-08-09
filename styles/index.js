@@ -1,14 +1,5 @@
-import 'reset-css'
 import { css } from 'react-emotion'
 //
-import './fonts'
-
-export const font = {
-  family: {
-    sans: css`'Roboto', sans-serif;`,
-    serif: css`'Roboto Slab', serif`,
-  },
-}
 
 let colorsRaw = {
   white: ['255,255,255', '232,232,232'],
@@ -35,20 +26,3 @@ export const color = Object.keys(colorsRaw).reduce(
   },
   { raw: {}, rgb: {}, rgba: {} },
 )
-
-export const breakpoints = {
-  md: 860,
-  lg: 990,
-}
-
-export const mq = Object.keys(breakpoints).reduce((accumulator, label) => {
-  let prefix = typeof breakpoints[label] === 'string' ? '' : 'min-width:'
-  let suffix = typeof breakpoints[label] === 'string' ? '' : 'px'
-  accumulator[label] = cls =>
-    css`
-      @media (${prefix + breakpoints[label] + suffix}) {
-        ${cls};
-      }
-    `
-  return accumulator
-}, {})
