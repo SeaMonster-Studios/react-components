@@ -7,7 +7,12 @@ import { Wrapper } from './style'
 export class ErrorBoundary extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    styles: PropTypes.string,
+    style: PropTypes.object,
+    className: PropTypes.string,
+  }
+  static defaultProps = {
+    style: {},
+    className: ''
   }
   state = {
     hasError: false,
@@ -37,15 +42,13 @@ export class ErrorBoundary extends React.Component {
   }
 
   render() {
-    const { children, styles, ...attrs } = this.props
+    const { children, style, className } = this.props
     if (this.state.hasError) {
       return (
         <Wrapper
           data-testid="component-error-boundary"
-          options={{
-            customStyles: styles || {},
-          }}
-          {...attrs}
+          className={className}
+          style={style}
         >
           <div>
             <h2>Sorry, something went wrong.</h2>

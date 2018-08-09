@@ -32,6 +32,4 @@ export const Wrapper = styled('div')`
     padding: 0;
     border-bottom: 1px solid rgb(222, 54, 24);
   }
-
-  ${props => props.options.customStyles};
 `

@@ -1,10 +1,6 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
-//
-import { ErrorBoundary } from './'
-import { Center } from '../../styles/stories'
 
-class Child extends React.Component {
+export class Child extends React.Component {
   state = {
     errorMe: false,
   }
@@ -37,11 +33,3 @@ class Child extends React.Component {
     )
   }
 }
-
-storiesOf('ErrorBoundary', module).add('default', () => (
-  <ErrorBoundary>
-    <Center>
-      <Child />
-    </Center>
-  </ErrorBoundary>
-))
