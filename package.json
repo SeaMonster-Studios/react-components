@@ -69,6 +69,7 @@
     "lodash": "^4.17.10",
     "react": "^16.4.1",
     "react-dom": "^16.4.2",
+    "react-lazy-load-image-component": "^1.1.1",
     "react-test-renderer": "^16.4.1",
     "react-testing-library": "^4.1.2",
     "regenerator-runtime": "^0.12.1",

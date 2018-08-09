@@ -9,13 +9,13 @@ export const Wrapper = styled('div')`
   }
 
   .title {
-    margin-bottom: ${props => props.columnSpace * 0.75}px;
+    margin-bottom: ${props => props.columnSpace}px;
 
     &.has-subtitle {
       margin-bottom: 0;
 
       + .subtitle {
-        margin-bottom: ${props => props.columnSpace * 0.75}px;
+        margin-bottom: ${props => props.columnSpace}px;
       }
     }
   }
@@ -39,6 +39,38 @@ export const TwoColumnsWrapper = styled('div')`
   .title,
   .subtitle {
     text-align: center;
+  }
+`
+
+export const TwoColumnsImageLeadsWrapper = styled('div')`
+  .title,
+  .subtitle {
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    margin-bottom: ${props => props.columnSpace}px;
+  }
+
+  .column {
+    margin-bottom: ${props => props.columnSpace * 2}px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: ${props => props.breakpoint}px) {
+    .column {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: auto;
+      max-width: 100%;
+      min-height: ${props => props.minHeight};
+    }
   }
 `
 
@@ -76,6 +108,7 @@ export const TwoColumnsImageGridWrapper = styled('div')`
   @media (min-width: ${props => props.breakpoint}px) {
     .column-one-content {
       margin-bottom: 0;
+      margin-right: ${props => props.columnSpace * 4}px;
     }
 
     .row {

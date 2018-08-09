@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import sanitizeHtml from 'sanitize-html'
 //
+import { LazyLoadImage } from '../LazyLoadImage'
 import { TwoColumnsImageGridWrapper } from './style'
 
 export const TwoColumnsImageGrid = ({ columnSpace, breakpoint, ...props }) => (
@@ -33,7 +34,7 @@ export const TwoColumnsImageGrid = ({ columnSpace, breakpoint, ...props }) => (
       <div className="column column-two-grid">
         {props.images.map((image, i) => (
           <div key={image.url + i} className="img-wrapper">
-            <img src={image.url} alt={image.alt} />
+            <LazyLoadImage src={image.url} alt={image.alt} />
             <div className="caption">{image.caption}</div>
           </div>
         ))}
