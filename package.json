@@ -20,6 +20,7 @@
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
   "scripts": {
     "test": "jest --watch",
+    "test:coverage": "jest --coverage",
     "start:doc": "docz dev",
     "build:doc": "docz build",
     "build": "./node_modules/.bin/webpack --mode=production",
@@ -27,7 +28,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "./src/**/spec.js"
+      "<rootDir>/src/**/*.js"
     ]
   },
   "peerDependencies": {
