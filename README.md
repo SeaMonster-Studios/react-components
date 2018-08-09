@@ -2,8 +2,10 @@
 
 _This project is actively being developed internally._
 
-All components are exported at the root directory of the project (ES6 Modules).
+All components are exported at the root directory of the project.
 
 ### Documentation
 
-We're still looking for the best route for this. In the meantime, looking at the source code is the way to go.
+We're happy to be using Docz. Check it out [here](https://hungry-franklin-2ebeaf.netlify.com/)
+
+Learn more about Docz [here](https://www.docz.site/).
