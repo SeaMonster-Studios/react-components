@@ -2,7 +2,7 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'bundle.index.js'),
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, './'),
     filename: 'index.js',

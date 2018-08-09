@@ -1,6 +1,6 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Reusable React components by SeaMonster Studios",
   "main": "./index.js",
   "repository": {
@@ -23,7 +23,7 @@
     "start:doc": "docz dev",
     "build:doc": "docz build",
     "build": "./node_modules/.bin/webpack --mode=production",
-    "start": "./node_modules/.bin/webpack -w --mode=production"
+    "start": "./node_modules/.bin/webpack -w src/** --mode=production"
   },
   "jest": {
     "collectCoverageFrom": [
