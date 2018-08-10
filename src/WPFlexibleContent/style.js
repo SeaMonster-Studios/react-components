@@ -8,16 +8,43 @@ export const Wrapper = styled('div')`
     margin-bottom: ${props => props.rowSpace}px;
   }
 
+  .title,
+  .subtitle {
+    text-align: center;
+  }
+
+  .column .title,
+  .column .subtitle {
+    text-align: initial;
+  }
+
   .title {
     margin-bottom: ${props => props.columnSpace}px;
 
-    &.has-subtitle {
-      margin-bottom: 0;
-
-      + .subtitle {
-        margin-bottom: ${props => props.columnSpace}px;
-      }
+    + .subtitle {
+      margin-bottom: ${props => props.columnSpace}px;
+      margin-top: -${props => props.columnSpace}px;
     }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  img[class*='wp-image'] {
+    margin-bottom: ${props => props.columnSpace * 0.5}px;
+
+    &.alignleft {
+      margin-right: ${props => props.columnSpace * 0.5}px;
+    }
+
+    &.alignright {
+      margin-left: ${props => props.columnSpace * 0.5}px;
+    }
+  }
+
+  .column:not(:last-of-type) {
+    margin-bottom: ${props => props.columnSpace}px;
   }
 
   @media (min-width: ${props => props.breakpoint}px) {
@@ -28,6 +55,7 @@ export const Wrapper = styled('div')`
     }
 
     .column {
+      margin-bottom: 0;
       width: 50%;
       margin-left: ${props => props.columnSpace}px;
       margin-right: ${props => props.columnSpace}px;
@@ -35,37 +63,37 @@ export const Wrapper = styled('div')`
   }
 `
 
-export const TwoColumnsWrapper = styled('div')`
-  .title,
-  .subtitle {
-    text-align: center;
+export const TwoColumnsWrapper = styled('div')``
+
+export const TwoColumnsStackedWrapper = styled('div')`
+  overflow: hidden;
+
+  img {
+    margin-bottom: ${props => props.columnSpace * 0.5}px;
+  }
+
+  @media (min-width: ${props => props.breakpoint}px) {
+    .row {
+      align-items: center;
+    }
+
+    .column-two-image {
+      order: 2;
+    }
+
+    .column-two-content {
+      order: 1;
+    }
   }
 `
 
 export const TwoColumnsImageLeadsWrapper = styled('div')`
-  .title,
-  .subtitle {
-    text-align: center;
-  }
-
   img {
     width: 100%;
-    margin-bottom: ${props => props.columnSpace}px;
-  }
-
-  .column {
-    margin-bottom: ${props => props.columnSpace * 2}px;
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
+    margin-bottom: ${props => props.columnSpace * 0.5}px;
   }
 
   @media (min-width: ${props => props.breakpoint}px) {
-    .column {
-      margin-bottom: 0;
-    }
-
     img {
       width: auto;
       max-width: 100%;

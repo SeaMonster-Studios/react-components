@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import sanitizeHtml from 'sanitize-html'
 //
+import { setHtml } from '../../utils'
 import { LazyLoadImage } from '../LazyLoadImage'
 import { TwoColumnsImageGridWrapper } from './style'
 
@@ -12,24 +12,15 @@ export const TwoColumnsImageGrid = ({ columnSpace, breakpoint, ...props }) => (
       breakpoint,
     }}
   >
+    {props.title && <h2 className="title" {...setHtml(props.title)} />}
+    {props.title &&
+      props.subtitle && (
+        <h3 className="subtitle" {...setHtml(props.subtitle)} />
+      )}
     <div className="row">
       <div className="column column-one-content">
-        {props.title && (
-          <h2
-            className={`title ${props.subtitle ? 'has-subtitle' : ''}`}
-            dangerouslySetInnerHTML={{ __html: sanitizeHtml(props.title) }}
-          />
-        )}
-        {props.title &&
-          props.subtitle && (
-            <h3
-              className="subtitle"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(props.subtitle) }}
-            />
-          )}
-        <div
-          dangerouslySetInnerHTML={{ __html: sanitizeHtml(props.content) }}
-        />
+        {console.log(props.content)}
+        <div {...setHtml(props.content)} />
       </div>
       <div className="column column-two-grid">
         {props.images.map((image, i) => (

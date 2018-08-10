@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import sanitizeHtml from 'sanitize-html'
 //
+import { setHtml } from '../../utils'
 import { TwoColumnsImageLeadsWrapper } from './style'
 import { ImageFit } from '../ImageFit'
 
@@ -20,39 +20,23 @@ export const TwoColumnsImageLeads = ({
         minHeight: props.one_image.height + 'px',
       }}
     >
-      {props.title && (
-        <h2
-          className={`title ${props.subtitle ? 'has-subtitle' : ''}`}
-          dangerouslySetInnerHTML={{ __html: sanitizeHtml(props.title) }}
-        />
-      )}
+      {props.title && <h2 className="title" {...setHtml(props.title)} />}
       {props.title &&
         props.subtitle && (
-          <h3
-            className="subtitle"
-            dangerouslySetInnerHTML={{ __html: sanitizeHtml(props.subtitle) }}
-          />
+          <h3 className="subtitle" {...setHtml(props.subtitle)} />
         )}
       <div className="row">
         <div className="column column-one-content">
           <div className="img-wrapper">
             <ImageFit src={props.one_image.url} alt={props.one_image.alt} />
           </div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: sanitizeHtml(props.one_content),
-            }}
-          />
+          <div {...setHtml(props.one_content)} />
         </div>
         <div className="column column-one-content">
           <div className="img-wrapper">
             <ImageFit src={props.two_image.url} alt={props.two_image.alt} />
           </div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: sanitizeHtml(props.two_content),
-            }}
-          />
+          <div {...setHtml(props.two_content)} />
         </div>
       </div>
     </TwoColumnsImageLeadsWrapper>

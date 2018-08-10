@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import sanitizeHtml from 'sanitize-html'
+//
+import { setHtml } from '../../utils'
 
 export const OneColumn = ({ ...props }) => (
-  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(props.content) }} />
+  <div className="single-column">
+    <div {...setHtml(props.content)} />
+  </div>
 )
 
 OneColumn.propTypes = {
