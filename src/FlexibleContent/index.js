@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Trail, animated } from 'react-spring'
+import Component from '@reactions/component'
 //
 import { Wrapper } from './style'
 import { OneColumn } from './OneColumn'
@@ -10,6 +11,7 @@ import { TwoColumnsImageLeads } from './TwoColumnsImageLeads'
 import { TwoColumnsStacked } from './TwoColumnsStacked'
 import { TwoColumnsThreeColumnList } from './TwoColumnsThreeColumnList'
 import { OneColumnVideo } from './OneColumnVideo'
+import { wrapIframesInResponsiveVideo } from '../../utils/wrap-iframe-in-responsive-video'
 
 const layoutTypes = [
   'one_column',
@@ -104,28 +106,30 @@ export function FlexibleContent({
       style={style}
       className={className}
     >
-      <Trail
-        from={{ opacity: 0, transform: 'scale(0.99)' }}
-        to={{ opacity: 1, transform: 'scale(1)' }}
-        keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
-      >
-        {items.map(({ acf_fc_layout: layout, ...content }) => styles => (
-          <animated.div data-testid="component-wp-flexible-content-item">
-            <FlexibleContentItem
-              {...{
-                layout,
-                layoutProps: {
-                  ...content,
-                  ...getitemsProps(itemsProps, layout, styles),
-                  rowSpace,
-                  columnSpace,
-                  breakpoint,
-                },
-              }}
-            />
-          </animated.div>
-        ))}
-      </Trail>
+      <Component didMount={wrapIframesInResponsiveVideo}>
+        <Trail
+          from={{ opacity: 0, transform: 'scale(0.99)' }}
+          to={{ opacity: 1, transform: 'scale(1)' }}
+          keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
+        >
+          {items.map(({ acf_fc_layout: layout, ...content }) => styles => (
+            <animated.div data-testid="component-wp-flexible-content-item">
+              <FlexibleContentItem
+                {...{
+                  layout,
+                  layoutProps: {
+                    ...content,
+                    ...getitemsProps(itemsProps, layout, styles),
+                    rowSpace,
+                    columnSpace,
+                    breakpoint,
+                  },
+                }}
+              />
+            </animated.div>
+          ))}
+        </Trail>
+      </Component>
     </Wrapper>
   )
 }

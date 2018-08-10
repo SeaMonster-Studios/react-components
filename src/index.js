@@ -24,5 +24,8 @@ export { OneColumnVideo } from './FlexibleContent/OneColumnVideo'
 export { LazyLoadImage } from './LazyLoadImage'
 
 // Utils
-export { setHtml } from '../utils'
+export { setHtml, documentReady } from '../utils'
 export { clickEvent, changeEvent } from '../utils/testing/click-events'
+
+// Styles
+import '../styles'

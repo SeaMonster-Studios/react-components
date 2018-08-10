@@ -23,3 +23,15 @@ export function setHtml(content) {
     },
   }
 }
+
+export function documentReady(fn) {
+  if (
+    typeof document !== 'undefined' && document.attachEvent
+      ? document.readyState === 'complete'
+      : document.readyState !== 'loading'
+  ) {
+    fn()
+  } else {
+    document.addEventListener('DOMContentLoaded', fn)
+  }
+}

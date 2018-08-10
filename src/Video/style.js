@@ -1,21 +1,8 @@
 import styled from 'react-emotion'
+//
+import '../../styles/responsive-video'
 
 export const Wrapper = styled('div')`
-  .video-responsive {
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
-  }
-
-  .video-responsive iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-  }
-
   .caption {
     font-size: 14px;
     line-height: 1.125;
