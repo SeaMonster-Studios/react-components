@@ -39,11 +39,11 @@ export const TwoColumnsStacked = ({
       />
     </div>
     <div className="row">
-      <div className="column column-half column-two-image">
+      <div className="column column-half column-two-image order-bp-2">
         <LazyLoadImage src={props.two_image.url} alt={props.two_image.alt} />
       </div>
       <div
-        className="column column-half column-two-content"
+        className="column column-half column-two-content order-bp-1"
         {...setHtml(props.two_content)}
       />
     </div>

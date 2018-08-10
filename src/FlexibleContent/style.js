@@ -51,27 +51,57 @@ const common = props => css`
   @media (min-width: ${props.breakpoint}px) {
     .row {
       display: flex;
-      margin-left: -${props.columnSpace}px;
-      margin-right: -${props.columnSpace}px;
+
+      &:not(:last-of-type) {
+        margin-bottom: ${props.columnSpace}px;
+      }
 
       + .row {
         margin-top: 0;
       }
     }
 
-    .column {
+    .column:not(:last-of-type) {
       margin-bottom: 0;
-      width: 50%;
     }
 
     .column-half {
-      margin-left: ${props.columnSpace}px;
-      margin-right: ${props.columnSpace}px;
+      width: 50%;
+
+      &:first-of-type:not(.order-bp-2),
+      &.order-bp-1 {
+        padding-right: ${props.columnSpace * 0.5}px;
+      }
+
+      &:last-of-type:not(.order-bp-1),
+      &.order-bp-2 {
+        padding-left: ${props.columnSpace * 0.5}px;
+      }
+    }
+
+    .order-bp-2 {
+      order: 2;
+    }
+
+    .order-bp-1 {
+      order: 1;
     }
 
     .column-third {
-      margin-left: ${props.columnSpace}px;
-      margin-right: ${props.columnSpace}px;
+      width: 33.333333333%;
+
+      &:nth-of-type(3n - 2) {
+        padding-right: ${props.columnSpace * 0.5}px;
+      }
+
+      &:nth-of-type(3n - 1) {
+        padding-right: ${props.columnSpace * 0.5}px;
+        padding-left: ${props.columnSpace * 0.5}px;
+      }
+
+      &:nth-of-type(3n) {
+        padding-left: ${props.columnSpace * 0.5}px;
+      }
     }
   }
 `
@@ -109,14 +139,6 @@ export const TwoColumnsStackedWrapper = styled('section')`
     .row {
       align-items: center;
     }
-
-    .column-two-image {
-      order: 2;
-    }
-
-    .column-two-content {
-      order: 1;
-    }
   }
 `
 
@@ -151,15 +173,24 @@ export const TwoColumnsImageGridWrapper = styled('section')`
     flex-wrap: wrap;
     margin-left: -${props => props.columnSpace * 0.25}px;
     margin-right: -${props => props.columnSpace * 0.25}px;
+    margin-bottom: -${props => props.columnSpace * 0.5}px;
 
     > div {
-      max-width: calc(50% - ${props => props.columnSpace}px);
-      padding: ${props => props.columnSpace * 0.25}px;
-    }
+      width: calc(50% - ${props => props.columnSpace * 0.25}px);
+      margin-bottom: ${props => props.columnSpace * 0.5}px;
 
-    img {
-      width: 100%;
-      display: block;
+      &:nth-of-type(odd) {
+        padding-right: ${props => props.columnSpace * 0.25}px;
+      }
+
+      &:nth-of-type(even) {
+        padding-left: ${props => props.columnSpace * 0.25}px;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
     }
 
     .caption {
