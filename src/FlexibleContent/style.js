@@ -1,12 +1,9 @@
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 
-export const Wrapper = styled('div')`
+const common = props => css`
   overflow: hidden;
-
-  section {
-    margin-top: ${props => props.rowSpace}px;
-    margin-bottom: ${props => props.rowSpace}px;
-  }
+  margin-top: ${props.rowSpace}px;
+  margin-bottom: ${props.rowSpace}px;
 
   .title,
   .subtitle {
@@ -19,11 +16,11 @@ export const Wrapper = styled('div')`
   }
 
   .title {
-    margin-bottom: ${props => props.columnSpace}px;
+    margin-bottom: ${props.columnSpace}px;
 
     + .subtitle {
-      margin-bottom: ${props => props.columnSpace}px;
-      margin-top: -${props => props.columnSpace}px;
+      margin-bottom: ${props.columnSpace}px;
+      margin-top: -${props.columnSpace}px;
     }
   }
 
@@ -32,40 +29,76 @@ export const Wrapper = styled('div')`
   }
 
   img[class*='wp-image'] {
-    margin-bottom: ${props => props.columnSpace * 0.5}px;
+    margin-bottom: ${props.columnSpace * 0.5}px;
 
     &.alignleft {
-      margin-right: ${props => props.columnSpace * 0.5}px;
+      margin-right: ${props.columnSpace * 0.5}px;
     }
 
     &.alignright {
-      margin-left: ${props => props.columnSpace * 0.5}px;
+      margin-left: ${props.columnSpace * 0.5}px;
     }
   }
 
   .column:not(:last-of-type) {
-    margin-bottom: ${props => props.columnSpace}px;
+    margin-bottom: ${props.columnSpace}px;
   }
 
-  @media (min-width: ${props => props.breakpoint}px) {
+  .row + .row {
+    margin-top: ${props.columnSpace}px;
+  }
+
+  @media (min-width: ${props.breakpoint}px) {
     .row {
       display: flex;
-      margin-left: -${props => props.columnSpace}px;
-      margin-right: -${props => props.columnSpace}px;
+      margin-left: -${props.columnSpace}px;
+      margin-right: -${props.columnSpace}px;
+
+      + .row {
+        margin-top: 0;
+      }
     }
 
     .column {
       margin-bottom: 0;
       width: 50%;
-      margin-left: ${props => props.columnSpace}px;
-      margin-right: ${props => props.columnSpace}px;
+    }
+
+    .column-half {
+      margin-left: ${props.columnSpace}px;
+      margin-right: ${props.columnSpace}px;
+    }
+
+    .column-third {
+      margin-left: ${props.columnSpace}px;
+      margin-right: ${props.columnSpace}px;
     }
   }
 `
 
-export const TwoColumnsWrapper = styled('div')``
+export const Wrapper = styled('div')`
+  overflow: hidden;
+`
 
-export const TwoColumnsStackedWrapper = styled('div')`
+export const OneColumnWrapper = styled('section')`
+  ${props => common(props)};
+`
+
+export const OneColumnVideoWrapper = styled('section')`
+  ${props => common(props)};
+`
+
+export const TwoColumnsWrapper = styled('section')`
+  ${props => common(props)};
+`
+
+export const TwoColumnsThreeColumnListWrapper = styled('section')`
+  ${props => common(props)};
+`
+
+export const TwoColumnsStackedWrapper = styled('section')`
+  ${props => common(props)};
+
   overflow: hidden;
 
   img {
@@ -87,7 +120,9 @@ export const TwoColumnsStackedWrapper = styled('div')`
   }
 `
 
-export const TwoColumnsImageLeadsWrapper = styled('div')`
+export const TwoColumnsImageLeadsWrapper = styled('section')`
+  ${props => common(props)};
+
   img {
     width: 100%;
     margin-bottom: ${props => props.columnSpace * 0.5}px;
@@ -102,7 +137,9 @@ export const TwoColumnsImageLeadsWrapper = styled('div')`
   }
 `
 
-export const TwoColumnsImageGridWrapper = styled('div')`
+export const TwoColumnsImageGridWrapper = styled('section')`
+  ${props => common(props)};
+
   overflow: hidden;
 
   .column-one-content {

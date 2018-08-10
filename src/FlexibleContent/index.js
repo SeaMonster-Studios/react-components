@@ -21,22 +21,30 @@ const layoutTypes = [
   'video',
 ]
 
-const FlexibleContentItem = ({ layout, content }) => {
+export const layoutDefaultProps = {
+  className: '',
+  style: {},
+  rowSpace: 60,
+  columnSpace: 30,
+  breakpoint: 992,
+}
+
+const FlexibleContentItem = ({ layout, layoutProps }) => {
   switch (layout) {
     case 'one_column':
-      return <OneColumn {...content} />
+      return <OneColumn {...layoutProps} />
     case 'two_columns':
-      return <TwoColumns {...content} />
+      return <TwoColumns {...layoutProps} />
     case 'two_columns_image_leads':
-      return <TwoColumnsImageLeads {...content} />
+      return <TwoColumnsImageLeads {...layoutProps} />
     case 'two_columns_stacked':
-      return <TwoColumnsStacked {...content} />
+      return <TwoColumnsStacked {...layoutProps} />
     case 'two_columns_three_column_list':
-      return <TwoColumnsThreeColumnList {...content} />
+      return <TwoColumnsThreeColumnList {...layoutProps} />
     case 'two_columns_image_grid':
-      return <TwoColumnsImageGrid {...content} />
+      return <TwoColumnsImageGrid {...layoutProps} />
     case 'video':
-      return <OneColumnVideo {...content} />
+      return <OneColumnVideo {...layoutProps} />
     default:
       return null
   }
@@ -50,7 +58,7 @@ FlexibleContentItem.propTypes = {
 function getitemsProps(itemsProps, layout, animatedStyles) {
   const item = itemsProps.filter(item => item.item === layout)[0]
 
-  // There are default times for each item. However, if the user only passes in one prop for that layout type (say a className for one_column) but doesn't pass in the others (say style) then the defaultProp will be completely overridden and style wiill be undefined.
+  // There are default props for each item. However, if the user only passes in one prop for that layout type (say a className for one_column) but doesn't pass in the others (say style) then the defaultProp will be completely overridden and style wiill be undefined.
 
   if (item) {
     if (item.className && item.style) {
@@ -81,7 +89,7 @@ function getitemsProps(itemsProps, layout, animatedStyles) {
   return { ...item, style: animatedStyles }
 }
 
-export function WPFlexibleContent({
+export function FlexibleContent({
   className,
   items,
   style,
@@ -95,9 +103,6 @@ export function WPFlexibleContent({
       data-testid="component-wp-flexible-content"
       style={style}
       className={className}
-      rowSpace={rowSpace}
-      columnSpace={columnSpace}
-      breakpoint={breakpoint}
     >
       <Trail
         from={{ opacity: 0, transform: 'scale(0.99)' }}
@@ -105,29 +110,27 @@ export function WPFlexibleContent({
         keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
       >
         {items.map(({ acf_fc_layout: layout, ...content }) => styles => (
-          <animated.section
-            data-testid="component-wp-flexible-content-item"
-            {...getitemsProps(itemsProps, layout, styles)}
-          >
+          <animated.div data-testid="component-wp-flexible-content-item">
             <FlexibleContentItem
               {...{
                 layout,
-                content: {
+                layoutProps: {
                   ...content,
+                  ...getitemsProps(itemsProps, layout, styles),
                   rowSpace,
                   columnSpace,
                   breakpoint,
                 },
               }}
             />
-          </animated.section>
+          </animated.div>
         ))}
       </Trail>
     </Wrapper>
   )
 }
 
-WPFlexibleContent.propTypes = {
+FlexibleContent.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       acf_fc_layout: PropTypes.oneOf(layoutTypes).isRequired,
@@ -147,12 +150,8 @@ WPFlexibleContent.propTypes = {
   ),
 }
 
-WPFlexibleContent.defaultProps = {
-  className: '',
-  style: {},
-  rowSpace: 60,
-  columnSpace: 30,
-  breakpoint: 992,
+FlexibleContent.defaultProps = {
+  ...layoutDefaultProps,
   itemsProps: layoutTypes.map(type => ({
     item: type,
     className: '',

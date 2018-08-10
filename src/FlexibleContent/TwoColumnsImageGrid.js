@@ -4,12 +4,24 @@ import PropTypes from 'prop-types'
 import { setHtml } from '../../utils'
 import { LazyLoadImage } from '../LazyLoadImage'
 import { TwoColumnsImageGridWrapper } from './style'
+import { layoutDefaultProps } from './'
 
-export const TwoColumnsImageGrid = ({ columnSpace, breakpoint, ...props }) => (
+export const TwoColumnsImageGrid = ({
+  rowSpace,
+  columnSpace,
+  breakpoint,
+  className,
+  style,
+  ...props
+}) => (
   <TwoColumnsImageGridWrapper
     {...{
+      'data-testid': 'component-two-columns-image-grid',
+      rowSpace,
       columnSpace,
       breakpoint,
+      className,
+      style,
     }}
   >
     {props.title && <h2 className="title" {...setHtml(props.title)} />}
@@ -18,11 +30,11 @@ export const TwoColumnsImageGrid = ({ columnSpace, breakpoint, ...props }) => (
         <h3 className="subtitle" {...setHtml(props.subtitle)} />
       )}
     <div className="row">
-      <div className="column column-one-content">
+      <div className="column column-half column-one-content">
         {console.log(props.content)}
         <div {...setHtml(props.content)} />
       </div>
-      <div className="column column-two-grid">
+      <div className="column column-half column-two-grid">
         {props.images.map((image, i) => (
           <div key={image.url + i} className="img-wrapper">
             <LazyLoadImage src={image.url} alt={image.alt} />
@@ -35,8 +47,11 @@ export const TwoColumnsImageGrid = ({ columnSpace, breakpoint, ...props }) => (
 )
 
 TwoColumnsImageGrid.propTypes = {
-  columnSpace: PropTypes.number.isRequired,
-  breakpoint: PropTypes.number.isRequired,
+  columnSpace: PropTypes.number,
+  breakpoint: PropTypes.number,
+  rowSpace: PropTypes.number,
+  className: PropTypes.string,
+  style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   content: PropTypes.string.isRequired,
@@ -49,3 +64,5 @@ TwoColumnsImageGrid.propTypes = {
   ).isRequired,
   image_grid_position: PropTypes.oneOf(['right', 'left']),
 }
+
+TwoColumnsImageGrid.defaultProps = layoutDefaultProps

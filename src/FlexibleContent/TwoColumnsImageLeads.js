@@ -4,9 +4,12 @@ import PropTypes from 'prop-types'
 import { setHtml } from '../../utils'
 import { TwoColumnsImageLeadsWrapper } from './style'
 import { ImageFit } from '../ImageFit'
+import { layoutDefaultProps } from './'
 
 export const TwoColumnsImageLeads = ({
   columnSpace,
+  className,
+  style,
   rowSpace,
   breakpoint,
   ...props
@@ -14,7 +17,10 @@ export const TwoColumnsImageLeads = ({
   return (
     <TwoColumnsImageLeadsWrapper
       {...{
+        'data-testid': 'component-two-columns-image-leads',
         columnSpace,
+        className,
+        style,
         breakpoint,
         rowSpace,
         minHeight: props.one_image.height + 'px',
@@ -26,13 +32,13 @@ export const TwoColumnsImageLeads = ({
           <h3 className="subtitle" {...setHtml(props.subtitle)} />
         )}
       <div className="row">
-        <div className="column column-one-content">
+        <div className="column column-half column-one-content">
           <div className="img-wrapper">
             <ImageFit src={props.one_image.url} alt={props.one_image.alt} />
           </div>
           <div {...setHtml(props.one_content)} />
         </div>
-        <div className="column column-one-content">
+        <div className="column column-half column-one-content">
           <div className="img-wrapper">
             <ImageFit src={props.two_image.url} alt={props.two_image.alt} />
           </div>
@@ -47,6 +53,8 @@ TwoColumnsImageLeads.propTypes = {
   columnSpace: PropTypes.number.isRequired,
   rowSpace: PropTypes.number.isRequired,
   breakpoint: PropTypes.number.isRequired,
+  className: PropTypes.string,
+  style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   one_content: PropTypes.string.isRequired,
@@ -61,3 +69,5 @@ TwoColumnsImageLeads.propTypes = {
     alt: PropTypes.string.isRequired,
   }).isRequired,
 }
+
+TwoColumnsImageLeads.defaultProps = layoutDefaultProps

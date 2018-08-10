@@ -3,9 +3,26 @@ import PropTypes from 'prop-types'
 //
 import { TwoColumnsWrapper } from './style'
 import { setHtml } from '../../utils'
+import { layoutDefaultProps } from './'
 
-export const TwoColumns = props => (
-  <TwoColumnsWrapper>
+export const TwoColumns = ({
+  className,
+  style,
+  columnSpace,
+  rowSpace,
+  breakpoint,
+  ...props
+}) => (
+  <TwoColumnsWrapper
+    {...{
+      'data-testid': 'component-two-columns',
+      columnSpace,
+      breakpoint,
+      className,
+      style,
+      rowSpace,
+    }}
+  >
     {props.title && <h2 className="title" {...setHtml(props.title)} />}
     {props.title &&
       props.subtitle && (
@@ -13,11 +30,11 @@ export const TwoColumns = props => (
       )}
     <div className="row">
       <div
-        className="column column-one-content"
+        className="column column-half column-one-content"
         {...setHtml(props.one_content)}
       />
       <div
-        className="column column-two-content"
+        className="column column-half column-two-content"
         {...setHtml(props.two_content)}
       />
     </div>
@@ -25,8 +42,15 @@ export const TwoColumns = props => (
 )
 
 TwoColumns.propTypes = {
+  columnSpace: PropTypes.number,
+  rowSpace: PropTypes.number,
+  breakpoint: PropTypes.number,
+  className: PropTypes.string,
+  style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   one_content: PropTypes.string.isRequired,
   two_content: PropTypes.string.isRequired,
 }
+
+TwoColumns.defaultProps = layoutDefaultProps
