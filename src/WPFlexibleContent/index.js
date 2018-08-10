@@ -9,7 +9,7 @@ import { TwoColumnsImageGrid } from './TwoColumnsImageGrid'
 import { TwoColumnsImageLeads } from './TwoColumnsImageLeads'
 import { TwoColumnsStacked } from './TwoColumnsStacked'
 import { TwoColumnsThreeColumnList } from './TwoColumnsThreeColumnList'
-import { Video } from './Video'
+import { OneColumnVideo } from './OneColumnVideo'
 
 const layoutTypes = [
   'one_column',
@@ -36,7 +36,7 @@ const FlexibleContentItem = ({ layout, content }) => {
     case 'two_columns_image_grid':
       return <TwoColumnsImageGrid {...content} />
     case 'video':
-      return <Video {...content} />
+      return <OneColumnVideo {...content} />
     default:
       return null
   }
