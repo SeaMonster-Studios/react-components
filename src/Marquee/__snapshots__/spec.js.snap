@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContentMarquee Renders 1`] = `
+exports[`Marquee Renders 1`] = `
 .emotion-0 {
   background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)),url(https://picsum.photos/1200/500);
   background-size: cover;

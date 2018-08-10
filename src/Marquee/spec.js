@@ -3,19 +3,19 @@ import { createSerializer } from 'jest-emotion'
 import * as emotion from 'emotion'
 //
 import { render, cleanup } from 'react-testing-library'
-import { ContentMarquee } from './'
+import { Marquee } from './'
 
 afterEach(cleanup)
 
 expect.addSnapshotSerializer(createSerializer(emotion))
 
-describe('ContentMarquee', () => {
+describe('Marquee', () => {
   it('Renders', () => {
     const { getByTestId } = renderSetup()
-    const contentMarquee = getByTestId('component-content-marquee')
+    const Marquee = getByTestId('component-content-marquee')
 
-    expect(contentMarquee).toBeDefined()
-    expect(contentMarquee).toMatchSnapshot()
+    expect(Marquee).toBeDefined()
+    expect(Marquee).toMatchSnapshot()
   })
 })
 
@@ -27,13 +27,13 @@ function renderSetup(overrides) {
   }
 
   const wrapper = render(
-    <ContentMarquee {...props}>
+    <Marquee {...props}>
       <h2>
         Try our newest flavor — <br />
         <em>banana by bananarama</em>
       </h2>
       <button>Get some</button>
-    </ContentMarquee>,
+    </Marquee>,
   )
 
   return {

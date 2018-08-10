@@ -12,6 +12,7 @@ export function setHtml(content) {
           'h4',
           'h5',
           'h6',
+          'br',
         ]),
         allowedAttributes: {
           ...sanitizeHtml.defaults.allowedAttributes,

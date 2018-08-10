@@ -1,5 +1,5 @@
 // Components
-export { ContentMarquee } from './ContentMarquee'
+export { Marquee } from './Marquee'
 export { Button } from './Button'
 export { ErrorBoundary } from './ErrorBoundary'
 export { ImageFit } from './ImageFit'
