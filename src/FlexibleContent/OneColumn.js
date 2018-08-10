@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 //
 import { layoutDefaultProps } from './'
-import { OneColumnWrapper } from './style'
+import { Wrapper } from './style'
 import { setHtml } from '../../utils'
 
 export const OneColumn = ({
@@ -13,7 +13,7 @@ export const OneColumn = ({
   breakpoint,
   ...props
 }) => (
-  <OneColumnWrapper
+  <Wrapper
     {...{
       'data-testid': 'component-one-column',
       className,
@@ -25,7 +25,7 @@ export const OneColumn = ({
     className="column-single"
   >
     <div {...setHtml(props.content)} />
-  </OneColumnWrapper>
+  </Wrapper>
 )
 
 OneColumn.propTypes = {

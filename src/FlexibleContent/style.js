@@ -28,8 +28,14 @@ const common = props => css`
     max-width: 100%;
   }
 
-  img[class*='wp-image'] {
-    margin-bottom: ${props.columnSpace * 0.5}px;
+  img {
+    &:not(.thumbnail) {
+      margin-bottom: ${props.columnSpace * 0.5}px;
+    }
+
+    + .caption {
+      margin-top: -${props.columnSpace * 0.5}px;
+    }
 
     &.alignleft {
       margin-right: ${props.columnSpace * 0.5}px;
@@ -40,15 +46,26 @@ const common = props => css`
     }
   }
 
-  .column:not(:last-of-type) {
-    margin-bottom: ${props.columnSpace}px;
+  .column:not(:first-of-type) .column-lead {
+    margin-top: ${props.columnSpace}px;
   }
 
   .row + .row {
     margin-top: ${props.columnSpace}px;
   }
 
+  .caption {
+    font-size: 14px;
+    line-height: 1.125;
+    background-color: rgb(0, 0, 0, 0.05);
+    padding: 10px;
+  }
+
   @media (min-width: ${props.breakpoint}px) {
+    .column:not(:first-of-type) .column-lead {
+      margin-top: 0;
+    }
+
     .row {
       display: flex;
 
@@ -56,13 +73,15 @@ const common = props => css`
         margin-bottom: ${props.columnSpace}px;
       }
 
+      &.row-stacked {
+        .column-image {
+          margin-bottom: 0;
+        }
+      }
+
       + .row {
         margin-top: 0;
       }
-    }
-
-    .column:not(:last-of-type) {
-      margin-bottom: 0;
     }
 
     .column-half {
@@ -103,52 +122,24 @@ const common = props => css`
         padding-left: ${props.columnSpace * 0.5}px;
       }
     }
-  }
-`
 
-export const Wrapper = styled('div')`
-  overflow: hidden;
-`
-
-export const OneColumnWrapper = styled('section')`
-  ${props => common(props)};
-`
-
-export const OneColumnVideoWrapper = styled('section')`
-  ${props => common(props)};
-`
-
-export const TwoColumnsWrapper = styled('section')`
-  ${props => common(props)};
-`
-
-export const TwoColumnsThreeColumnListWrapper = styled('section')`
-  ${props => common(props)};
-`
-
-export const TwoColumnsStackedWrapper = styled('section')`
-  ${props => common(props)};
-
-  overflow: hidden;
-
-  img {
-    margin-bottom: ${props => props.columnSpace * 0.5}px;
-  }
-
-  @media (min-width: ${props => props.breakpoint}px) {
-    .row {
+    .bp-align-center {
       align-items: center;
     }
   }
 `
 
+export const Wrapper = styled('div')`
+  ${props => common(props)};
+`
+
 export const TwoColumnsImageLeadsWrapper = styled('section')`
   ${props => common(props)};
 
-  img {
+  /* img {
     width: 100%;
     margin-bottom: ${props => props.columnSpace * 0.5}px;
-  }
+  } */
 
   @media (min-width: ${props => props.breakpoint}px) {
     img {
@@ -191,13 +182,6 @@ export const TwoColumnsImageGridWrapper = styled('section')`
         width: 100%;
         display: block;
       }
-    }
-
-    .caption {
-      font-size: 14px;
-      line-height: 1.125;
-      background-color: rgb(0, 0, 0, 0.05);
-      padding: 10px;
     }
   }
 

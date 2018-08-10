@@ -32,7 +32,6 @@ export const Item = ({
           onClick={() => toggleSubMenu(item.id)}
         >
           <span>{item.title}</span>
-          {console.log('buttonWithArrow', buttonWithArrow, item.title)}
           {buttonWithArrow && <ArrowDown />}
         </button>
         {subMenuActive && <SubItemsList items={item.items} />}

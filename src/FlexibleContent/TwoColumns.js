@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 //
-import { TwoColumnsWrapper } from './style'
+import { Wrapper } from './style'
 import { setHtml } from '../../utils'
 import { layoutDefaultProps } from './'
 
@@ -13,7 +13,7 @@ export const TwoColumns = ({
   breakpoint,
   ...props
 }) => (
-  <TwoColumnsWrapper
+  <Wrapper
     {...{
       'data-testid': 'component-two-columns',
       columnSpace,
@@ -38,7 +38,7 @@ export const TwoColumns = ({
         {...setHtml(props.two_content)}
       />
     </div>
-  </TwoColumnsWrapper>
+  </Wrapper>
 )
 
 TwoColumns.propTypes = {

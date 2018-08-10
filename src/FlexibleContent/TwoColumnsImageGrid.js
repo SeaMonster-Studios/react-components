@@ -31,7 +31,6 @@ export const TwoColumnsImageGrid = ({
       )}
     <div className="row">
       <div className="column column-half column-one-content">
-        {console.log(props.content)}
         <div {...setHtml(props.content)} />
       </div>
       <div className="column column-half column-two-grid">

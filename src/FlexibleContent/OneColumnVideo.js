@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 //
-import { OneColumnVideoWrapper } from './style'
+import { Wrapper } from './style'
 import { layoutDefaultProps } from './'
+import { Video } from '../Video'
 
 export const OneColumnVideo = ({
   columnSpace,
@@ -10,9 +11,10 @@ export const OneColumnVideo = ({
   breakpoint,
   className,
   style,
+  videoProps,
   ...props
 }) => (
-  <OneColumnVideoWrapper
+  <Wrapper
     {...{
       'data-testid': 'component-one-column-video',
       columnSpace,
@@ -22,8 +24,8 @@ export const OneColumnVideo = ({
       rowSpace,
     }}
   >
-    item
-  </OneColumnVideoWrapper>
+    <Video {...props} {...videoProps} />
+  </Wrapper>
 )
 
 OneColumnVideo.propTypes = {
@@ -32,6 +34,22 @@ OneColumnVideo.propTypes = {
   breakpoint: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
+  video: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  caption: PropTypes.string,
+  videoProps: PropTypes.shape({
+    className: PropTypes.string,
+    style: PropTypes.object,
+  }),
 }
 
-OneColumnVideo.defaultProps = layoutDefaultProps
+OneColumnVideo.defaultProps = {
+  ...layoutDefaultProps,
+  videoProps: {
+    className: '',
+    style: {
+      maxWidth: '720px',
+      margin: '0 auto',
+    },
+  },
+}

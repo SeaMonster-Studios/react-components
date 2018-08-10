@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 //
 import { setHtml } from '../../utils'
-import { TwoColumnsThreeColumnListWrapper } from './style'
+import { Wrapper } from './style'
 import { layoutDefaultProps } from './'
 
 export const TwoColumnsThreeColumnList = ({
@@ -14,7 +14,7 @@ export const TwoColumnsThreeColumnList = ({
   ...props
 }) => {
   return (
-    <TwoColumnsThreeColumnListWrapper
+    <Wrapper
       {...{
         'data-testid': 'component-two-columns-three-column-list',
         className,
@@ -46,7 +46,7 @@ export const TwoColumnsThreeColumnList = ({
           />
         ))}
       </div>
-    </TwoColumnsThreeColumnListWrapper>
+    </Wrapper>
   )
 }
 

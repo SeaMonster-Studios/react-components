@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 //
-import { TwoColumnsStackedWrapper } from './style'
+import { Wrapper } from './style'
 import { setHtml } from '../../utils'
 import { LazyLoadImage } from '../LazyLoadImage'
 import { layoutDefaultProps } from '.'
@@ -14,7 +14,7 @@ export const TwoColumnsStacked = ({
   rowSpace,
   ...props
 }) => (
-  <TwoColumnsStackedWrapper
+  <Wrapper
     {...{
       'data-testid': 'component-two-columns-stacked',
       columnSpace,
@@ -29,25 +29,33 @@ export const TwoColumnsStacked = ({
       props.subtitle && (
         <h3 className="subtitle" {...setHtml(props.subtitle)} />
       )}
-    <div className="row">
-      <div className="column column-half column-one-image">
-        <LazyLoadImage src={props.one_image.url} alt={props.one_image.alt} />
+    <div className="row bp-align-center row-stacked">
+      <div className="column column-half ">
+        <LazyLoadImage
+          className="column-image"
+          src={props.one_image.url}
+          alt={props.one_image.alt}
+        />
       </div>
       <div
         className="column column-half column-one-content"
         {...setHtml(props.one_content)}
       />
     </div>
-    <div className="row">
-      <div className="column column-half column-two-image order-bp-2">
-        <LazyLoadImage src={props.two_image.url} alt={props.two_image.alt} />
+    <div className="row bp-align-center">
+      <div className="column column-half order-bp-2">
+        <LazyLoadImage
+          className="column-image"
+          src={props.two_image.url}
+          alt={props.two_image.alt}
+        />
       </div>
       <div
         className="column column-half column-two-content order-bp-1"
         {...setHtml(props.two_content)}
       />
     </div>
-  </TwoColumnsStackedWrapper>
+  </Wrapper>
 )
 
 TwoColumnsStacked.propTypes = {

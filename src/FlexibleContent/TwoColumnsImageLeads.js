@@ -33,15 +33,19 @@ export const TwoColumnsImageLeads = ({
         )}
       <div className="row">
         <div className="column column-half column-one-content">
-          <div className="img-wrapper">
-            <ImageFit src={props.one_image.url} alt={props.one_image.alt} />
-          </div>
+          <ImageFit
+            className="alignnone column-image column-lead"
+            src={props.one_image.url}
+            alt={props.one_image.alt}
+          />
           <div {...setHtml(props.one_content)} />
         </div>
         <div className="column column-half column-one-content">
-          <div className="img-wrapper">
-            <ImageFit src={props.two_image.url} alt={props.two_image.alt} />
-          </div>
+          <ImageFit
+            className="alignnone column-image column-lead"
+            src={props.two_image.url}
+            alt={props.two_image.alt}
+          />
           <div {...setHtml(props.two_content)} />
         </div>
       </div>

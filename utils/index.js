@@ -7,8 +7,9 @@ export function setHtml(content) {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'h2']),
         allowedAttributes: {
           ...sanitizeHtml.defaults.allowedAttributes,
-          img: ['src', 'alt'],
+          img: ['src', 'alt', 'iframe'],
           '*': ['class', 'aria*'],
+          iframe: ['width', 'height', 'src'],
         },
       }),
     },
