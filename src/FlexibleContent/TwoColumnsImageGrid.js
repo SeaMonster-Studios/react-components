@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 //
 import { setHtml } from '../../utils'
 import { LazyLoadImage } from '../LazyLoadImage'
-import { TwoColumnsImageGridWrapper } from './style'
+import { Wrapper } from './style'
 import { layoutDefaultProps } from './'
 
 export const TwoColumnsImageGrid = ({
@@ -14,7 +14,7 @@ export const TwoColumnsImageGrid = ({
   style,
   ...props
 }) => (
-  <TwoColumnsImageGridWrapper
+  <Wrapper
     {...{
       'data-testid': 'component-two-columns-image-grid',
       rowSpace,
@@ -29,11 +29,11 @@ export const TwoColumnsImageGrid = ({
       props.subtitle && (
         <h3 className="subtitle" {...setHtml(props.subtitle)} />
       )}
-    <div className="row">
-      <div className="column column-half column-one-content">
+    <div className="row bp-align-center">
+      <div className="column column-half column-content column-lead">
         <div {...setHtml(props.content)} />
       </div>
-      <div className="column column-half column-two-grid">
+      <div className="column column-half column-grid column-lead">
         {props.images.map((image, i) => (
           <div key={image.url + i} className="img-wrapper">
             <LazyLoadImage src={image.url} alt={image.alt} />
@@ -42,7 +42,7 @@ export const TwoColumnsImageGrid = ({
         ))}
       </div>
     </div>
-  </TwoColumnsImageGridWrapper>
+  </Wrapper>
 )
 
 TwoColumnsImageGrid.propTypes = {

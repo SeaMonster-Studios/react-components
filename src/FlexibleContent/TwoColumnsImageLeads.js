@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 //
 import { setHtml } from '../../utils'
-import { TwoColumnsImageLeadsWrapper } from './style'
+import { Wrapper } from './style'
 import { ImageFit } from '../ImageFit'
 import { layoutDefaultProps } from './'
 
@@ -15,7 +15,7 @@ export const TwoColumnsImageLeads = ({
   ...props
 }) => {
   return (
-    <TwoColumnsImageLeadsWrapper
+    <Wrapper
       {...{
         'data-testid': 'component-two-columns-image-leads',
         columnSpace,
@@ -49,7 +49,7 @@ export const TwoColumnsImageLeads = ({
           <div {...setHtml(props.two_content)} />
         </div>
       </div>
-    </TwoColumnsImageLeadsWrapper>
+    </Wrapper>
   )
 }
 

@@ -46,7 +46,8 @@ const common = props => css`
     }
   }
 
-  .column:not(:first-of-type) .column-lead {
+  .column:not(:first-of-type) .column-lead,
+  .column-lead:not(:first-of-type) {
     margin-top: ${props.columnSpace}px;
   }
 
@@ -61,9 +62,46 @@ const common = props => css`
     padding: 10px;
   }
 
+  .column-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -${props.columnSpace * 0.25}px;
+    margin-right: -${props.columnSpace * 0.25}px;
+    margin-bottom: -${props.columnSpace * 0.5}px;
+
+    > div {
+      width: calc(50% - ${props.columnSpace * 0.25}px);
+      margin-bottom: ${props.columnSpace * 0.5}px;
+
+      &:nth-of-type(odd) {
+        padding-right: ${props.columnSpace * 0.25}px;
+      }
+
+      &:nth-of-type(even) {
+        padding-left: ${props.columnSpace * 0.25}px;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
   @media (min-width: ${props.breakpoint}px) {
-    .column:not(:first-of-type) .column-lead {
+    .column:not(:first-of-type) .column-lead,
+    .column-lead:not(:first-of-type) {
       margin-top: 0;
+    }
+
+    .column-grid {
+      margin-left: ${props.columnSpace * 4}px;
+    }
+
+    img.column-lead {
+      width: auto;
+      max-width: 100%;
+      min-height: ${props.minHeight || 0};
     }
 
     .row {
@@ -131,68 +169,4 @@ const common = props => css`
 
 export const Wrapper = styled('div')`
   ${props => common(props)};
-`
-
-export const TwoColumnsImageLeadsWrapper = styled('section')`
-  ${props => common(props)};
-
-  /* img {
-    width: 100%;
-    margin-bottom: ${props => props.columnSpace * 0.5}px;
-  } */
-
-  @media (min-width: ${props => props.breakpoint}px) {
-    img {
-      width: auto;
-      max-width: 100%;
-      min-height: ${props => props.minHeight};
-    }
-  }
-`
-
-export const TwoColumnsImageGridWrapper = styled('section')`
-  ${props => common(props)};
-
-  overflow: hidden;
-
-  .column-one-content {
-    margin-bottom: ${props => props.columnSpace}px;
-  }
-
-  .column-two-grid {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -${props => props.columnSpace * 0.25}px;
-    margin-right: -${props => props.columnSpace * 0.25}px;
-    margin-bottom: -${props => props.columnSpace * 0.5}px;
-
-    > div {
-      width: calc(50% - ${props => props.columnSpace * 0.25}px);
-      margin-bottom: ${props => props.columnSpace * 0.5}px;
-
-      &:nth-of-type(odd) {
-        padding-right: ${props => props.columnSpace * 0.25}px;
-      }
-
-      &:nth-of-type(even) {
-        padding-left: ${props => props.columnSpace * 0.25}px;
-      }
-
-      img {
-        width: 100%;
-        display: block;
-      }
-    }
-  }
-
-  @media (min-width: ${props => props.breakpoint}px) {
-    .column-one-content {
-      margin-bottom: 0;
-      margin-right: ${props => props.columnSpace * 4}px;
-    }
-
-    .row {
-      align-items: center;
-    }
-  }
 `
