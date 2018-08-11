@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { Transition, animated } from 'react-spring'
+import { Transition } from 'react-spring'
 //
 import { Wrapper } from './style'
 
@@ -86,9 +86,6 @@ export class Checkbox extends React.Component {
 
     const isChecked = checked || this.state.checked
 
-    const AnimatedOnIcon = OnIcon ? animated(OnIcon) : null
-    const AnimatedOffIcon = OffIcon ? animated(OffIcon) : null
-
     return (
       <Wrapper
         {...{
@@ -123,19 +120,17 @@ export class Checkbox extends React.Component {
               leave={iconsTransitionLeave}
             >
               {isChecked
-                ? styles => (
-                    <div style={styles} className="mark" data-testid="on-mark">
-                      <OnIcon />
-                    </div>
-                  )
-                : styles => (
-                    <div style={styles} className="mark" data-testid="off-mark">
-                      <OffIcon />
-                    </div>
-                  )}
+                ? styles => buildIcon(OnIcon, styles, 'on-mark')
+                : styles => buildIcon(OffIcon, styles, 'off-mark')}
             </Transition>
           )}
       </Wrapper>
     )
   }
 }
+
+const buildIcon = (Icon, styles, testid) => (
+  <div style={styles} className="mark" data-testid={testid}>
+    <Icon />
+  </div>
+)

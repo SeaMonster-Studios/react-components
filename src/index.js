@@ -25,7 +25,6 @@ export { LazyLoadImage } from './LazyLoadImage'
 
 // Utils
 export { setHtml, documentReady } from '../utils'
-export { clickEvent, changeEvent } from '../utils/testing/click-events'
 
 // Styles
 import '../styles'

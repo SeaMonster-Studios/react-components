@@ -10,6 +10,7 @@ exports[`Marquee Renders 1`] = `
 <div
   class="emotion-0 emotion-1"
   data-testid="component-content-marquee"
+  style="min-height: 510px; padding: 45px 0px;"
 >
   <h2>
     Try our newest flavor — 
