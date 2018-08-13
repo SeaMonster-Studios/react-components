@@ -2,12 +2,16 @@ import React from 'react'
 import { css } from 'react-emotion'
 
 export const Logo = () => (
-  <div
+  <a
     className={css`
       max-width: 300px;
       margin: 0 auto;
       margin: 60px 0;
+      display: block;
     `}
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://seamonsterstudios.com"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -99,5 +103,5 @@ export const Logo = () => (
         />
       </g>
     </svg>
-  </div>
+  </a>
 )
