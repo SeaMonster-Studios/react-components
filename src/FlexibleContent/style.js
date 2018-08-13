@@ -45,10 +45,15 @@ export const Wrapper = styled('section')`
       &.alignright {
         margin-left: ${props.columnSpace * 0.5}px;
       }
+
+      &.aligncenter {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
     }
 
-    .column:not(:first-of-type) .column-lead,
-    .column-lead:not(:first-of-type) {
+    .column:not(:first-of-type) {
       margin-top: ${props.columnSpace}px;
     }
 
@@ -90,8 +95,7 @@ export const Wrapper = styled('section')`
     }
 
     @media (min-width: ${props.breakpoint}px) {
-      .column:not(:first-of-type) .column-lead,
-      .column-lead:not(:first-of-type) {
+      .column:not(:first-of-type) {
         margin-top: 0;
       }
 

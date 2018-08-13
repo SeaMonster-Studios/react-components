@@ -31,30 +31,33 @@ export const layoutDefaultProps = {
   breakpoint: 992,
 }
 
-const FlexibleContentItem = ({ layout, layoutProps }) => {
-  switch (layout) {
-    case 'one_column':
-      return <OneColumn {...layoutProps} />
-    case 'two_columns':
-      return <TwoColumns {...layoutProps} />
-    case 'two_columns_image_leads':
-      return <TwoColumnsImageLeads {...layoutProps} />
-    case 'two_columns_stacked':
-      return <TwoColumnsStacked {...layoutProps} />
-    case 'two_columns_three_column_list':
-      return <TwoColumnsThreeColumnList {...layoutProps} />
-    case 'two_columns_image_grid':
-      return <TwoColumnsImageGrid {...layoutProps} />
-    case 'video':
-      return <OneColumnVideo {...layoutProps} />
-    default:
-      return null
+class FlexibleContentItem extends React.Component {
+  static propTypes = {
+    layout: PropTypes.oneOf(layoutTypes).isRequired,
+    content: PropTypes.object,
+    layoutProps: PropTypes.object,
   }
-}
-
-FlexibleContentItem.propTypes = {
-  layout: PropTypes.oneOf(layoutTypes).isRequired,
-  content: PropTypes.object,
+  render() {
+    const { layout, layoutProps } = this.props
+    switch (layout) {
+      case 'one_column':
+        return <OneColumn {...layoutProps} />
+      case 'two_columns':
+        return <TwoColumns {...layoutProps} />
+      case 'two_columns_image_leads':
+        return <TwoColumnsImageLeads {...layoutProps} />
+      case 'two_columns_stacked':
+        return <TwoColumnsStacked {...layoutProps} />
+      case 'two_columns_three_column_list':
+        return <TwoColumnsThreeColumnList {...layoutProps} />
+      case 'two_columns_image_grid':
+        return <TwoColumnsImageGrid {...layoutProps} />
+      case 'video':
+        return <OneColumnVideo {...layoutProps} />
+      default:
+        return null
+    }
+  }
 }
 
 const AnimatedFlexibleContentItem = animated(FlexibleContentItem)

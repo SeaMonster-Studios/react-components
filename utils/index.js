@@ -17,7 +17,7 @@ export function setHtml(content) {
         allowedAttributes: {
           ...sanitizeHtml.defaults.allowedAttributes,
           img: ['src', 'alt', 'iframe'],
-          '*': ['class', 'aria*'],
+          '*': ['class', 'aria*', 'style'],
           iframe: ['width', 'height', 'src'],
         },
       }),

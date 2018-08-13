@@ -32,10 +32,10 @@ export const TwoColumnsImageGrid = ({
         <h3 className="subtitle" {...setHtml(props.subtitle)} />
       )}
     <div className="row bp-align-center">
-      <div className="column column-half column-content column-lead">
+      <div className="column column-half column-content">
         <div {...setHtml(props.content)} />
       </div>
-      <div className="column column-half column-grid column-lead">
+      <div className="column column-half column-grid">
         {props.images.map((image, i) => (
           <div key={image.url + i} className="img-wrapper">
             <LazyLoadImage src={image.url} alt={image.alt} />
