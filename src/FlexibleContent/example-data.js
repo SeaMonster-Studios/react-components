@@ -2,6 +2,7 @@ export const data = {
   flexible_content: [
     {
       acf_fc_layout: 'one_column',
+      adminclass: 'no-border',
       content:
         '<h2>OneColumn</h2><p><img class="alignnone size-full wp-image-387" src="https://picsum.photos/800/500" alt="" width="800" height="500" /></p>\n<div></div>\n<div>\n<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</div>\n<div></div>\n<div>\n<div>\n<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat optio, temporibus eos illo officiis exercitationem aut? Sunt reiciendis itaque fugit, excepturi nulla recusandae quod, doloribus quas illo numquam nemo expedita.</div>\n</div>\n</div>\n</div>\n',
     },
