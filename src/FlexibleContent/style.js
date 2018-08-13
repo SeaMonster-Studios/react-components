@@ -3,8 +3,8 @@ import styled, { css } from 'react-emotion'
 export const Wrapper = styled('section')`
   ${props => css`
     overflow: hidden;
-    margin-top: ${props.rowSpace}px;
-    margin-bottom: ${props.rowSpace}px;
+    padding-top: ${props.rowSpace}px;
+    padding-bottom: ${props.rowSpace}px;
 
     .title,
     .subtitle {
