@@ -7,6 +7,7 @@ import { setHtml } from '../../utils'
 
 export const OneColumn = ({
   className,
+  adminclass,
   style,
   columnSpace,
   rowSpace,
@@ -16,13 +17,12 @@ export const OneColumn = ({
   <Wrapper
     {...{
       'data-testid': 'component-one-column',
-      className,
+      className: `column-single ${className} ${adminclass}`,
       style,
       columnSpace,
       breakpoint,
       rowSpace,
     }}
-    className="column-single"
   >
     <div {...setHtml(props.content)} />
   </Wrapper>
@@ -33,6 +33,7 @@ OneColumn.propTypes = {
   rowSpace: PropTypes.number,
   breakpoint: PropTypes.number,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   content: PropTypes.string.isRequired,
 }

@@ -10,6 +10,7 @@ export const TwoColumnsStacked = ({
   className,
   style,
   columnSpace,
+  adminclass,
   breakpoint,
   rowSpace,
   ...props
@@ -18,7 +19,7 @@ export const TwoColumnsStacked = ({
     {...{
       'data-testid': 'component-two-columns-stacked',
       columnSpace,
-      className,
+      className: `${className} ${adminclass}`,
       style,
       breakpoint,
       rowSpace,
@@ -63,6 +64,7 @@ TwoColumnsStacked.propTypes = {
   rowSpace: PropTypes.number.isRequired,
   breakpoint: PropTypes.number.isRequired,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,

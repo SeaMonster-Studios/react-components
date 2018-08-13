@@ -40,6 +40,25 @@
               "toolbar": "full",
               "media_upload": 1,
               "delay": 0
+            },
+            {
+              "key": "field_5b71be3d94d7d",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
             }
           ],
           "min": "",
@@ -126,6 +145,25 @@
               "toolbar": "full",
               "media_upload": 1,
               "delay": 0
+            },
+            {
+              "key": "field_5b71be4994d7e",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
             }
           ],
           "min": "",
@@ -260,6 +298,25 @@
               "max_height": "",
               "max_size": "",
               "mime_types": ""
+            },
+            {
+              "key": "field_5b71be5b94d7f",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
             }
           ],
           "min": "",
@@ -394,6 +451,25 @@
               "toolbar": "full",
               "media_upload": 1,
               "delay": 0
+            },
+            {
+              "key": "field_5b71be6994d80",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
             }
           ],
           "min": "",
@@ -520,6 +596,25 @@
                   "delay": 0
                 }
               ]
+            },
+            {
+              "key": "field_5b71be7594d81",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
             }
           ],
           "min": "",
@@ -637,6 +732,25 @@
               "return_format": "value",
               "ajax": 0,
               "placeholder": ""
+            },
+            {
+              "key": "field_5b71be8094d82",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
             }
           ],
           "min": "",
@@ -668,9 +782,52 @@
               "delay": 0
             },
             {
+              "key": "field_5b6c91453fab4",
+              "label": "Thumbnail",
+              "name": "thumbnail",
+              "type": "image",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "url",
+              "preview_size": "medium",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": ""
+            },
+            {
               "key": "field_5b622f39de68a",
               "label": "Caption",
               "name": "caption",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b71be8a94d83",
+              "label": "CSS Class",
+              "name": "adminclass",
               "type": "text",
               "instructions": "",
               "required": 0,
@@ -703,6 +860,34 @@
         "operator": "==",
         "value": "default"
       }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/home.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/learn.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/contact.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/services.php"
+      }
     ]
   ],
   "menu_order": 0,
@@ -713,5 +898,5 @@
   "hide_on_screen": ["the_content"],
   "active": 1,
   "description": "",
-  "modified": 1533840702
+  "modified": 1534181780
 }

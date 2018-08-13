@@ -9,6 +9,7 @@ import { layoutDefaultProps } from './'
 export const TwoColumnsImageLeads = ({
   columnSpace,
   className,
+  adminclass,
   style,
   rowSpace,
   breakpoint,
@@ -19,7 +20,7 @@ export const TwoColumnsImageLeads = ({
       {...{
         'data-testid': 'component-two-columns-image-leads',
         columnSpace,
-        className,
+        className: `${className} ${adminclass}`,
         style,
         breakpoint,
         rowSpace,
@@ -58,6 +59,7 @@ TwoColumnsImageLeads.propTypes = {
   rowSpace: PropTypes.number.isRequired,
   breakpoint: PropTypes.number.isRequired,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,

@@ -7,6 +7,7 @@ import { layoutDefaultProps } from './'
 
 export const TwoColumns = ({
   className,
+  adminclass,
   style,
   columnSpace,
   rowSpace,
@@ -18,7 +19,7 @@ export const TwoColumns = ({
       'data-testid': 'component-two-columns',
       columnSpace,
       breakpoint,
-      className,
+      className: `${className} ${adminclass}`,
       style,
       rowSpace,
     }}
@@ -46,6 +47,7 @@ TwoColumns.propTypes = {
   rowSpace: PropTypes.number,
   breakpoint: PropTypes.number,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,

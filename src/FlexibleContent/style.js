@@ -1,6 +1,6 @@
 import styled, { css } from 'react-emotion'
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled('section')`
   ${props => css`
     overflow: hidden;
     margin-top: ${props.rowSpace}px;

@@ -10,6 +10,7 @@ export const OneColumnVideo = ({
   rowSpace,
   breakpoint,
   className,
+  adminclass,
   style,
   videoProps,
   ...props
@@ -17,8 +18,8 @@ export const OneColumnVideo = ({
   <Wrapper
     {...{
       'data-testid': 'component-one-column-video',
+      className: `${className} ${adminclass}`,
       columnSpace,
-      className,
       style,
       breakpoint,
       rowSpace,
@@ -33,6 +34,7 @@ OneColumnVideo.propTypes = {
   rowSpace: PropTypes.number,
   breakpoint: PropTypes.number,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   video: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,

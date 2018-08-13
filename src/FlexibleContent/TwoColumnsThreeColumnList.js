@@ -10,6 +10,7 @@ export const TwoColumnsThreeColumnList = ({
   rowSpace,
   breakpoint,
   className,
+  adminclass,
   style,
   ...props
 }) => {
@@ -17,7 +18,7 @@ export const TwoColumnsThreeColumnList = ({
     <Wrapper
       {...{
         'data-testid': 'component-two-columns-three-column-list',
-        className,
+        className: `${className} ${adminclass}`,
         style,
         columnSpace,
         breakpoint,
@@ -55,6 +56,7 @@ TwoColumnsThreeColumnList.propTypes = {
   rowSpace: PropTypes.number.isRequired,
   breakpoint: PropTypes.number.isRequired,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,

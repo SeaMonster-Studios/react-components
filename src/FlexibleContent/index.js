@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Trail, animated } from 'react-spring'
 import Component from '@reactions/component'
 //
-import { Wrapper } from './style'
 import { OneColumn } from './OneColumn'
 import { TwoColumns } from './TwoColumns'
 import { TwoColumnsImageGrid } from './TwoColumnsImageGrid'
@@ -25,6 +24,7 @@ const layoutTypes = [
 
 export const layoutDefaultProps = {
   className: '',
+  adminclass: '',
   style: {},
   rowSpace: 60,
   columnSpace: 30,
@@ -56,6 +56,8 @@ FlexibleContentItem.propTypes = {
   layout: PropTypes.oneOf(layoutTypes).isRequired,
   content: PropTypes.object,
 }
+
+const AnimatedFlexibleContentItem = animated(FlexibleContentItem)
 
 function getitemsProps(itemsProps, layout, animatedStyles) {
   const item = itemsProps.filter(item => item.item === layout)[0]
@@ -101,10 +103,10 @@ export function FlexibleContent({
   itemsProps,
 }) {
   return (
-    <Wrapper
+    <div
       data-testid="component-wp-flexible-content"
       style={style}
-      className={className}
+      className={`${className} flexible-content-component`}
     >
       <Component didMount={wrapIframesInResponsiveVideo}>
         <Trail
@@ -113,24 +115,22 @@ export function FlexibleContent({
           keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
         >
           {items.map(({ acf_fc_layout: layout, ...content }) => styles => (
-            <animated.div data-testid="component-wp-flexible-content-item">
-              <FlexibleContentItem
-                {...{
-                  layout,
-                  layoutProps: {
-                    ...content,
-                    ...getitemsProps(itemsProps, layout, styles),
-                    rowSpace,
-                    columnSpace,
-                    breakpoint,
-                  },
-                }}
-              />
-            </animated.div>
+            <AnimatedFlexibleContentItem
+              {...{
+                layout,
+                layoutProps: {
+                  ...content,
+                  ...getitemsProps(itemsProps, layout, styles),
+                  rowSpace,
+                  columnSpace,
+                  breakpoint,
+                },
+              }}
+            />
           ))}
         </Trail>
       </Component>
-    </Wrapper>
+    </div>
   )
 }
 

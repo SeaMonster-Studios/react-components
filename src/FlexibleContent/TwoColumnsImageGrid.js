@@ -11,6 +11,7 @@ export const TwoColumnsImageGrid = ({
   columnSpace,
   breakpoint,
   className,
+  adminclass,
   style,
   ...props
 }) => (
@@ -20,7 +21,8 @@ export const TwoColumnsImageGrid = ({
       rowSpace,
       columnSpace,
       breakpoint,
-      className,
+
+      className: `${className} ${adminclass}`,
       style,
     }}
   >
@@ -50,6 +52,7 @@ TwoColumnsImageGrid.propTypes = {
   breakpoint: PropTypes.number,
   rowSpace: PropTypes.number,
   className: PropTypes.string,
+  adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
