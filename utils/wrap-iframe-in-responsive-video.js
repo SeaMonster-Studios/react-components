@@ -4,15 +4,19 @@ export function wrapIframesInResponsiveVideo() {
 
     Object.keys(iframes).map(i => {
       const iframe = iframes[i]
-      const wrapper = document.createElement('div')
+      const src = iframe.getAttribute('src')
 
-      wrapper.className = 'video-responsive'
+      if (src && src.includes('youtube.com' || src.includes('vimeo.com'))) {
+        const wrapper = document.createElement('div')
 
-      wrapper.innerHTML = iframe.outerHTML
+        wrapper.className = 'video-responsive'
 
-      iframe.parentNode.insertBefore(wrapper, iframe)
+        wrapper.innerHTML = iframe.outerHTML
 
-      iframe.remove()
+        iframe.parentNode.insertBefore(wrapper, iframe)
+
+        iframe.remove()
+      }
     })
   }
 }
