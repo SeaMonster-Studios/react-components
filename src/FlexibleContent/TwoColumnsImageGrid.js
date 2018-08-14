@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { setHtml } from '../../utils'
 import { LazyLoadImage } from '../LazyLoadImage'
 import { Wrapper } from './style'
-import { layoutDefaultProps } from './'
 
 export const TwoColumnsImageGrid = ({
   rowSpace,
@@ -32,31 +31,49 @@ export const TwoColumnsImageGrid = ({
         <h3 className="subtitle" {...setHtml(props.subtitle)} />
       )}
     <div className="row bp-align-center">
-      <div className="column column-half column-content">
-        <div {...setHtml(props.content)} />
-      </div>
+      {typeof props.content === 'string' ? (
+        <div
+          className="column column-half column-content"
+          {...setHtml(props.content)}
+        />
+      ) : (
+        <div className="column column-half column-content">
+          {props.content()}
+        </div>
+      )}
       <div className="column column-half column-grid">
-        {props.images.map((image, i) => (
-          <div key={image.url + i} className="img-wrapper">
-            <LazyLoadImage src={image.url} alt={image.alt} />
-            <div className="caption">{image.caption}</div>
-          </div>
-        ))}
+        {props.images.map((image, i) => {
+          return props.renderImage ? (
+            <div key={image.url + i} className="img-wrapper">
+              {props.renderImage(image)}
+            </div>
+          ) : (
+            <div key={image.url + i} className="img-wrapper">
+              <LazyLoadImage src={image.url} alt={image.alt} />
+              <div className="caption">{image.caption}</div>
+            </div>
+          )
+        })}
       </div>
     </div>
   </Wrapper>
 )
 
 TwoColumnsImageGrid.propTypes = {
-  columnSpace: PropTypes.number,
-  breakpoint: PropTypes.number,
+  /** Vertical spacing base */
   rowSpace: PropTypes.number,
+  /** Horizontal spacing base */
+  columnSpace: PropTypes.number,
+  /** Mobile first breakpoint */
+  breakpoint: PropTypes.number,
   className: PropTypes.string,
+  /** Secondary className. With WP/ACF, comes from the admin when content is created  */
   adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  content: PropTypes.string.isRequired,
+  /** HTML string (typically from a CMS), or a render prop */
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
@@ -64,7 +81,16 @@ TwoColumnsImageGrid.propTypes = {
       caption: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  /** Custom render prop for each image in the grid (passes image object) */
+  renderImage: PropTypes.func,
   image_grid_position: PropTypes.oneOf(['right', 'left']),
 }
 
-TwoColumnsImageGrid.defaultProps = layoutDefaultProps
+TwoColumnsImageGrid.defaultProps = {
+  className: '',
+  adminclass: '',
+  style: {},
+  rowSpace: 60,
+  columnSpace: 30,
+  breakpoint: 992,
+}

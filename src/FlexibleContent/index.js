@@ -22,15 +22,6 @@ const layoutTypes = [
   'video',
 ]
 
-export const layoutDefaultProps = {
-  className: '',
-  adminclass: '',
-  style: {},
-  rowSpace: 60,
-  columnSpace: 30,
-  breakpoint: 992,
-}
-
 class FlexibleContentItem extends React.Component {
   static propTypes = {
     layout: PropTypes.oneOf(layoutTypes).isRequired,
@@ -145,9 +136,21 @@ FlexibleContent.propTypes = {
   ).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
+  /** Vertical spacing base */
   rowSpace: PropTypes.number,
+  /** Horizontal spacing base */
   columnSpace: PropTypes.number,
+  /** Mobile first breakpoint */
   breakpoint: PropTypes.number,
+  /** pass props that will be applied to each item of the type provided. Layout Types: [
+  'one_column',
+  'two_columns',
+  'two_columns_image_leads',
+  'two_columns_stacked',
+  'two_columns_three_column_list',
+  'two_columns_image_grid',
+  'video',
+]*/
   itemsProps: PropTypes.arrayOf(
     PropTypes.shape({
       item: PropTypes.oneOf(layoutTypes).isRequired,
@@ -158,7 +161,12 @@ FlexibleContent.propTypes = {
 }
 
 FlexibleContent.defaultProps = {
-  ...layoutDefaultProps,
+  className: '',
+  adminclass: '',
+  style: {},
+  rowSpace: 60,
+  columnSpace: 30,
+  breakpoint: 992,
   itemsProps: layoutTypes.map(type => ({
     item: type,
     className: '',

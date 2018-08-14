@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { setHtml } from '../../utils'
 import { Wrapper } from './style'
 import { ImageFit } from '../ImageFit'
-import { layoutDefaultProps } from './'
 
 export const TwoColumnsImageLeads = ({
   columnSpace,
@@ -13,6 +12,8 @@ export const TwoColumnsImageLeads = ({
   style,
   rowSpace,
   breakpoint,
+  one_content,
+  two_content,
   ...props
 }) => {
   return (
@@ -39,7 +40,12 @@ export const TwoColumnsImageLeads = ({
             src={props.one_image.url}
             alt={props.one_image.alt}
           />
-          <div {...setHtml(props.one_content)} />
+
+          {typeof one_content === 'string' ? (
+            <div {...setHtml(one_content)} />
+          ) : (
+            <div>{one_content()}</div>
+          )}
         </div>
         <div className="column column-half column-one-content">
           <ImageFit
@@ -47,7 +53,11 @@ export const TwoColumnsImageLeads = ({
             src={props.two_image.url}
             alt={props.two_image.alt}
           />
-          <div {...setHtml(props.two_content)} />
+          {typeof two_content === 'string' ? (
+            <div {...setHtml(two_content)} />
+          ) : (
+            <div>{two_content()}</div>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -55,25 +65,40 @@ export const TwoColumnsImageLeads = ({
 }
 
 TwoColumnsImageLeads.propTypes = {
-  columnSpace: PropTypes.number.isRequired,
-  rowSpace: PropTypes.number.isRequired,
-  breakpoint: PropTypes.number.isRequired,
+  /** Vertical spacing base */
+  rowSpace: PropTypes.number,
+  /** Horizontal spacing base */
+  columnSpace: PropTypes.number,
+  /** Mobile first breakpoint */
+  breakpoint: PropTypes.number,
   className: PropTypes.string,
+  /** Secondary className. With WP/ACF, comes from the admin when content is created  */
   adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  one_content: PropTypes.string.isRequired,
+  /** HTML string (typically from a CMS), or a render prop */
+  one_content: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+    .isRequired,
+  /** HTML string (typically from a CMS), or a render prop */
+  two_content: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+    .isRequired,
   one_image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
     height: PropTypes.number.isRequired,
   }).isRequired,
-  two_content: PropTypes.string.isRequired,
   two_image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   }).isRequired,
 }
 
-TwoColumnsImageLeads.defaultProps = layoutDefaultProps
+TwoColumnsImageLeads.defaultProps = {
+  className: '',
+  adminclass: '',
+  style: {},
+  rowSpace: 60,
+  columnSpace: 30,
+  breakpoint: 992,
+}

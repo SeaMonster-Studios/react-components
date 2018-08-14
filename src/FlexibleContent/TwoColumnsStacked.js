@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { Wrapper } from './style'
 import { setHtml } from '../../utils'
 import { LazyLoadImage } from '../LazyLoadImage'
-import { layoutDefaultProps } from '.'
 
 export const TwoColumnsStacked = ({
   className,
@@ -13,6 +12,8 @@ export const TwoColumnsStacked = ({
   adminclass,
   breakpoint,
   rowSpace,
+  one_content,
+  two_content,
   ...props
 }) => (
   <Wrapper
@@ -38,10 +39,16 @@ export const TwoColumnsStacked = ({
           alt={props.one_image.alt}
         />
       </div>
-      <div
-        className="column column-half column-one-content"
-        {...setHtml(props.one_content)}
-      />
+      {typeof one_content === 'string' ? (
+        <div
+          className="column column-half column-one-content"
+          {...setHtml(one_content)}
+        />
+      ) : (
+        <div className="column column-half column-one-content">
+          {one_content()}
+        </div>
+      )}
     </div>
     <div className="row bp-align-center">
       <div className="column column-half order-bp-2">
@@ -51,33 +58,54 @@ export const TwoColumnsStacked = ({
           alt={props.two_image.alt}
         />
       </div>
-      <div
-        className="column column-half column-two-content order-bp-1"
-        {...setHtml(props.two_content)}
-      />
+      {typeof one_content === 'string' ? (
+        <div
+          className="column column-half column-two-content order-bp-1"
+          {...setHtml(two_content)}
+        />
+      ) : (
+        <div className="column column-half column-two-content order-bp-1">
+          {two_content()}
+        </div>
+      )}
     </div>
   </Wrapper>
 )
 
 TwoColumnsStacked.propTypes = {
-  columnSpace: PropTypes.number.isRequired,
-  rowSpace: PropTypes.number.isRequired,
-  breakpoint: PropTypes.number.isRequired,
+  /** Vertical spacing base */
+  rowSpace: PropTypes.number,
+  /** Horizontal spacing base */
+  columnSpace: PropTypes.number,
+  /** Mobile first breakpoint */
+  breakpoint: PropTypes.number,
   className: PropTypes.string,
+  /** Secondary className. With WP/ACF, comes from the admin when content is created  */
   adminclass: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  one_content: PropTypes.string.isRequired,
+  /** HTML string (typically from a CMS), or a render prop */
+  one_content: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+    .isRequired,
+  /** HTML string (typically from a CMS), or a render prop */
+  two_content: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+    .isRequired,
   one_image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   }).isRequired,
-  two_content: PropTypes.string.isRequired,
   two_image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   }).isRequired,
 }
 
-TwoColumnsStacked.defaultProps = layoutDefaultProps
+TwoColumnsStacked.defaultProps = {
+  className: '',
+  adminclass: '',
+  style: {},
+  rowSpace: 60,
+  columnSpace: 30,
+  breakpoint: 992,
+}
