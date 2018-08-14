@@ -1,6 +1,6 @@
 import styled, { css } from 'react-emotion'
 
-const common = (columnSpace, rowSpace) => css`
+const common = (rowSpace, columnSpace) => css`
   overflow: hidden;
   padding-top: ${rowSpace}px;
   padding-bottom: ${rowSpace}px;
@@ -35,82 +35,81 @@ const common = (columnSpace, rowSpace) => css`
   img {
     max-width: 100%;
   }
+  img {
+    &:not(.thumbnail) {
+      margin-bottom: ${columnSpace * 0.5}px;
+    }
+
+    + .caption {
+      margin-top: -${columnSpace * 0.5}px;
+    }
+
+    &.alignleft {
+      margin-right: ${columnSpace * 0.5}px;
+    }
+
+    &.alignright {
+      margin-left: ${columnSpace * 0.5}px;
+    }
+
+    &.aligncenter {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+  }
+
+  .column:not(:first-of-type) {
+    margin-top: ${columnSpace}px;
+  }
+
+  .row,
+  .column,
+  .column-single {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: ${columnSpace}px;
+    }
+  }
+
+  .row + .row {
+    margin-top: ${columnSpace}px;
+  }
+
+  .column-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -${columnSpace * 0.25}px;
+    margin-right: -${columnSpace * 0.25}px;
+    margin-bottom: -${columnSpace * 0.5}px;
+
+    > div {
+      width: calc(50% - ${columnSpace * 0.25}px);
+      margin-bottom: ${columnSpace * 0.5}px;
+
+      &:nth-of-type(odd) {
+        padding-right: ${columnSpace * 0.25}px;
+      }
+
+      &:nth-of-type(even) {
+        padding-left: ${columnSpace * 0.25}px;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
 `
 
 export const Wrapper = styled('section')`
   ${props => css`
     ${common(props.rowSpace, props.columnSpace)};
-
-    img {
-      &:not(.thumbnail) {
-        margin-bottom: ${props.columnSpace * 0.5}px;
-      }
-
-      + .caption {
-        margin-top: -${props.columnSpace * 0.5}px;
-      }
-
-      &.alignleft {
-        margin-right: ${props.columnSpace * 0.5}px;
-      }
-
-      &.alignright {
-        margin-left: ${props.columnSpace * 0.5}px;
-      }
-
-      &.aligncenter {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-      }
-    }
-
-    .column:not(:first-of-type) {
-      margin-top: ${props.columnSpace}px;
-    }
-
-    .row,
-    .column,
-    .column-single {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        margin-top: ${props.columnSpace}px;
-      }
-    }
-
-    .row + .row {
-      margin-top: ${props.columnSpace}px;
-    }
-
-    .column-grid {
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: -${props.columnSpace * 0.25}px;
-      margin-right: -${props.columnSpace * 0.25}px;
-      margin-bottom: -${props.columnSpace * 0.5}px;
-
-      > div {
-        width: calc(50% - ${props.columnSpace * 0.25}px);
-        margin-bottom: ${props.columnSpace * 0.5}px;
-
-        &:nth-of-type(odd) {
-          padding-right: ${props.columnSpace * 0.25}px;
-        }
-
-        &:nth-of-type(even) {
-          padding-left: ${props.columnSpace * 0.25}px;
-        }
-
-        img {
-          width: 100%;
-          display: block;
-        }
-      }
-    }
 
     @media (min-width: ${props.breakpoint}px) {
       .column:not(:first-of-type) {
