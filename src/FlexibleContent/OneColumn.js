@@ -28,7 +28,6 @@ export const OneColumn = ({
     ) : (
       <div>{content()}</div>
     )}
-    <div {...setHtml(content)} />
   </Wrapper>
 )
 
