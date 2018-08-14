@@ -11,6 +11,7 @@ import { TwoColumnsImageGrid } from './TwoColumnsImageGrid'
 import { TwoColumnsImageLeads } from './TwoColumnsImageLeads'
 import { TwoColumnsStacked } from './TwoColumnsStacked'
 import { TwoColumnsThreeColumnList } from './TwoColumnsThreeColumnList'
+import { Grid123 } from './Grid123'
 import { data } from './example-data.js'
 
 # FlexibleContent
@@ -51,6 +52,8 @@ import { data } from './example-data.js'
   'two_columns_three_column_list',
   'two_columns_image_grid',
   'video',
+  'content_grid',
+  'image_grid',
 ]
 ```
 
@@ -88,6 +91,10 @@ import { data } from './example-data.js'
 ## OneColumnVideo
 
 <PropsTable of={OneColumnVideo} />
+
+## Grid123
+
+<PropsTable of={Grid123} />
 
 ## Example Data
 
@@ -250,8 +257,196 @@ export const data = {
         'https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png',
       caption: 'OneColumnVideo',
     },
+    {
+      acf_fc_layout: 'image_grid',
+      title: 'Image Grid Title',
+      subtitle: '',
+      items: [
+        {
+          id: 238,
+          title: 'rachel-sofferin',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 460,
+          title: '1210x680',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: 'This is an example caption',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 239,
+          title: 'robert-calkins',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 236,
+          title: 'michael-oliver',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 234,
+          title: 'leo-brodie',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 227,
+          title: 'harold-costa',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 228,
+          title: 'heidi-dillehunt',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 235,
+          title: 'michael-ingrsoll',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 237,
+          title: 'patic-creelman',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 229,
+          title: 'janell-sheirs',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 230,
+          title: 'jeri-hudson',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 231,
+          title: 'karen-schiller',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 232,
+          title: 'kathianne-lewis',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 233,
+          title: 'laurie-hawkns',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+        {
+          id: 240,
+          title: 'sandy-tomlin',
+          url: 'https://picsum.photos/300/250',
+          alt: '',
+          caption: '',
+          name: 'lorem-name',
+          width: 300,
+          height: 250,
+        },
+      ],
+      adminclass: 'image-grid-class-custom',
+    },
+    {
+      acf_fc_layout: 'content_grid',
+      title: 'Optional title in Content Grid',
+      subtitle: 'Some subtitle',
+      items: [
+        {
+          content:
+            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia recusandae suscipit! Ut minus aspernatur, dignissimos labore sit assumenda provident cumque aut quisquam quasi facere unde ullam voluptas inventore quam.</p>\n',
+        },
+        {
+          content:
+            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia recusandae suscipit! Ut minus aspernatur, dignissimos labore sit assumenda provident cumque aut quisquam quasi facere unde ullam voluptas inventore quam.</p>\n',
+        },
+        {
+          content:
+            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia recusandae suscipit! Ut minus aspernatur, dignissimos labore sit assumenda provident cumque aut quisquam quasi facere unde ullam voluptas inventore quam.</p>\n',
+        },
+        {
+          content:
+            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia recusandae suscipit! Ut minus aspernatur, dignissimos labore sit assumenda provident cumque aut quisquam quasi facere unde ullam voluptas inventore quam.</p>\n',
+        },
+        {
+          content:
+            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia recusandae suscipit! Ut minus aspernatur, dignissimos labore sit assumenda provident cumque aut quisquam quasi facere unde ullam voluptas inventore quam.</p>\n',
+        },
+      ],
+      adminclass: 'custom-class',
+    },
   ],
 }
+
+
 ```
 
 ## WordPress ACF JSON Flexible Content
@@ -1104,6 +1299,205 @@ export const data = {
           ],
           "min": "",
           "max": ""
+        },
+        "layout_5b734131ef61a": {
+          "key": "layout_5b734131ef61a",
+          "name": "content_grid",
+          "label": "Content Grid",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_5b7341c94300c",
+              "label": "Title",
+              "name": "title",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b7341cb4300d",
+              "label": "Subtitle",
+              "name": "subtitle",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b734138ef61b",
+              "label": "Items",
+              "name": "items",
+              "type": "repeater",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "collapsed": "",
+              "min": 0,
+              "max": 0,
+              "layout": "",
+              "button_label": "Add Item",
+              "sub_fields": [
+                {
+                  "key": "field_5b734166ef61c",
+                  "label": "Content",
+                  "name": "content",
+                  "type": "wysiwyg",
+                  "instructions": "",
+                  "required": 1,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "tabs": "all",
+                  "toolbar": "full",
+                  "media_upload": 1,
+                  "delay": 0
+                }
+              ]
+            },
+            {
+              "key": "field_5b7341d04300e",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_5b73416def61d": {
+          "key": "layout_5b73416def61d",
+          "name": "image_grid",
+          "label": "Image Grid",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_5b7341e24300f",
+              "label": "Title",
+              "name": "title",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b7341e443010",
+              "label": "Subtitle",
+              "name": "subtitle",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b73416def61e",
+              "label": "Images",
+              "name": "items",
+              "type": "gallery",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "min": "",
+              "max": "",
+              "insert": "append",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": ""
+            },
+            {
+              "key": "field_5b7341e843011",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            }
+          ],
+          "min": "",
+          "max": ""
         }
       },
       "button_label": "Add Flexible Block",
@@ -1156,8 +1550,6 @@ export const data = {
   "hide_on_screen": ["the_content"],
   "active": 1,
   "description": "",
-  "modified": 1534181780
+  "modified": 1534280348
 }
-
-
 ```

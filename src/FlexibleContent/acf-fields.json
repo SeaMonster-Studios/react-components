@@ -846,6 +846,205 @@
           ],
           "min": "",
           "max": ""
+        },
+        "layout_5b734131ef61a": {
+          "key": "layout_5b734131ef61a",
+          "name": "content_grid",
+          "label": "Content Grid",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_5b7341c94300c",
+              "label": "Title",
+              "name": "title",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b7341cb4300d",
+              "label": "Subtitle",
+              "name": "subtitle",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b734138ef61b",
+              "label": "Items",
+              "name": "items",
+              "type": "repeater",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "collapsed": "",
+              "min": 0,
+              "max": 0,
+              "layout": "",
+              "button_label": "Add Item",
+              "sub_fields": [
+                {
+                  "key": "field_5b734166ef61c",
+                  "label": "Content",
+                  "name": "content",
+                  "type": "wysiwyg",
+                  "instructions": "",
+                  "required": 1,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "tabs": "all",
+                  "toolbar": "full",
+                  "media_upload": 1,
+                  "delay": 0
+                }
+              ]
+            },
+            {
+              "key": "field_5b7341d04300e",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_5b73416def61d": {
+          "key": "layout_5b73416def61d",
+          "name": "image_grid",
+          "label": "Image Grid",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_5b7341e24300f",
+              "label": "Title",
+              "name": "title",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b7341e443010",
+              "label": "Subtitle",
+              "name": "subtitle",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_5b73416def61e",
+              "label": "Images",
+              "name": "items",
+              "type": "gallery",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "min": "",
+              "max": "",
+              "insert": "append",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": ""
+            },
+            {
+              "key": "field_5b7341e843011",
+              "label": "CSS Class",
+              "name": "adminclass",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            }
+          ],
+          "min": "",
+          "max": ""
         }
       },
       "button_label": "Add Flexible Block",
@@ -898,5 +1097,5 @@
   "hide_on_screen": ["the_content"],
   "active": 1,
   "description": "",
-  "modified": 1534181780
+  "modified": 1534280348
 }

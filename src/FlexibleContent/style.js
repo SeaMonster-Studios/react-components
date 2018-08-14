@@ -1,33 +1,45 @@
 import styled, { css } from 'react-emotion'
 
+const common = (columnSpace, rowSpace) => css`
+  overflow: hidden;
+  padding-top: ${rowSpace}px;
+  padding-bottom: ${rowSpace}px;
+
+  .title,
+  .subtitle {
+    text-align: center;
+  }
+
+  .column .title,
+  .column .subtitle {
+    text-align: initial;
+  }
+
+  .title {
+    margin-bottom: ${columnSpace}px;
+
+    + .subtitle {
+      margin-bottom: ${columnSpace}px;
+      margin-top: -${columnSpace}px;
+    }
+  }
+
+  .caption,
+  figcaption {
+    font-size: 14px;
+    line-height: 1.125;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+`
+
 export const Wrapper = styled('section')`
   ${props => css`
-    overflow: hidden;
-    padding-top: ${props.rowSpace}px;
-    padding-bottom: ${props.rowSpace}px;
-
-    .title,
-    .subtitle {
-      text-align: center;
-    }
-
-    .column .title,
-    .column .subtitle {
-      text-align: initial;
-    }
-
-    .title {
-      margin-bottom: ${props.columnSpace}px;
-
-      + .subtitle {
-        margin-bottom: ${props.columnSpace}px;
-        margin-top: -${props.columnSpace}px;
-      }
-    }
-
-    img {
-      max-width: 100%;
-    }
+    ${common(props.rowSpace, props.columnSpace)};
 
     img {
       &:not(.thumbnail) {
@@ -72,13 +84,6 @@ export const Wrapper = styled('section')`
 
     .row + .row {
       margin-top: ${props.columnSpace}px;
-    }
-
-    .caption {
-      font-size: 14px;
-      line-height: 1.125;
-      background-color: rgb(0, 0, 0, 0.05);
-      padding: 10px;
     }
 
     .column-grid {
@@ -181,6 +186,58 @@ export const Wrapper = styled('section')`
 
       .bp-align-center {
         align-items: center;
+      }
+    }
+  `};
+`
+
+export const Grid123Wrapper = styled('section')`
+  ${props => css`
+    ${common(props.rowSpace, props.columnSpace)};
+
+    .grid-item:not(:last-of-type) {
+      margin-bottom: ${props.columnSpace}px;
+    }
+
+    @media (min-width: ${props.breakpoint1}px) {
+      .grid {
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+      }
+
+      .grid-item-type-image img {
+        width: 100%;
+        display: block;
+      }
+
+      .grid-item {
+        width: calc(50% - 15px);
+        margin: 0;
+
+        &:nth-of-type(odd) {
+          margin-right: 30px;
+        }
+      }
+    }
+
+    @media (min-width: ${props.breakpoint2}px) {
+      .grid {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .grid-item {
+        width: calc(33.333333333% - 20px);
+
+        &:nth-of-type(odd) {
+          margin-right: 0;
+        }
+
+        &:nth-of-type(3n - 2),
+        &:nth-of-type(3n - 1) {
+          margin-right: 30px;
+        }
       }
     }
   `};

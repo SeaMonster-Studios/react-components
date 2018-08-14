@@ -10,6 +10,7 @@ import { TwoColumnsImageLeads } from './TwoColumnsImageLeads'
 import { TwoColumnsStacked } from './TwoColumnsStacked'
 import { TwoColumnsThreeColumnList } from './TwoColumnsThreeColumnList'
 import { OneColumnVideo } from './OneColumnVideo'
+import { Grid123 } from './Grid123'
 import { wrapIframesInResponsiveVideo } from '../../utils/wrap-iframe-in-responsive-video'
 
 const layoutTypes = [
@@ -20,6 +21,8 @@ const layoutTypes = [
   'two_columns_three_column_list',
   'two_columns_image_grid',
   'video',
+  'content_grid',
+  'image_grid',
 ]
 
 class FlexibleContentItem extends React.Component {
@@ -31,6 +34,10 @@ class FlexibleContentItem extends React.Component {
   render() {
     const { layout, layoutProps } = this.props
     switch (layout) {
+      case 'content_grid':
+        return <Grid123 {...layoutProps} type="cms-content" />
+      case 'image_grid':
+        return <Grid123 {...layoutProps} type="cms-images" />
       case 'one_column':
         return <OneColumn {...layoutProps} />
       case 'two_columns':
@@ -150,6 +157,8 @@ FlexibleContent.propTypes = {
   'two_columns_three_column_list',
   'two_columns_image_grid',
   'video',
+  'content_grid',
+  'image_grid'
 ]*/
   itemsProps: PropTypes.arrayOf(
     PropTypes.shape({

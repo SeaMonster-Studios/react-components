@@ -21,6 +21,7 @@ export {
   TwoColumnsThreeColumnList,
 } from './FlexibleContent/TwoColumnsThreeColumnList'
 export { OneColumnVideo } from './FlexibleContent/OneColumnVideo'
+export { Grid123 } from './FlexibleContent/Grid123'
 export { LazyLoadImage } from './LazyLoadImage'
 
 // Utils
