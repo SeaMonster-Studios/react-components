@@ -1,6 +1,6 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Reusable React components by SeaMonster Studios",
   "main": "./index.js",
   "repository": {
@@ -53,6 +53,7 @@
     "react-emotion": "^9.2.5",
     "react-lazy-load-image-component": "^1.1.1",
     "react-spring": "^5.6.1",
+    "react-stonecutter": "^0.3.9",
     "reset-css": "^4.0.1",
     "sanitize-html": "^1.18.4"
   },

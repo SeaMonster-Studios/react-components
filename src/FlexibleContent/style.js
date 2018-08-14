@@ -57,6 +57,19 @@ export const Wrapper = styled('section')`
       margin-top: ${props.columnSpace}px;
     }
 
+    .row,
+    .column,
+    .column-single {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: ${props.columnSpace}px;
+      }
+    }
+
     .row + .row {
       margin-top: ${props.columnSpace}px;
     }
