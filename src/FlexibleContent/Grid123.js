@@ -81,7 +81,19 @@ Grid123.propTypes = {
    * a react component (type === component),
    * an image object { url, alt, caption? } (type === cms-images),
    * or markup string (type === cms-content) */
-  items: PropTypes.object.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.shape({
+        content: PropTypes.string.isRequired,
+      }).isRequired,
+      PropTypes.node.isRequired,
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
+        caption: PropTypes.string,
+      }),
+    ]),
+  ).isRequired,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   type: PropTypes.oneOf(['cms-content', 'cms-images', 'component']),

@@ -1,6 +1,6 @@
 {
   "name": "@seamonster-studios/react-components",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Reusable React components by SeaMonster Studios",
   "main": "./index.js",
   "repository": {
