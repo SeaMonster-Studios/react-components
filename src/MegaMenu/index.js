@@ -106,14 +106,12 @@ export class MegaMenu extends React.Component {
     return (
       <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
         {styles => (
-          <animated.nav
-            ref={this.containerRef}
-            style={{
-              ...styles,
-              ...style,
-            }}
-            className={
-              css`
+          <animated.div style={styles}>
+            <nav
+              ref={this.containerRef}
+              style={style}
+              className={
+                css`
               display: flex,
               align-items: center;
               justify-content: center;
@@ -217,35 +215,36 @@ export class MegaMenu extends React.Component {
                 &, &:active, &:hover { text-decoration: none; }
               }
             ` +
-              ' ' +
-              className
-            }
-          >
-            <Trail
-              from={{ opacity: 0 }}
-              to={{ opacity: 1 }}
-              keys={items.map(item => item.id)}
+                ' ' +
+                className
+              }
             >
-              {items.map(item => styles => (
-                <span
-                  className={`lvl1-wrapper is-${
-                    this.state.subMenuStatuses[item.id]
-                      ? 'active'
-                      : 'not-active'
-                  }`}
-                  style={styles}
-                >
-                  <Item
-                    buttonWithArrow={buttonWithArrow}
-                    item={item}
-                    key={item.id}
-                    toggleSubMenu={this.toggleSubMenu}
-                    subMenuActive={this.state.subMenuStatuses[item.id]}
-                  />
-                </span>
-              ))}
-            </Trail>
-          </animated.nav>
+              <Trail
+                from={{ opacity: 0 }}
+                to={{ opacity: 1 }}
+                keys={items.map(item => item.id)}
+              >
+                {items.map(item => styles => (
+                  <span
+                    className={`lvl1-wrapper is-${
+                      this.state.subMenuStatuses[item.id]
+                        ? 'active'
+                        : 'not-active'
+                    }`}
+                    style={styles}
+                  >
+                    <Item
+                      buttonWithArrow={buttonWithArrow}
+                      item={item}
+                      key={item.id}
+                      toggleSubMenu={this.toggleSubMenu}
+                      subMenuActive={this.state.subMenuStatuses[item.id]}
+                    />
+                  </span>
+                ))}
+              </Trail>
+            </nav>
+          </animated.div>
         )}
       </Spring>
     )
