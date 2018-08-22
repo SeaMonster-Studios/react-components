@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 //
 import { ArrowDown } from '../Icons'
 import { SubItemsList } from './SubItemsList'
+import { setHtml } from '../../utils'
 
 export const Item = ({
   item,
@@ -13,9 +14,11 @@ export const Item = ({
   if (item.url && item.items && item.items.length) {
     return (
       <Fragment>
-        <a href={item.url} className="item-has-children">
-          {item.title}
-        </a>
+        <a
+          href={item.url}
+          className="item-has-children"
+          {...setHtml(item.title)}
+        />
         <button onClick={() => toggleSubMenu(item.id)}>
           <ArrowDown />
         </button>
@@ -31,7 +34,7 @@ export const Item = ({
           }`}
           onClick={() => toggleSubMenu(item.id)}
         >
-          <span>{item.title}</span>
+          <span {...setHtml(item.title)} />
           {buttonWithArrow && <ArrowDown />}
         </button>
         {subMenuActive && <SubItemsList items={item.items} />}

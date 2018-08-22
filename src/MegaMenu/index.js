@@ -124,7 +124,14 @@ export class MegaMenu extends React.Component {
               keys={items.map(item => item.id)}
             >
               {items.map(item => styles => (
-                <span className="lvl1-wrapper" style={styles}>
+                <span
+                  className={`lvl1-wrapper is-${
+                    this.state.subMenuStatuses[item.id]
+                      ? 'active'
+                      : 'not-active'
+                  }`}
+                  style={styles}
+                >
                   <Item
                     buttonWithArrow={buttonWithArrow}
                     item={item}

@@ -2,6 +2,7 @@ import React from 'react'
 import { Spring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 //
+import { setHtml } from '../../utils'
 
 export const SubItemsList = ({ items }) => {
   return (
@@ -48,7 +49,7 @@ const SubItem = ({ item }) => {
         <ul>
           {items.map(subItem => (
             <li key={subItem.id}>
-              <a href={subItem.url}>{subItem.title}</a>
+              <a href={subItem.url} {...setHtml(subItem.title)} />
             </li>
           ))}
         </ul>
@@ -61,7 +62,7 @@ const SubItem = ({ item }) => {
         <ul>
           {items.map(subItem => (
             <li key={subItem.id}>
-              <a href={subItem.url}>{subItem.title}</a>
+              <a href={subItem.url} {...setHtml(subItem.title)} />
             </li>
           ))}
         </ul>
@@ -70,9 +71,7 @@ const SubItem = ({ item }) => {
   } else {
     return (
       <div className="subitem-section link-only">
-        <a href={url} className="section-title">
-          {title}
-        </a>
+        <a href={url} className="section-title" {...setHtml(title)} />
       </div>
     )
   }
