@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Spring, animated, Trail } from 'react-spring'
+import { Spring, Trail, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 //
-import { Wrapper } from './style'
 import { Item } from './Item'
-
-const AnimatedWrapper = animated(Wrapper)
+import { css } from 'emotion'
 
 export class MegaMenu extends React.Component {
   static propTypes = {
@@ -108,15 +106,120 @@ export class MegaMenu extends React.Component {
     return (
       <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
         {styles => (
-          <AnimatedWrapper
+          <animated.nav
             ref={this.containerRef}
             style={{
               ...styles,
               ...style,
             }}
-            className={className}
-            xSpacing={this.props.xSpacing}
-            ySpacing={this.props.ySpacing}
+            className={
+              css`
+              display: flex,
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              width: 100%;
+              zIndex: 999;
+
+              .lvl1-wrapper {
+                display: flex;
+                align-items: center;
+                line-height: 1;
+
+                > a, > button {
+                  font-size: 16px;
+                  padding: ${`${this.props.ySpacing}px ${
+                    this.props.xSpacing
+                  }px`};
+
+                  &, &:hover, &:focus {
+                    text-decoration: none;
+                  }
+                }
+
+                a.item-has-children {
+                  padding-right: 0;
+                }
+              }
+
+              button {
+                border: none;
+                cursor: pointer;
+                background: rgb(0,0,0,0);
+
+                &.button-has-icon {
+                  padding: 0;
+                  display: flex;
+                  align-items: center;
+
+                  > span {
+                    padding: ${`${this.props.xSpacing}px 0 ${
+                      this.props.xSpacing
+                    }px ${this.props.xSpacing}px`};
+                  }
+
+                  svg {
+                    margin: ${this.props.xSpacing} + 'px';
+                  }
+                }
+
+                &:focus { outline: none; }
+              }
+
+              .subitem {
+                position: absolute;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                width: calc(100%- 60px);
+                bottom: 0;
+                transform: translateY(100%);
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding ${this.props.ySpacing +
+                  'px ' +
+                  this.props.ySpacing * 2 +
+                  'px 0'};
+              }
+
+              .subitem-inner {
+                display: flex;
+                flex-wrap: wrap;
+              }
+
+              .subitem-section {
+                display: flex;
+                flex-direction: column;
+                padding: ${'0 ' +
+                  this.props.xSpacing +
+                  'px ' +
+                  this.props.ySpacing +
+                  'px'};
+                text-align: left;
+
+                ul {
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  flex-direction: column;
+                  font-size: 16px;
+
+                  a {
+                    &, &:hover, &:focus { text-decoration: none; }
+                  }
+                }
+              }
+
+              .section-title {
+                font-size: 18px;
+                margin-bottom: ${this.props.ySpacing};
+
+                &, &:active, &:hover { text-decoration: none; }
+              }
+            ` +
+              ' ' +
+              className
+            }
           >
             <Trail
               from={{ opacity: 0 }}
@@ -142,7 +245,7 @@ export class MegaMenu extends React.Component {
                 </span>
               ))}
             </Trail>
-          </AnimatedWrapper>
+          </animated.nav>
         )}
       </Spring>
     )
