@@ -117,7 +117,7 @@ export class MegaMenu extends React.Component {
               justify-content: center;
               position: relative;
               width: 100%;
-              zIndex: 999;
+              z-index: 999;
 
               .lvl1-wrapper {
                 display: flex;

@@ -66,7 +66,6 @@ export class OverlayMenuItem extends React.Component {
                 {subMenuActive && (
                   <div className="subitems-container">
                     <Trail
-                      // $FlowFixMe
                       keys={item.items.map(item => item.id)}
                       from={{ opacity: 0 }}
                       to={{ opacity: 1 }}
@@ -76,6 +75,22 @@ export class OverlayMenuItem extends React.Component {
                           <a href={subItem.url} className="subitem">
                             {subItem.title}
                           </a>
+                          <Trail
+                            keys={item.items.map(item => item.id)}
+                            from={{ opacity: 0 }}
+                            to={{ opacity: 1 }}
+                          >
+                            {subItem.items.map(subsubItem => styles => (
+                              <div
+                                style={styles}
+                                className="subsubitem-wrapper"
+                              >
+                                <a href={subsubItem.url} className="subsubitem">
+                                  {subsubItem.title}
+                                </a>
+                              </div>
+                            ))}
+                          </Trail>
                         </div>
                       ))}
                     </Trail>
