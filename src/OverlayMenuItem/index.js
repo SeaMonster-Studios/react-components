@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { animated, Trail } from 'react-spring'
 //
 import { ArrowDown } from '../Icons/ArrowDown'
+import { setHtml } from '../../utils'
 
 export class OverlayMenuItem extends React.Component {
   static propTypes = {
@@ -48,9 +49,8 @@ export class OverlayMenuItem extends React.Component {
             <a
               href={item.url}
               className={`item ${subMenuActive ? 'is-active' : ''}`}
-            >
-              {item.title}
-            </a>
+              {...setHtml(item.title)}
+            />
           )}
 
           {item.items &&
@@ -72,9 +72,11 @@ export class OverlayMenuItem extends React.Component {
                     >
                       {item.items.map(subItem => styles => (
                         <div style={styles} className="subitem-wrapper">
-                          <a href={subItem.url} className="subitem">
-                            {subItem.title}
-                          </a>
+                          <a
+                            href={subItem.url}
+                            className="subitem"
+                            {...setHtml(subItem.title)}
+                          />
                           <Trail
                             keys={item.items.map(item => item.id)}
                             from={{ opacity: 0 }}
@@ -85,9 +87,11 @@ export class OverlayMenuItem extends React.Component {
                                 style={styles}
                                 className="subsubitem-wrapper"
                               >
-                                <a href={subsubItem.url} className="subsubitem">
-                                  {subsubItem.title}
-                                </a>
+                                <a
+                                  href={subsubItem.url}
+                                  className="subsubitem"
+                                  {...setHtml(subsubItem.title)}
+                                />
                               </div>
                             ))}
                           </Trail>
