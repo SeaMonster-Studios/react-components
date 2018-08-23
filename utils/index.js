@@ -1,5 +1,8 @@
 import sanitizeHtml from 'sanitize-html'
 
+export const callAll = (...fns) => (...args) =>
+  fns.forEach(fn => fn && fn(...args))
+
 export function setHtml(content) {
   return {
     dangerouslySetInnerHTML: {
