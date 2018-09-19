@@ -1,9 +1,3 @@
-/**
- * @name Button
- * @example
- *  <Button baseColor='rgb(255,127,104)' textColor='rgb(255,255,255)' hoverStyle='ripple'>Contact Us</Button>
- */
-
 import * as React from "react"
 import PropTypes from "prop-types"
 import styled, { keyframes, css } from "react-emotion"
