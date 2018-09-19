@@ -1,7 +1,7 @@
 import React from "react"
 import { render, cleanup } from "react-testing-library"
 import { ErrorBoundary } from "../components/ErrorBoundary"
-import { clickEvent } from "../../utils/testing"
+import { clickEvent } from "../utils/testing"
 
 const originalEnv = process.env.NODE_ENV
 

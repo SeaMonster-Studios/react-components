@@ -1,7 +1,7 @@
 import * as React from "react"
 import { render, cleanup, fireEvent } from "react-testing-library"
 import { Input} from "../components/Input";
-import * as io from "../../utils/io"
+import * as io from "../utils/io"
 
 const inputTypes = [
   "color",

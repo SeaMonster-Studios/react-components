@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Wrapper } from "./FlexibleContent"
-import { setHtml } from "../../utils/index"
-import { LazyLoadImage } from "../../LazyLoadImage/index"
+import { setHtml } from "../utils/index"
+import { LazyLoadImage} from "./LazyLoadImage";
 
 export const TwoColumnsStacked = ({
   className,

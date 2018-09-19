@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Wrapper } from "./FlexibleContent"
-import { setHtml } from "../../utils/index"
+import { setHtml } from "../utils/index"
 
 export const OneColumn = ({
   className,

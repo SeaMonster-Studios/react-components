@@ -2,9 +2,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { animated, Trail } from "react-spring"
-//
-import { ArrowDown } from "../components/Icons/ArrowDown"
-import { setHtml } from "../../utils/index"
+import { setHtml } from "../utils/index"
+import { ArrowDown } from "./Icons";
 
 export class OverlayMenuItem extends React.Component {
   static propTypes = {

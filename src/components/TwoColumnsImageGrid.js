@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { setHtml } from "../../utils/index"
-import { LazyLoadImage } from "../../LazyLoadImage/index"
+import { setHtml } from "../utils/index"
+import { LazyLoadImage} from "./LazyLoadImage";
 import { Wrapper } from "./FlexibleContent"
 
 export const TwoColumnsImageGrid = ({

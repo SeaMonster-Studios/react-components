@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { setHtml } from "../../utils/index"
+import { setHtml } from "../utils/index"
 import { LazyLoadImage } from "./LazyLoadImage"
 import { Play as PlayIcon } from "./Icons"
 import styled, { injectGlobal } from "react-emotion"

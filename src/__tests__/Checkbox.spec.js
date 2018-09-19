@@ -1,6 +1,6 @@
 import React from "react"
 import { render, cleanup } from "react-testing-library"
-import { changeEvent } from "../../utils/testing"
+import { changeEvent } from "../utils/testing"
 import { Checkbox } from "../components/Checkbox"
 import { Check, Close } from "../components/Icons"
 import { css } from "emotion"

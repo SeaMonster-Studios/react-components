@@ -1,6 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { readUploadedFileAsText } from "../../utils/io"
+import { readUploadedFileAsText } from "../utils/io"
 import styled from "react-emotion"
 
 export const Wrapper = styled("span")`
