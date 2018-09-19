@@ -112,7 +112,7 @@ const ReportForm = () =>
 const Form = () => (
   <p data-testid="component-error-boundary-form">
     This error has been reported to our development team. Please{" "}
-    <button onClick={() => Sentry.showReportDialog()}>
+    <button onClick={() => Sentry.lastEventId() && Sentry.showReportDialog()}>
       click here to fill out a report.
     </button>
   </p>
