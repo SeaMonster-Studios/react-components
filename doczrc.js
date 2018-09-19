@@ -1,5 +1,12 @@
-import { babel } from 'docz-plugin-babel6'
+import { css } from 'docz-plugin-css'
 
 export default {
-  plugins: [babel()],
+  title: 'React Components',
+  protocol: 'http',
+  port: 5775,
+  plugins: [
+    css({
+      preprocessor: 'postcss',
+    })
+  ],
 }
