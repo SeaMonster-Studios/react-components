@@ -25,6 +25,7 @@ export class Container extends React.PureComponent<tContainer> {
     return (
       <div
         style={this.props.style || {}}
+        data-testid="component-container"
         className={
           css`
             padding-left: ${this.props.spacing.horizontal.sm};
@@ -100,6 +101,7 @@ export class Section extends React.PureComponent<tSection> {
       >
         {(styles) => (
           <animated.section
+            data-testid="component-section"
             style={{ ...(this.props.style || {}), ...styles }}
             className={
               css`

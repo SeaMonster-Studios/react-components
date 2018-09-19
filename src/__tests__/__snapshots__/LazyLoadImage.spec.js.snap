@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LazyLoadImage Component Test Renders 1`] = `
+<div>
+  <img
+    alt="react-logo"
+    data-testid="component-lazy-load-image"
+    src="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png"
+  />
+</div>
+`;

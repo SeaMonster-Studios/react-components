@@ -4,7 +4,7 @@ import { LazyLoadImage as LibLazyLoadImage } from "react-lazy-load-image-compone
 
 export const LazyLoadImage = (props) => {
   if (typeof document !== "undefined") {
-    return <LibLazyLoadImage {...props} />
+    return <LibLazyLoadImage {...props} data-testid={'component-lazy-load-image'}/>
   } else {
     return <img {...props} />
   }

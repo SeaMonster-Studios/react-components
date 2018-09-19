@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StickyBar Component Test Renders 1`] = `
+<div>
+  <div
+    class="css-nk1i1k e1j13ioj0"
+    data-testid="component-sticky-bar"
+  >
+    content goes here...
+  </div>
+</div>
+`;

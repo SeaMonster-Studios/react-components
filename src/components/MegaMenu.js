@@ -106,13 +106,13 @@ export class MegaMenu extends React.Component {
     return (
       <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
         {(styles) => (
-          <animated.div style={styles}>
+          <animated.div style={styles} data-testid={"mega-menu"}>
             <nav
               ref={this.containerRef}
               style={style}
               className={
                 css`
-              display: flex,
+              display: flex;
               align-items: center;
               justify-content: center;
               position: relative;
@@ -221,6 +221,12 @@ export class MegaMenu extends React.Component {
             >
               {items.map((item) => (
                 <span
+                  key={item.id}
+                  data-testid={
+                    item.items && item.items.length > 0
+                      ? "item-wrapper-with-items"
+                      : "item-wrapper-without-items"
+                  }
                   className={`lvl1-wrapper is-${
                     this.state.subMenuStatuses[item.id]
                       ? "active"
@@ -258,7 +264,10 @@ export const MegaMenuItem = ({
           className="item-has-children"
           {...setHtml(item.title)}
         />
-        <button onClick={() => toggleSubMenu(item.id)}>
+        <button
+          onClick={() => toggleSubMenu(item.id)}
+          data-testid="sub-menu-toggle"
+        >
           <ArrowDown />
         </button>
         {subMenuActive && <MegaMenuSubItemsList items={item.items} />}
@@ -268,6 +277,7 @@ export const MegaMenuItem = ({
     return (
       <Fragment>
         <button
+          data-testid="sub-menu-toggle"
           className={`item-has-children ${
             buttonWithArrow ? "button-has-icon" : ""
           }`}
@@ -294,7 +304,11 @@ export const MegaMenuSubItemsList = ({ items }) => {
   return (
     <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
       {(styles) => (
-        <animated.div style={styles} className="subitem">
+        <animated.div
+          style={styles}
+          className="subitem"
+          data-testid="mega-menu-list"
+        >
           <div className="subitem-inner">
             {items.map((item) => (
               <SubItem item={item} key={item.id} />
@@ -328,7 +342,7 @@ const SubItem = ({ item }) => {
   const { title, url, items } = item
   if (url && items && items.length) {
     return (
-      <div className="subitem-section link-and-items">
+      <div className="subitem-section link-and-items" data-testid="subitem-with-items">
         <a href={url} className="section-title">
           {title}
         </a>
@@ -343,7 +357,7 @@ const SubItem = ({ item }) => {
     )
   } else if (!url && items && items.length) {
     return (
-      <div className="subitem-section items-only">
+      <div className="subitem-section items-only" data-testid="subitem-with-items">
         <span className="section-title">{title}</span>
         <ul>
           {items.map((subItem) => (
@@ -356,7 +370,7 @@ const SubItem = ({ item }) => {
     )
   } else {
     return (
-      <div className="subitem-section link-only">
+      <div className="subitem-section link-only" data-testid="subitem-without-items">
         <a href={url} className="section-title" {...setHtml(title)} />
       </div>
     )

@@ -120,11 +120,16 @@ export class Video extends React.Component {
         {this.state.videoIsPlaying ? (
           <div
             className="video-responsive"
+            data-testid="video"
             ref={this.videoWrapperRef}
             {...setHtml(props.video)}
           />
         ) : (
-          <button className="video-toggle" onClick={this.playVideo}>
+          <button
+            className="video-toggle"
+            onClick={this.playVideo}
+            data-testid="trigger-button"
+          >
             <div className="toggle-bg" />
             <LazyLoadImage src={props.thumbnail} className="thumbnail" />
             <div className="icon-wrapper">
