@@ -1,36 +1,33 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Wrapper } from "./FlexibleContent"
-import { setHtml } from "../utils/index"
+import { Wrapper } from "./"
+import { Video } from "../Video"
 
-export const OneColumn = ({
-  className,
-  adminclass,
-  style,
+export const OneColumnVideo = ({
   columnSpace,
   rowSpace,
   breakpoint,
-  content,
+  className,
+  adminclass,
+  style,
+  videoProps,
+  ...props
 }) => (
   <Wrapper
     {...{
-      "data-testid": "component-one-column",
-      className: `column-single ${className} ${adminclass}`,
-      style,
+      "data-testid": "component-one-column-video",
+      className: `${className} ${adminclass}`,
       columnSpace,
+      style,
       breakpoint,
       rowSpace,
     }}
   >
-    {typeof content === "string" ? (
-      <div {...setHtml(content)} />
-    ) : (
-      <div>{content()}</div>
-    )}
+    <Video {...props} {...videoProps} />
   </Wrapper>
 )
 
-OneColumn.propTypes = {
+OneColumnVideo.propTypes = {
   /** Vertical spacing base */
   rowSpace: PropTypes.number,
   /** Horizontal spacing base */
@@ -41,15 +38,27 @@ OneColumn.propTypes = {
   /** Secondary className. With WP/ACF, comes from the admin when content is created  */
   adminclass: PropTypes.string,
   style: PropTypes.object,
-  /** HTML string (typically from a CMS), or a render prop */
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+  video: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  caption: PropTypes.string,
+  videoProps: PropTypes.shape({
+    className: PropTypes.string,
+    style: PropTypes.object,
+  }),
 }
 
-OneColumn.defaultProps = {
+OneColumnVideo.defaultProps = {
   className: "",
   adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,
   breakpoint: 992,
+  videoProps: {
+    className: "",
+    style: {
+      maxWidth: "720px",
+      margin: "0 auto",
+    },
+  },
 }

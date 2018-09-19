@@ -1,8 +1,61 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Grid123Wrapper } from "./FlexibleContent"
-import { setHtml } from "../utils/index"
-import { ImageFit } from "./ImageFit"
+import { setHtml } from "../../utils/index"
+import { commonStyles } from "./index";
+import { ImageFit } from "../ImageFit"
+import styled, {css} from "react-emotion";
+
+export const Grid123Wrapper = styled("section")`
+  ${(props) => css`
+    ${commonStyles(props.rowSpace, props.columnSpace)};
+
+    .grid-item:not(:last-of-type) {
+      margin-bottom: ${props.columnSpace}px;
+    }
+
+    @media (min-width: ${props.breakpoint1}px) {
+      .grid {
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+      }
+
+      .grid-item-type-image img {
+        width: 100%;
+        display: block;
+      }
+
+      .grid-item {
+        width: calc(50% - 15px);
+        margin: 0;
+
+        &:nth-of-type(odd) {
+          margin-right: 30px;
+        }
+      }
+    }
+
+    @media (min-width: ${props.breakpoint2}px) {
+      .grid {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .grid-item {
+        width: calc(33.333333333% - 20px);
+
+        &:nth-of-type(odd) {
+          margin-right: 0;
+        }
+
+        &:nth-of-type(3n - 2),
+        &:nth-of-type(3n - 1) {
+          margin-right: 30px;
+        }
+      }
+    }
+  `};
+`
 
 export const Grid123 = ({
   className,

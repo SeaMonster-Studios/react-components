@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { setHtml } from "../utils/index"
-import { Wrapper } from "./FlexibleContent"
+import { setHtml } from "../../utils/index"
+import { Wrapper } from "./"
 
 export const TwoColumnsThreeColumnList = ({
   columnSpace,

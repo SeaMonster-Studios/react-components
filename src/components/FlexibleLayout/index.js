@@ -10,11 +10,10 @@ import { TwoColumnsStacked } from "./TwoColumnsStacked"
 import { TwoColumnsThreeColumnList } from "./TwoColumnsThreeColumnList"
 import { OneColumnVideo } from "./OneColumnVideo"
 import { Grid123 } from "./Grid123"
-import { wrapIframesInResponsiveVideo } from "../utils/index"
-
+import { wrapIframesInResponsiveVideo } from "../../utils/index"
 import styled, { css } from "react-emotion"
 
-const common = (rowSpace, columnSpace) => css`
+export const commonStyles = (rowSpace, columnSpace) => css`
   overflow: hidden;
   padding-top: ${rowSpace}px;
   padding-bottom: ${rowSpace}px;
@@ -123,7 +122,7 @@ const common = (rowSpace, columnSpace) => css`
 
 export const Wrapper = styled("section")`
   ${(props) => css`
-    ${common(props.rowSpace, props.columnSpace)};
+    ${commonStyles(props.rowSpace, props.columnSpace)};
 
     @media (min-width: ${props.breakpoint}px) {
       .column:not(:first-of-type) {
@@ -204,58 +203,6 @@ export const Wrapper = styled("section")`
   `};
 `
 
-export const Grid123Wrapper = styled("section")`
-  ${(props) => css`
-    ${common(props.rowSpace, props.columnSpace)};
-
-    .grid-item:not(:last-of-type) {
-      margin-bottom: ${props.columnSpace}px;
-    }
-
-    @media (min-width: ${props.breakpoint1}px) {
-      .grid {
-        display: flex;
-        width: 100%;
-        flex-flow: row wrap;
-      }
-
-      .grid-item-type-image img {
-        width: 100%;
-        display: block;
-      }
-
-      .grid-item {
-        width: calc(50% - 15px);
-        margin: 0;
-
-        &:nth-of-type(odd) {
-          margin-right: 30px;
-        }
-      }
-    }
-
-    @media (min-width: ${props.breakpoint2}px) {
-      .grid {
-        display: flex;
-        flex-flow: row wrap;
-      }
-
-      .grid-item {
-        width: calc(33.333333333% - 20px);
-
-        &:nth-of-type(odd) {
-          margin-right: 0;
-        }
-
-        &:nth-of-type(3n - 2),
-        &:nth-of-type(3n - 1) {
-          margin-right: 30px;
-        }
-      }
-    }
-  `};
-`
-
 const layoutTypes = [
   "one_column",
   "two_columns",
@@ -268,7 +215,7 @@ const layoutTypes = [
   "image_grid",
 ]
 
-class FlexibleContentItem extends React.Component {
+class FlexibleLayoutItem extends React.Component {
   static propTypes = {
     layout: PropTypes.oneOf(layoutTypes).isRequired,
     content: PropTypes.object,
@@ -301,7 +248,7 @@ class FlexibleContentItem extends React.Component {
   }
 }
 
-const AnimatedFlexibleContentItem = animated(FlexibleContentItem)
+const AnimatedFlexibleLayoutItem = animated(FlexibleLayoutItem)
 
 function getitemsProps(itemsProps, layout, animatedStyles) {
   const item = itemsProps.filter((item) => item.item === layout)[0]
@@ -337,7 +284,7 @@ function getitemsProps(itemsProps, layout, animatedStyles) {
   return { ...item, style: animatedStyles }
 }
 
-export function FlexibleContent({
+function FlexibleLayout({
   className,
   items,
   style,
@@ -359,7 +306,7 @@ export function FlexibleContent({
           keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
         >
           {items.map(({ acf_fc_layout: layout, ...content }) => (styles) => (
-            <AnimatedFlexibleContentItem
+            <AnimatedFlexibleLayoutItem
               {...{
                 layout,
                 layoutProps: {
@@ -378,7 +325,7 @@ export function FlexibleContent({
   )
 }
 
-FlexibleContent.propTypes = {
+FlexibleLayout.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       acf_fc_layout: PropTypes.oneOf(layoutTypes).isRequired,
@@ -412,7 +359,7 @@ FlexibleContent.propTypes = {
   ),
 }
 
-FlexibleContent.defaultProps = {
+FlexibleLayout.defaultProps = {
   className: "",
   adminclass: "",
   style: {},
@@ -424,4 +371,16 @@ FlexibleContent.defaultProps = {
     className: "",
     style: {},
   })),
+}
+
+export {
+  FlexibleLayout,
+  Grid123,
+  OneColumn,
+  OneColumnVideo,
+  TwoColumns,
+  TwoColumnsImageGrid,
+  TwoColumnsImageLeads,
+  TwoColumnsStacked,
+  TwoColumnsThreeColumnList,
 }

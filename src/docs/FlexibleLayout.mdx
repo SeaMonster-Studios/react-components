@@ -1,33 +1,35 @@
 ---
-name: FlexibleContent
+name: FlexibleLayout
 ---
 
 import { Playground, PropsTable } from 'docz'
-import { FlexibleContent } from '../components/FlexibleContent'
-import { OneColumn } from '../components/OneColumn'
-import { OneColumnVideo } from '../components/OneColumnVideo'
-import { TwoColumns } from '../components/TwoColumns'
-import { TwoColumnsImageGrid } from '../components/TwoColumnsImageGrid'
-import { TwoColumnsImageLeads } from '../components/TwoColumnsImageLeads'
-import { TwoColumnsStacked } from '../components/TwoColumnsStacked'
-import { TwoColumnsThreeColumnList } from '../components/TwoColumnsThreeColumnList'
-import { Grid123 } from '../components/Grid123'
+import { 
+  FlexibleLayout,
+  OneColumn,
+  OneColumnVideo,
+  TwoColumns,
+  TwoColumnsImageGrid,
+  TwoColumnsImageLeads,
+  TwoColumnsStacked,
+  TwoColumnsThreeColumnList,
+  Grid123
+} from '../components/FlexibleLayout'
 import { data } from './flexible-content-example-data.js'
 
-# FlexibleContent
+# FlexibleLayout
 
-<PropsTable of={FlexibleContent} />
+<PropsTable of={FlexibleLayout} />
 
 
 ## Notes:
-- You can use the FlexibleContent component and pass it an array of items, or you can use each layout component agnostic of the FlexibleContent component.
-  - When using FlexibleContent, you can also pass a layout-specific className or style prop via the `itemsProps` prop. It is an array of objects (one for each [layout type](#layout-types)). Example:
+- You can use the FlexibleLayout component and pass it an array of items, or you can use each layout component agnostic of the FlexibleLayout component.
+  - When using FlexibleLayout, you can also pass a layout-specific className or style prop via the `itemsProps` prop. It is an array of objects (one for each [layout type](#layout-types)). Example:
   ```javascript
     item: 'type',
     className: '',
     style: {},
   ```
-- [Here](#wordpress-acf-json-flexible-content) is the WordPress Advanced Custom Fields (acf-json) data structure that can be used in your own WordPress project along with this FlexibleContent component.
+- [Here](#wordpress-acf-json-flexible-content) is the WordPress Advanced Custom Fields (acf-json) data structure that can be used in your own WordPress project along with this FlexibleLayout component.
 - LazyLoadImage(s) don't currently work in Docz.
 - All layouts do have default props (Docz just doesn't show them b/c they are a shared object).
 
@@ -60,7 +62,7 @@ import { data } from './flexible-content-example-data.js'
 ## Usage with example data
 
 <Playground>
-  <FlexibleContent items={data.flexible_content} />
+  <FlexibleLayout items={data.flexible_content} />
 </Playground>
 
 

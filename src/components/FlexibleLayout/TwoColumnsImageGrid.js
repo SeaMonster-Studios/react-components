@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { setHtml } from "../utils/index"
-import { LazyLoadImage } from "./LazyLoadImage"
-import { Wrapper } from "./FlexibleContent"
+import { setHtml } from "../../utils/index"
+import { LazyLoadImage } from "../LazyLoadImage"
+import { Wrapper } from "./"
 
 export const TwoColumnsImageGrid = ({
   rowSpace,
