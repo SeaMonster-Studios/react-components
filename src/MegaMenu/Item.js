@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 //
-import { ArrowDown } from "../Icons"
+import { ArrowDown } from "../components/Icons"
 import { SubItemsList } from "./SubItemsList"
 import { setHtml } from "../../utils"
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 //
 import { setHtml } from "../../utils"
 import { LazyLoadImage } from "../LazyLoadImage"
-import { Play as PlayIcon } from "../Icons"
+import { Play as PlayIcon } from "../components/Icons"
 import { Wrapper } from "./style"
 
 export class Video extends React.Component {
