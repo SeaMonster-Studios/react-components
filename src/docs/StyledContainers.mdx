@@ -1,0 +1,161 @@
+---
+name: StyledContainers
+---
+
+import { Playground, PropsTable } from 'docz'
+import { Container, Section } from '../components/StyledContainers'
+import _ from 'lodash'
+import faker from 'faker'
+import { createMediaQueries } from '../utils/styles.js'
+
+# StyledContainers
+
+## Container
+<PropsTable of={Container} />
+
+### Standard Usage
+Keep in mind that the media queries are responding to the viewport, not the Docz Playground wrapper (you'll have to resize the browser window to see spacing changes).
+<Playground>
+  <Container
+    spacing={{
+      horizontal: {
+        sm: '15px',
+        md: '30px',
+        lg: '50px',
+      }
+    }}
+    mediaQueries={createMediaQueries({
+      md: 992,
+      lg: 1200,
+    })}>
+    {_.times(6, () => (
+      <p>{faker.lorem.paragraph()}</p>
+    ))}
+  </Container>
+</Playground>
+
+## Section
+<PropsTable of={Section} />
+
+<Playground>
+  <Section
+    position='odd'
+    spacing={{
+      vertical: {
+        sm: '20px',
+        md: '45px',
+        lg: '60px',
+      }
+    }}
+    mediaQueries={createMediaQueries({
+      md: 992,
+      lg: 1200,
+    })}>
+    {_.times(2, () => (
+      <p>{faker.lorem.paragraph()}</p>
+    ))}
+  </Section>
+  <Section
+    position='even'
+    spacing={{
+      vertical: {
+        sm: '20px',
+        md: '45px',
+        lg: '60px',
+      }
+    }}
+    mediaQueries={createMediaQueries({
+      md: 992,
+      lg: 1200,
+    })}>
+    {_.times(2, () => (
+      <p>{faker.lorem.paragraph()}</p>
+    ))}
+  </Section>
+  <Section
+    position='odd'
+    spacing={{
+      vertical: {
+        sm: '20px',
+        md: '45px',
+        lg: '60px',
+      }
+    }}
+    mediaQueries={createMediaQueries({
+      md: 992,
+      lg: 1200,
+    })}>
+    {_.times(2, () => (
+      <p>{faker.lorem.paragraph()}</p>
+    ))}
+  </Section>
+</Playground>
+
+## Container + Sections
+
+<Playground>
+  <Container
+    spacing={{
+      horizontal: {
+        sm: '15px',
+        md: '30px',
+        lg: '50px',
+      }
+    }}
+    mediaQueries={createMediaQueries({
+      md: 992,
+      lg: 1200,
+    })}>
+    <Section
+      position='odd'
+      spacing={{
+        vertical: {
+          sm: '20px',
+          md: '45px',
+          lg: '60px',
+        }
+      }}
+      mediaQueries={createMediaQueries({
+        md: 992,
+        lg: 1200,
+      })}>
+      {_.times(2, () => (
+        <p>{faker.lorem.paragraph()}</p>
+      ))}
+    </Section>
+    <Section
+      position='even'
+      spacing={{
+        vertical: {
+          sm: '20px',
+          md: '45px',
+          lg: '60px',
+        }
+      }}
+      mediaQueries={createMediaQueries({
+        md: 992,
+        lg: 1200,
+      })}>
+      {_.times(2, () => (
+        <p>{faker.lorem.paragraph()}</p>
+      ))}
+    </Section>
+    <Section
+      position='odd'
+      spacing={{
+        vertical: {
+          sm: '20px',
+          md: '45px',
+          lg: '60px',
+        }
+      }}
+      mediaQueries={createMediaQueries({
+        md: 992,
+        lg: 1200,
+      })}>
+      {_.times(2, () => (
+        <p>{faker.lorem.paragraph()}</p>
+      ))}
+    </Section>
+  </Container>
+</Playground>
