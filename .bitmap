@@ -265,7 +265,7 @@
         "mainFile": "src/components/Video.js",
         "origin": "AUTHORED"
     },
-    "seamonster-studios.react/components/button@1.0.2": {
+    "seamonster-studios.react/components/button@1.0.3": {
         "files": [
             {
                 "relativePath": "src/components/Button.js",
