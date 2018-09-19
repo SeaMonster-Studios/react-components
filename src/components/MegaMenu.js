@@ -1,10 +1,10 @@
-import React from "react"
+import React, { Fragment } from "react"
 import ReactDOM from "react-dom"
-import { Spring, Trail, animated } from "react-spring"
+import { Spring, animated } from "react-spring"
 import PropTypes from "prop-types"
-//
-import { Item } from "./Item"
 import { css } from "emotion"
+import { ArrowDown } from "./Icons";
+import { setHtml } from "../../utils/index"
 
 export class MegaMenu extends React.Component {
   static propTypes = {
@@ -227,7 +227,7 @@ export class MegaMenu extends React.Component {
                       : "not-active"
                   }`}
                 >
-                  <Item
+                  <MegaMenuItem
                     buttonWithArrow={buttonWithArrow}
                     item={item}
                     key={item.id}
@@ -242,4 +242,139 @@ export class MegaMenu extends React.Component {
       </Spring>
     )
   }
+}
+
+export const MegaMenuItem = ({
+  item,
+  subMenuActive,
+  toggleSubMenu,
+  buttonWithArrow,
+}) => {
+  if (item.url && item.items && item.items.length) {
+    return (
+      <Fragment>
+        <a
+          href={item.url}
+          className="item-has-children"
+          {...setHtml(item.title)}
+        />
+        <button onClick={() => toggleSubMenu(item.id)}>
+          <ArrowDown />
+        </button>
+        {subMenuActive && <MegaMenuSubItemsList items={item.items} />}
+      </Fragment>
+    )
+  } else if (!item.url && item.items && item.items.length) {
+    return (
+      <Fragment>
+        <button
+          className={`item-has-children ${
+            buttonWithArrow ? "button-has-icon" : ""
+          }`}
+          onClick={() => toggleSubMenu(item.id)}
+        >
+          <span {...setHtml(item.title)} />
+          {buttonWithArrow && <ArrowDown />}
+        </button>
+        {subMenuActive && <MegaMenuSubItemsList items={item.items} />}
+      </Fragment>
+    )
+  } else {
+    return <a href={item.url}>{item.title}</a>
+  }
+}
+
+MegaMenuItem.propTypes = {
+  toggleSubMenu: PropTypes.func,
+  subMenuActive: PropTypes.bool.isRequired,
+  buttonWithArrow: PropTypes.bool.isRequired,
+}
+
+export const MegaMenuSubItemsList = ({ items }) => {
+  return (
+    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
+      {(styles) => (
+        <animated.div style={styles} className="subitem">
+          <div className="subitem-inner">
+            {items.map((item) => (
+              <SubItem item={item} key={item.id} />
+            ))}
+          </div>
+        </animated.div>
+      )}
+    </Spring>
+  )
+}
+
+MegaMenuSubItemsList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+            .isRequired,
+          title: PropTypes.string.isRequired,
+          url: PropTypes.string.isRequired,
+        }).isRequired,
+      ),
+    }).isRequired,
+  ).isRequired,
+}
+
+const SubItem = ({ item }) => {
+  const { title, url, items } = item
+  if (url && items && items.length) {
+    return (
+      <div className="subitem-section link-and-items">
+        <a href={url} className="section-title">
+          {title}
+        </a>
+        <ul>
+          {items.map((subItem) => (
+            <li key={subItem.id}>
+              <a href={subItem.url} {...setHtml(subItem.title)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  } else if (!url && items && items.length) {
+    return (
+      <div className="subitem-section items-only">
+        <span className="section-title">{title}</span>
+        <ul>
+          {items.map((subItem) => (
+            <li key={subItem.id}>
+              <a href={subItem.url} {...setHtml(subItem.title)} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  } else {
+    return (
+      <div className="subitem-section link-only">
+        <a href={url} className="section-title" {...setHtml(title)} />
+      </div>
+    )
+  }
+}
+
+SubItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
+        title: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+      }).isRequired,
+    ),
+  }).isRequired,
 }

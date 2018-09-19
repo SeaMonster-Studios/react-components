@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Wrapper } from "./FlexibleContent"
-import { Video } from "../../Video/index"
+import { Video } from "../Video/index"
 
 export const OneColumnVideo = ({
   columnSpace,

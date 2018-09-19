@@ -1,14 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { setHtml } from "../../../utils/index"
 import { Wrapper } from "./FlexibleContent"
-import { ImageFit } from "../ImageFit"
+import { setHtml } from "../../utils/index"
 
-export const TwoColumnsImageLeads = ({
-  columnSpace,
+export const TwoColumns = ({
   className,
   adminclass,
   style,
+  columnSpace,
   rowSpace,
   breakpoint,
   one_content,
@@ -18,13 +17,12 @@ export const TwoColumnsImageLeads = ({
   return (
     <Wrapper
       {...{
-        "data-testid": "component-two-columns-image-leads",
+        "data-testid": "component-two-columns",
         columnSpace,
+        breakpoint,
         className: `${className} ${adminclass}`,
         style,
-        breakpoint,
         rowSpace,
-        minHeight: props.one_image.height + "px",
       }}
     >
       {props.title && <h2 className="title" {...setHtml(props.title)} />}
@@ -33,37 +31,33 @@ export const TwoColumnsImageLeads = ({
           <h3 className="subtitle" {...setHtml(props.subtitle)} />
         )}
       <div className="row">
-        <div className="column column-half column-one-content">
-          <ImageFit
-            className="alignnone column-image column-lead"
-            src={props.one_image.url}
-            alt={props.one_image.alt}
+        {typeof one_content === "string" ? (
+          <div
+            className="column column-half column-one-content"
+            {...setHtml(one_content)}
           />
+        ) : (
+          <div className="column column-half column-one-content">
+            {one_content()}
+          </div>
+        )}
 
-          {typeof one_content === "string" ? (
-            <div {...setHtml(one_content)} />
-          ) : (
-            <div>{one_content()}</div>
-          )}
-        </div>
-        <div className="column column-half column-one-content">
-          <ImageFit
-            className="alignnone column-image column-lead"
-            src={props.two_image.url}
-            alt={props.two_image.alt}
+        {typeof two_content === "string" ? (
+          <div
+            className="column column-half column-two-content"
+            {...setHtml(two_content)}
           />
-          {typeof two_content === "string" ? (
-            <div {...setHtml(two_content)} />
-          ) : (
-            <div>{two_content()}</div>
-          )}
-        </div>
+        ) : (
+          <div className="column column-half column-two-content">
+            {two_content()}
+          </div>
+        )}
       </div>
     </Wrapper>
   )
 }
 
-TwoColumnsImageLeads.propTypes = {
+TwoColumns.propTypes = {
   /** Vertical spacing base */
   rowSpace: PropTypes.number,
   /** Horizontal spacing base */
@@ -82,18 +76,9 @@ TwoColumnsImageLeads.propTypes = {
   /** HTML string (typically from a CMS), or a render prop */
   two_content: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
     .isRequired,
-  one_image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-  }).isRequired,
-  two_image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }).isRequired,
 }
 
-TwoColumnsImageLeads.defaultProps = {
+TwoColumns.defaultProps = {
   className: "",
   adminclass: "",
   style: {},
