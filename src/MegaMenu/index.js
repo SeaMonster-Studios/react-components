@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Spring, Trail, animated } from 'react-spring'
-import PropTypes from 'prop-types'
+import React from "react"
+import ReactDOM from "react-dom"
+import { Spring, Trail, animated } from "react-spring"
+import PropTypes from "prop-types"
 //
-import { Item } from './Item'
-import { css } from 'emotion'
+import { Item } from "./Item"
+import { css } from "emotion"
 
 export class MegaMenu extends React.Component {
   static propTypes = {
@@ -46,7 +46,7 @@ export class MegaMenu extends React.Component {
     ySpacing: 15,
     buttonWithArrow: true,
     style: {},
-    className: '',
+    className: "",
   }
   containerRef
   state = {
@@ -67,24 +67,24 @@ export class MegaMenu extends React.Component {
     this.containerRef = React.createRef()
   }
   componentDidMount() {
-    if (typeof document !== 'undefined') {
-      document.addEventListener('click', this.outsideClickListener)
+    if (typeof document !== "undefined") {
+      document.addEventListener("click", this.outsideClickListener)
     }
   }
   componentWillUnmount() {
-    if (typeof document !== 'undefined') {
-      document.removeEventListener('click', this.outsideClickListener)
+    if (typeof document !== "undefined") {
+      document.removeEventListener("click", this.outsideClickListener)
     }
   }
-  outsideClickListener = event => {
+  outsideClickListener = (event) => {
     if (
       !ReactDOM.findDOMNode(this.containerRef.current).contains(event.target)
     ) {
-      this.toggleSubMenu('')
+      this.toggleSubMenu("")
     }
   }
-  toggleSubMenu = itemId => {
-    this.setState(prevState => {
+  toggleSubMenu = (itemId) => {
+    this.setState((prevState) => {
       const subMenuStatuses = {}
 
       for (let key in prevState.subMenuStatuses) {
@@ -105,7 +105,7 @@ export class MegaMenu extends React.Component {
     let { buttonWithArrow, style, className, items } = this.props
     return (
       <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
-        {styles => (
+        {(styles) => (
           <animated.div style={styles}>
             <nav
               ref={this.containerRef}
@@ -175,9 +175,9 @@ export class MegaMenu extends React.Component {
                 right: 0;
                 margin: auto;
                 padding ${this.props.ySpacing +
-                  'px ' +
+                  "px " +
                   this.props.ySpacing * 2 +
-                  'px 0'};
+                  "px 0"};
               }
 
               .subitem-inner {
@@ -188,11 +188,11 @@ export class MegaMenu extends React.Component {
               .subitem-section {
                 display: flex;
                 flex-direction: column;
-                padding: ${'0 ' +
+                padding: ${"0 " +
                   this.props.xSpacing +
-                  'px ' +
+                  "px " +
                   this.props.ySpacing +
-                  'px'};
+                  "px"};
                 text-align: left;
 
                 ul {
@@ -215,34 +215,27 @@ export class MegaMenu extends React.Component {
                 &, &:active, &:hover { text-decoration: none; }
               }
             ` +
-                ' ' +
+                " " +
                 className
               }
             >
-              <Trail
-                from={{ opacity: 0 }}
-                to={{ opacity: 1 }}
-                keys={items.map(item => item.id)}
-              >
-                {items.map(item => styles => (
-                  <span
-                    className={`lvl1-wrapper is-${
-                      this.state.subMenuStatuses[item.id]
-                        ? 'active'
-                        : 'not-active'
-                    }`}
-                    style={styles}
-                  >
-                    <Item
-                      buttonWithArrow={buttonWithArrow}
-                      item={item}
-                      key={item.id}
-                      toggleSubMenu={this.toggleSubMenu}
-                      subMenuActive={this.state.subMenuStatuses[item.id]}
-                    />
-                  </span>
-                ))}
-              </Trail>
+              {items.map((item) => (
+                <span
+                  className={`lvl1-wrapper is-${
+                    this.state.subMenuStatuses[item.id]
+                      ? "active"
+                      : "not-active"
+                  }`}
+                >
+                  <Item
+                    buttonWithArrow={buttonWithArrow}
+                    item={item}
+                    key={item.id}
+                    toggleSubMenu={this.toggleSubMenu}
+                    subMenuActive={this.state.subMenuStatuses[item.id]}
+                  />
+                </span>
+              ))}
             </nav>
           </animated.div>
         )}

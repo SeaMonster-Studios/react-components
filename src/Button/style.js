@@ -1,24 +1,25 @@
-import styled, { keyframes, css } from 'react-emotion'
+import styled, { keyframes, css } from "react-emotion"
 
-export const Wrapper = styled('button')`
+export const Wrapper = styled("button")`
   text-decoration: none;
-  border-color: ${props => props.borderColor};
+  border-color: ${(props) => props.borderColor};
   cursor: pointer;
 
-  ${props => colorProps(props)};
-  ${props => hoverProps(props)};
-  ${props => props.styles};
+  ${(props) => colorProps(props)};
+  ${(props) => hoverProps(props)};
+
+  ${(props) => props.styles};
 `
 
 function colorProps(props) {
   if (props.inverse) {
     switch (props.inverseStyle) {
-      case 'transparent':
+      case "transparent":
         return css`
           background-color: rgba(255, 255, 255, 0);
           color: ${props.baseColor};
         `
-      case 'default':
+      case "default":
       default:
         return css`
           background-color: ${props.textColor};
@@ -45,14 +46,14 @@ const rippleOut = keyframes`
 
 function hoverProps(props) {
   switch (props.hoverStyle) {
-    case 'ripple':
+    case "ripple":
       return css`
         transform-origin: center;
         position: relative;
         border-color: ${props.hoverBorderColor};
 
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           border: 1px solid;
           border-radius: inherit;
@@ -76,7 +77,7 @@ function hoverProps(props) {
           }
         }
       `
-    case 'default':
+    case "default":
     default:
       return css`
         text-decoration: none;

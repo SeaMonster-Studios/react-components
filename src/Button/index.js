@@ -1,9 +1,9 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
+import * as React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
+import { Wrapper } from "./style"
 
-export const Button = props => {
+export const Button = (props) => {
   const {
     baseColor,
     textColor,
@@ -22,7 +22,7 @@ export const Button = props => {
   return (
     <Wrapper
       {...{
-        'data-testid': 'component-button',
+        "data-testid": "component-button",
         baseColor,
         textColor,
         borderColor: borderColor || baseColor,
@@ -56,21 +56,21 @@ Button.propTypes = {
   /** Css color value. Defaults to hoverBaseColor || baseColor */
   hoverBorderColor: PropTypes.string,
   inverse: PropTypes.bool,
-  inverseStyle: PropTypes.oneOf(['default', 'transparent']),
-  hoverStyle: PropTypes.oneOf(['default', 'ripple']),
+  inverseStyle: PropTypes.oneOf(["default", "transparent"]),
+  hoverStyle: PropTypes.oneOf(["default", "ripple"]),
   className: PropTypes.string,
   style: PropTypes.object,
 }
 
 Button.defaultProps = {
   inverse: false,
-  inverseStyle: 'default',
-  hoverStyle: 'default',
-  textColor: 'rgb(255,255,255)',
-  baseColor: 'rgb(0,0,0)',
-  className: '',
+  inverseStyle: "default",
+  hoverStyle: "default",
+  textColor: "rgb(255,255,255)",
+  baseColor: "rgb(0,0,0)",
+  className: "",
   style: {
-    transition: 'all 0.5s ease',
-    padding: '10px 30px',
+    transition: "all 0.5s ease",
+    padding: "10px 30px",
   },
 }

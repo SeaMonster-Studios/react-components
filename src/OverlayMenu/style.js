@@ -1,9 +1,9 @@
-import { injectGlobal, css } from 'emotion'
+import { injectGlobal, css } from "emotion"
 
 injectGlobal({
-  'body.component-overlay-menu-active': {
-    maxHeight: '100vh',
-    overflow: 'hidden',
+  "body.component-overlay-menu-active": {
+    maxHeight: "100vh",
+    overflow: "hidden",
   },
 })
 

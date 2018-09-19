@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
+import { Wrapper } from "./style"
 
 export class StickyBar extends React.Component {
   static propTypes = {
@@ -24,10 +24,10 @@ export class StickyBar extends React.Component {
     forceSelfTopUpdate: PropTypes.bool,
   }
   static defaultProps = {
-    className: '',
-    activeEmotionClassName: '',
-    readyEmotionClassName: '',
-    hiddenEmotionClassName: '',
+    className: "",
+    activeEmotionClassName: "",
+    readyEmotionClassName: "",
+    hiddenEmotionClassName: "",
     style: {},
     activeStyle: {},
     readyStyle: {},
@@ -36,7 +36,7 @@ export class StickyBar extends React.Component {
   state = {
     scrollLast: 0,
     scrollTop: 0,
-    position: 'default',
+    position: "default",
     hasMoved: false,
     rendered: false,
     screenHeight: 0,
@@ -49,10 +49,10 @@ export class StickyBar extends React.Component {
       this.forceSelfTopUpdate = props.forceSelfTopUpdate
   }
   componentDidMount() {
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
       setTimeout(() => {
         // sometimes the browser will load the page half way and then continue to render content, which would cause the component to think the user is scrolling up. This would cause the sticky bar to hide, then show, then hide.
-        window.addEventListener('scroll', this.handleScroll, false)
+        window.addEventListener("scroll", this.handleScroll, false)
       }, 1000)
 
       let selfTop = this.ref.offsetTop
@@ -89,14 +89,14 @@ export class StickyBar extends React.Component {
     }
   }
   componentWillUnmount() {
-    if (typeof document !== 'undefined') {
-      window.removeEventListener('scroll', this.handleScroll, false)
+    if (typeof document !== "undefined") {
+      window.removeEventListener("scroll", this.handleScroll, false)
     }
   }
   handleScroll = () => {
-    console.log('I am scrolling')
-    if (typeof document !== 'undefined') {
-      this.setState(prevState => {
+    console.log("I am scrolling")
+    if (typeof document !== "undefined") {
+      this.setState((prevState) => {
         const scrollTop =
           (window.pageYOffset ||
             (document.documentElement
@@ -120,22 +120,22 @@ export class StickyBar extends React.Component {
 
         if (
           (pastAnimationThreshold && scrollingUp) ||
-          (position === 'active' && scrollingUpOrIdle)
+          (position === "active" && scrollingUpOrIdle)
           // (pastAnimationThreshold && position === 'active' && scrollingUpOrIdle)
         ) {
-          position = 'active'
+          position = "active"
           hasMoved = true
         } else if (
           (pastAnimationThreshold && !scrollingUp) ||
           (!pastAnimationThreshold && pastBottom && scrollingUp)
         ) {
-          position = 'ready'
+          position = "ready"
           hasMoved = true
         } else if (pastBottom && !scrollingUp) {
-          position = 'hidden'
+          position = "hidden"
           hasMoved = true
         } else {
-          position = 'default'
+          position = "default"
           hasMoved = false
         }
 
@@ -169,18 +169,18 @@ export class StickyBar extends React.Component {
             ...style,
             ...() => {
               switch (this.state.position) {
-                case 'active':
+                case "active":
                   return activeStyle
-                case 'ready':
+                case "ready":
                   return readyStyle
-                case 'hidden':
+                case "hidden":
                   return hiddenStyle
                 default:
                   return {}
               }
             },
           }}
-          innerRef={containerRef => {
+          innerRef={(containerRef) => {
             this.ref = containerRef
           }}
           {...{

@@ -1,8 +1,8 @@
-import styled from 'react-emotion'
+import styled from "react-emotion"
 //
-import '../../styles/responsive-video'
+import "../../styles/responsive-video"
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   .caption {
     font-size: 14px;
     line-height: 1.125;

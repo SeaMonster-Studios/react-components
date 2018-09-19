@@ -1,10 +1,10 @@
-import styled, { css } from 'react-emotion'
+import styled, { css } from "react-emotion"
 
 const borderWidth = 2
 
-export const Wrapper = styled('button')`
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
+export const Wrapper = styled("button")`
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
   border: ${borderWidth}px solid #000;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -14,8 +14,8 @@ export const Wrapper = styled('button')`
   justify-content: center;
 
   .input-wrapper {
-    min-width: ${props => props.size}px;
-    min-height: ${props => props.size}px;
+    min-width: ${(props) => props.size}px;
+    min-height: ${(props) => props.size}px;
     margin-top: -${borderWidth * 2}px;
     overflow: hidden;
     position: relative;
@@ -52,7 +52,7 @@ export const Wrapper = styled('button')`
     }
   }
 
-  ${props => props.styles} ${props => setActiveStyles(props)};
+  ${(props) => props.styles} ${(props) => setActiveStyles(props)};
 `
 
 function setActiveStyles(props) {
@@ -65,6 +65,6 @@ function setActiveStyles(props) {
   } else if (props.isChecked) {
     return props.activeStyles
   } else {
-    return ''
+    return ""
   }
 }

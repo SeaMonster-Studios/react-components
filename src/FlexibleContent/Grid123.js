@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Grid123Wrapper } from './style'
-import { setHtml } from '../../utils'
-import { ImageFit } from '../ImageFit'
+import { Grid123Wrapper } from "./style"
+import { setHtml } from "../../utils"
+import { ImageFit } from "../ImageFit"
 
 export const Grid123 = ({
   className,
@@ -19,7 +19,7 @@ export const Grid123 = ({
 }) => (
   <Grid123Wrapper
     {...{
-      'data-testid': 'component-grid123',
+      "data-testid": "component-grid123",
       className: `column-single ${className} ${adminclass}`,
       style,
       columnSpace,
@@ -36,17 +36,17 @@ export const Grid123 = ({
     <div className="grid">
       {items.map((item, i) => {
         switch (type) {
-          case 'component':
+          case "component":
             return (
               <div className="grid-item" key={i}>
                 {item}
               </div>
             )
-          case 'cms-content':
+          case "cms-content":
             return (
               <div className="grid-item" key={i} {...setHtml(item.content)} />
             )
-          case 'cms-images':
+          case "cms-images":
             return (
               <figure className="grid-item grid-item-type-image" key={i}>
                 <ImageFit src={item.url} alt={item.alt} />
@@ -96,16 +96,16 @@ Grid123.propTypes = {
   ).isRequired,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  type: PropTypes.oneOf(['cms-content', 'cms-images', 'component']),
+  type: PropTypes.oneOf(["cms-content", "cms-images", "component"]),
 }
 
 Grid123.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,
   breakpoint1: 792,
   breakpoint2: 1200,
-  type: 'component',
+  type: "component",
 }

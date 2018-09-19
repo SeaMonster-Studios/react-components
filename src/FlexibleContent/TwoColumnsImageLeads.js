@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { setHtml } from '../../utils'
-import { Wrapper } from './style'
-import { ImageFit } from '../ImageFit'
+import { setHtml } from "../../utils"
+import { Wrapper } from "./style"
+import { ImageFit } from "../ImageFit"
 
 export const TwoColumnsImageLeads = ({
   columnSpace,
@@ -19,13 +19,13 @@ export const TwoColumnsImageLeads = ({
   return (
     <Wrapper
       {...{
-        'data-testid': 'component-two-columns-image-leads',
+        "data-testid": "component-two-columns-image-leads",
         columnSpace,
         className: `${className} ${adminclass}`,
         style,
         breakpoint,
         rowSpace,
-        minHeight: props.one_image.height + 'px',
+        minHeight: props.one_image.height + "px",
       }}
     >
       {props.title && <h2 className="title" {...setHtml(props.title)} />}
@@ -41,7 +41,7 @@ export const TwoColumnsImageLeads = ({
             alt={props.one_image.alt}
           />
 
-          {typeof one_content === 'string' ? (
+          {typeof one_content === "string" ? (
             <div {...setHtml(one_content)} />
           ) : (
             <div>{one_content()}</div>
@@ -53,7 +53,7 @@ export const TwoColumnsImageLeads = ({
             src={props.two_image.url}
             alt={props.two_image.alt}
           />
-          {typeof two_content === 'string' ? (
+          {typeof two_content === "string" ? (
             <div {...setHtml(two_content)} />
           ) : (
             <div>{two_content()}</div>
@@ -95,8 +95,8 @@ TwoColumnsImageLeads.propTypes = {
 }
 
 TwoColumnsImageLeads.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,

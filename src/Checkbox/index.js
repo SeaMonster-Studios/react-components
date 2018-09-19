@@ -1,8 +1,8 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import { Transition } from 'react-spring'
+import * as React from "react"
+import PropTypes from "prop-types"
+import { Transition } from "react-spring"
 //
-import { Wrapper } from './style'
+import { Wrapper } from "./style"
 
 export class Checkbox extends React.Component {
   static propTypes = {
@@ -28,19 +28,19 @@ export class Checkbox extends React.Component {
   static defaultProps = {
     size: 30,
     style: {},
-    className: '',
-    activeStyles: '',
+    className: "",
+    activeStyles: "",
     iconsTransitionFrom: {
       opacity: 0,
-      transform: 'rotate(90deg)',
+      transform: "rotate(90deg)",
     },
     iconsTransitionEnter: {
       opacity: 1,
-      transform: 'rotate(0deg)',
+      transform: "rotate(0deg)",
     },
     iconsTransitionLeave: {
       opacity: 0,
-      transform: 'rotate(-90deg)',
+      transform: "rotate(-90deg)",
     },
   }
   state = {
@@ -54,11 +54,11 @@ export class Checkbox extends React.Component {
       (this.props.checked === undefined && this.props.onChange)
     )
       throw new Error(
-        'If you want to control the state of Checkbox, you must provide both the `checked` and `onChange` props.',
+        "If you want to control the state of Checkbox, you must provide both the `checked` and `onChange` props.",
       )
   }
   handleChange = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const checked = !prevState.checked
 
       if (this.props.checkedHasChanged) this.props.checkedHasChanged(checked)
@@ -89,7 +89,7 @@ export class Checkbox extends React.Component {
     return (
       <Wrapper
         {...{
-          'data-testid': 'component-checkbox',
+          "data-testid": "component-checkbox",
           className,
           isChecked,
           size,
@@ -120,8 +120,8 @@ export class Checkbox extends React.Component {
               leave={iconsTransitionLeave}
             >
               {isChecked
-                ? styles => buildIcon(OnIcon, styles, 'on-mark')
-                : styles => buildIcon(OffIcon, styles, 'off-mark')}
+                ? (styles) => buildIcon(OnIcon, styles, "on-mark")
+                : (styles) => buildIcon(OffIcon, styles, "off-mark")}
             </Transition>
           )}
       </Wrapper>

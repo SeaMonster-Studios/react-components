@@ -1,10 +1,10 @@
 // @flow
-import React from 'react'
-import PropTypes from 'prop-types'
-import { animated, Trail } from 'react-spring'
+import React from "react"
+import PropTypes from "prop-types"
+import { animated, Trail } from "react-spring"
 //
-import { ArrowDown } from '../Icons/ArrowDown'
-import { setHtml } from '../../utils'
+import { ArrowDown } from "../Icons/ArrowDown"
+import { setHtml } from "../../utils"
 
 export class OverlayMenuItem extends React.Component {
   static propTypes = {
@@ -29,7 +29,7 @@ export class OverlayMenuItem extends React.Component {
   }
   static defaultProps = {
     style: {},
-    className: '',
+    className: "",
   }
   toggleSubMenu = () => this.props.toggleSubMenu(this.props.item.id)
   render() {
@@ -38,17 +38,17 @@ export class OverlayMenuItem extends React.Component {
     return (
       <animated.div style={style} className={`item-container ${className}`}>
         <div className="item-wrapper">
-          {(!item.url || item.url === '#') && item.items.length > 0 ? (
+          {(!item.url || item.url === "#") && item.items.length > 0 ? (
             <button
               onClick={this.toggleSubMenu}
-              className={`item  ${subMenuActive ? 'is-active' : ''}`}
+              className={`item  ${subMenuActive ? "is-active" : ""}`}
             >
               {item.title}
             </button>
           ) : (
             <a
               href={item.url}
-              className={`item ${subMenuActive ? 'is-active' : ''}`}
+              className={`item ${subMenuActive ? "is-active" : ""}`}
               {...setHtml(item.title)}
             />
           )}
@@ -58,7 +58,7 @@ export class OverlayMenuItem extends React.Component {
               <React.Fragment>
                 <button
                   onClick={this.toggleSubMenu}
-                  className={`icon-wrapper ${subMenuActive ? 'is-active' : ''}`}
+                  className={`icon-wrapper ${subMenuActive ? "is-active" : ""}`}
                 >
                   <ArrowDown />
                 </button>
@@ -66,11 +66,11 @@ export class OverlayMenuItem extends React.Component {
                 {subMenuActive && (
                   <div className="subitems-container">
                     <Trail
-                      keys={item.items.map(item => item.id)}
+                      keys={item.items.map((item) => item.id)}
                       from={{ opacity: 0 }}
                       to={{ opacity: 1 }}
                     >
-                      {item.items.map(subItem => styles => (
+                      {item.items.map((subItem) => (styles) => (
                         <div style={styles} className="subitem-wrapper">
                           <a
                             href={subItem.url}
@@ -78,11 +78,11 @@ export class OverlayMenuItem extends React.Component {
                             {...setHtml(subItem.title)}
                           />
                           <Trail
-                            keys={item.items.map(item => item.id)}
+                            keys={item.items.map((item) => item.id)}
                             from={{ opacity: 0 }}
                             to={{ opacity: 1 }}
                           >
-                            {subItem.items.map(subsubItem => styles => (
+                            {subItem.items.map((subsubItem) => (styles) => (
                               <div
                                 style={styles}
                                 className="subsubitem-wrapper"

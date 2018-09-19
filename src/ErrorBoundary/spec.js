@@ -1,13 +1,13 @@
-import React from 'react'
-import { render, cleanup } from 'react-testing-library'
+import React from "react"
+import { render, cleanup } from "react-testing-library"
 //
-import { ErrorBoundary } from './'
-import { clickEvent } from '../../utils/testing/click-events'
+import { ErrorBoundary } from "./"
+import { clickEvent } from "../../utils/testing/click-events"
 
 const originalEnv = process.env.NODE_ENV
 
 beforeAll(() => {
-  process.env.NODE_ENV = 'production'
+  process.env.NODE_ENV = "production"
 })
 
 afterAll(() => {
@@ -16,14 +16,14 @@ afterAll(() => {
 
 afterEach(cleanup)
 
-describe('ErrorBoundary Component Test', () => {
-  it('Renders children when there is no app error', () => {
+describe("ErrorBoundary Component Test", () => {
+  it("Renders children when there is no app error", () => {
     const { child } = renderSetup()
 
     expect(child).toBeDefined()
   })
 
-  it('Renders error message and report form when there is an error', () => {
+  it("Renders error message and report form when there is an error", () => {
     /* eslint-disable-next-line no-console */
     console.error = () => undefined
 
@@ -37,8 +37,8 @@ describe('ErrorBoundary Component Test', () => {
       swallowError()
     }
 
-    expect(queryByTestId('component-error-boundary')).toBeDefined()
-    expect(queryByTestId('component-error-boundary-form')).toBeDefined()
+    expect(queryByTestId("component-error-boundary")).toBeDefined()
+    expect(queryByTestId("component-error-boundary-form")).toBeDefined()
     expect(container.firstChild).toMatchSnapshot()
   })
 })
@@ -55,7 +55,7 @@ function renderSetup() {
         <span
           data-testid="component-error-boundary-test-child"
           onClick={() =>
-            this.setState(prevState => ({
+            this.setState((prevState) => ({
               ...prevState,
               errorMe: true,
             }))
@@ -73,7 +73,7 @@ function renderSetup() {
       <Child />
     </ErrorBoundary>,
   )
-  const child = wrapper.getByTestId('component-error-boundary-test-child')
+  const child = wrapper.getByTestId("component-error-boundary-test-child")
 
   return {
     ...wrapper,

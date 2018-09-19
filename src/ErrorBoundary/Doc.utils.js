@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 export class Child extends React.Component {
   state = {
@@ -7,10 +7,10 @@ export class Child extends React.Component {
   render() {
     return (
       <span
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
         data-testid="component-error-boundary-test-child"
         onClick={() =>
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             ...prevState,
             errorMe: true,
           }))

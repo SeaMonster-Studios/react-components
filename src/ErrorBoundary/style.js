@@ -1,6 +1,6 @@
-import styled from 'react-emotion'
+import styled from "react-emotion"
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   background-color: #f8ebe6;
   box-shadow: inset 0 0 0 0 transparent, 0 0 0 1px rgba(63, 63, 68, 0.05),
     0 1px 3px 0 rgba(63, 63, 68, 0.15);

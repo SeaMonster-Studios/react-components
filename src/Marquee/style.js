@@ -1,6 +1,6 @@
-import styled, { css } from 'react-emotion'
+import styled, { css } from "react-emotion"
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   ${({ gradient, image, styles }) =>
     css`
       background: ${gradient}, url(${image});

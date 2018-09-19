@@ -1,10 +1,10 @@
 // @flow
-import React from 'react'
-import PropTypes from 'prop-types'
-import ReactDOM from 'react-dom'
-import { Spring, animated, Trail } from 'react-spring'
+import React from "react"
+import PropTypes from "prop-types"
+import ReactDOM from "react-dom"
+import { Spring, animated, Trail } from "react-spring"
 //
-import { defaultClassName } from './style'
+import { defaultClassName } from "./style"
 
 export class OverlayMenu extends React.Component {
   static propTypes = {
@@ -37,8 +37,8 @@ export class OverlayMenu extends React.Component {
     style: PropTypes.object,
   }
   static defaultProps = {
-    rootId: 'root',
-    className: '',
+    rootId: "root",
+    className: "",
     style: {},
   }
   root
@@ -62,33 +62,33 @@ export class OverlayMenu extends React.Component {
 
     this.state.activeSubMenus = this.activeSubMenusDefaultState
 
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
       this.root = document.getElementById(this.props.rootId)
-      this.mount = document.createElement('div')
+      this.mount = document.createElement("div")
     }
   }
   componentDidMount() {
-    if (typeof document !== 'undefined') {
-      window.addEventListener('scroll', this.handleScroll, false)
+    if (typeof document !== "undefined") {
+      window.addEventListener("scroll", this.handleScroll, false)
       this.root.appendChild(this.mount)
     }
   }
   componentWillUnmount() {
-    if (typeof document !== 'undefined') {
-      window.removeEventListener('scroll', this.handleScroll, false)
+    if (typeof document !== "undefined") {
+      window.removeEventListener("scroll", this.handleScroll, false)
       this.root.removeChild(this.mount)
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
       // menu was active, but is about to not be
       if (prevProps.isActive && !this.props.isActive) {
         window.scrollTo(0, prevState.prevScrollTop)
 
         document
-          .getElementsByTagName('body')[0]
-          .classList.remove('component-overlay-menu-active')
+          .getElementsByTagName("body")[0]
+          .classList.remove("component-overlay-menu-active")
         // menu wasn't active, but is about to be
       } else if (!prevProps.isActive && this.props.isActive) {
         //         window.scrollTo(0, this.state.scrollTop)
@@ -96,14 +96,14 @@ export class OverlayMenu extends React.Component {
         window.scrollTo(0, 0)
 
         document
-          .getElementsByTagName('body')[0]
-          .classList.add('component-overlay-menu-active')
+          .getElementsByTagName("body")[0]
+          .classList.add("component-overlay-menu-active")
       }
     }
   }
 
-  toggleSubItem = id => {
-    this.setState(prevState => {
+  toggleSubItem = (id) => {
+    this.setState((prevState) => {
       return {
         activeSubMenus: {
           ...this.activeSubMenusDefaultState,
@@ -114,7 +114,7 @@ export class OverlayMenu extends React.Component {
   }
 
   handleScroll = () => {
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
       const scrollTop =
         window.pageYOffset ||
         (document.documentElement ? document.documentElement.scrollTop : 0)
@@ -139,7 +139,7 @@ export class OverlayMenu extends React.Component {
     return isActive
       ? ReactDOM.createPortal(
           <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
-            {styles => (
+            {(styles) => (
               <animated.div
                 style={{ ...styles, ...style }}
                 className={`${defaultClassName} ${className}`}
@@ -149,10 +149,10 @@ export class OverlayMenu extends React.Component {
                   <Trail
                     from={{ opacity: 0 }}
                     to={{ opacity: 1 }}
-                    keys={items.map(item => item.id)}
+                    keys={items.map((item) => item.id)}
                     native
                   >
-                    {items.map(item => styles =>
+                    {items.map((item) => (styles) =>
                       itemRender({
                         item,
                         styles,

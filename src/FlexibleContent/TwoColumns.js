@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
-import { setHtml } from '../../utils'
+import { Wrapper } from "./style"
+import { setHtml } from "../../utils"
 
 export const TwoColumns = ({
   className,
@@ -18,7 +18,7 @@ export const TwoColumns = ({
   return (
     <Wrapper
       {...{
-        'data-testid': 'component-two-columns',
+        "data-testid": "component-two-columns",
         columnSpace,
         breakpoint,
         className: `${className} ${adminclass}`,
@@ -32,7 +32,7 @@ export const TwoColumns = ({
           <h3 className="subtitle" {...setHtml(props.subtitle)} />
         )}
       <div className="row">
-        {typeof one_content === 'string' ? (
+        {typeof one_content === "string" ? (
           <div
             className="column column-half column-one-content"
             {...setHtml(one_content)}
@@ -43,7 +43,7 @@ export const TwoColumns = ({
           </div>
         )}
 
-        {typeof two_content === 'string' ? (
+        {typeof two_content === "string" ? (
           <div
             className="column column-half column-two-content"
             {...setHtml(two_content)}
@@ -80,8 +80,8 @@ TwoColumns.propTypes = {
 }
 
 TwoColumns.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,

@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { setHtml } from '../../utils'
-import { LazyLoadImage } from '../LazyLoadImage'
-import { Play as PlayIcon } from '../Icons'
-import { Wrapper } from './style'
+import { setHtml } from "../../utils"
+import { LazyLoadImage } from "../LazyLoadImage"
+import { Play as PlayIcon } from "../Icons"
+import { Wrapper } from "./style"
 
 export class Video extends React.Component {
   state = {
@@ -17,10 +17,10 @@ export class Video extends React.Component {
       const videoWrapper = this.videoWrapperRef.current
 
       if (videoWrapper) {
-        const video = videoWrapper.querySelector('iframe')
+        const video = videoWrapper.querySelector("iframe")
 
         if (video) {
-          video.setAttribute('src', video.getAttribute('src') + '&autoplay=1')
+          video.setAttribute("src", video.getAttribute("src") + "&autoplay=1")
         }
       }
     }, 0)
@@ -30,7 +30,7 @@ export class Video extends React.Component {
     return (
       <Wrapper
         {...{
-          'data-testid': 'component-video',
+          "data-testid": "component-video",
           className,
           style,
         }}
@@ -66,9 +66,9 @@ Video.propTypes = {
 }
 
 Video.defaultProps = {
-  className: '',
+  className: "",
   style: {
-    maxWidth: '720px',
-    margin: '0 auto',
+    maxWidth: "720px",
+    margin: "0 auto",
   },
 }

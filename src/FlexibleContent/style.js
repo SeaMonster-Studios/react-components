@@ -1,4 +1,4 @@
-import styled, { css } from 'react-emotion'
+import styled, { css } from "react-emotion"
 
 const common = (rowSpace, columnSpace) => css`
   overflow: hidden;
@@ -107,8 +107,8 @@ const common = (rowSpace, columnSpace) => css`
   }
 `
 
-export const Wrapper = styled('section')`
-  ${props => css`
+export const Wrapper = styled("section")`
+  ${(props) => css`
     ${common(props.rowSpace, props.columnSpace)};
 
     @media (min-width: ${props.breakpoint}px) {
@@ -190,8 +190,8 @@ export const Wrapper = styled('section')`
   `};
 `
 
-export const Grid123Wrapper = styled('section')`
-  ${props => css`
+export const Grid123Wrapper = styled("section")`
+  ${(props) => css`
     ${common(props.rowSpace, props.columnSpace)};
 
     .grid-item:not(:last-of-type) {

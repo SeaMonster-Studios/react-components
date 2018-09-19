@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
-import { setHtml } from '../../utils'
-import { LazyLoadImage } from '../LazyLoadImage'
+import { Wrapper } from "./style"
+import { setHtml } from "../../utils"
+import { LazyLoadImage } from "../LazyLoadImage"
 
 export const TwoColumnsStacked = ({
   className,
@@ -18,7 +18,7 @@ export const TwoColumnsStacked = ({
 }) => (
   <Wrapper
     {...{
-      'data-testid': 'component-two-columns-stacked',
+      "data-testid": "component-two-columns-stacked",
       columnSpace,
       className: `${className} ${adminclass}`,
       style,
@@ -39,7 +39,7 @@ export const TwoColumnsStacked = ({
           alt={props.one_image.alt}
         />
       </div>
-      {typeof one_content === 'string' ? (
+      {typeof one_content === "string" ? (
         <div
           className="column column-half column-one-content"
           {...setHtml(one_content)}
@@ -58,7 +58,7 @@ export const TwoColumnsStacked = ({
           alt={props.two_image.alt}
         />
       </div>
-      {typeof one_content === 'string' ? (
+      {typeof one_content === "string" ? (
         <div
           className="column column-half column-two-content order-bp-1"
           {...setHtml(two_content)}
@@ -102,8 +102,8 @@ TwoColumnsStacked.propTypes = {
 }
 
 TwoColumnsStacked.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,

@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { setHtml } from '../../utils'
-import { Wrapper } from './style'
+import { setHtml } from "../../utils"
+import { Wrapper } from "./style"
 
 export const TwoColumnsThreeColumnList = ({
   columnSpace,
@@ -19,7 +19,7 @@ export const TwoColumnsThreeColumnList = ({
   return (
     <Wrapper
       {...{
-        'data-testid': 'component-two-columns-three-column-list',
+        "data-testid": "component-two-columns-three-column-list",
         className: `${className} ${adminclass}`,
         style,
         columnSpace,
@@ -34,14 +34,14 @@ export const TwoColumnsThreeColumnList = ({
         )}
       <div className="row">
         <div className="column column-half column-one-content">
-          {typeof column_one === 'string' ? (
+          {typeof column_one === "string" ? (
             <div {...setHtml(column_one)} />
           ) : (
             <div>{column_one()}</div>
           )}
         </div>
         <div className="column column-half column-two-content">
-          {typeof column_two === 'string' ? (
+          {typeof column_two === "string" ? (
             <div {...setHtml(column_two)} />
           ) : (
             <div>{column_two()}</div>
@@ -99,8 +99,8 @@ TwoColumnsThreeColumnList.propTypes = {
 }
 
 TwoColumnsThreeColumnList.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,

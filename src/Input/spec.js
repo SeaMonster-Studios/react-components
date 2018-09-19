@@ -1,70 +1,70 @@
-import * as React from 'react'
-import { render, cleanup, fireEvent } from 'react-testing-library'
+import * as React from "react"
+import { render, cleanup, fireEvent } from "react-testing-library"
 //
-import { Input } from './'
-import * as io from '../../utils/io'
+import { Input } from "./"
+import * as io from "../../utils/io"
 
 const inputTypes = [
-  'color',
-  'date',
-  'datetime',
-  'datetime-local',
-  'email',
-  'hidden',
-  'month',
-  'number',
-  'password',
-  'range',
-  'search',
-  'tel',
-  'text',
-  'time',
-  'url',
-  'week',
-  'button',
-  'submit',
-  'file',
+  "color",
+  "date",
+  "datetime",
+  "datetime-local",
+  "email",
+  "hidden",
+  "month",
+  "number",
+  "password",
+  "range",
+  "search",
+  "tel",
+  "text",
+  "time",
+  "url",
+  "week",
+  "button",
+  "submit",
+  "file",
 ]
 
 afterEach(cleanup)
 
-describe('Button Component Test', () => {
-  it('Renders', () => {
+describe("Button Component Test", () => {
+  it("Renders", () => {
     const { getByTestId } = renderSetup({
-      type: 'text',
+      type: "text",
     })
 
-    const input = getByTestId('component-input')
+    const input = getByTestId("component-input")
 
     expect(input).toBeDefined()
   })
 
-  it('Renders with all valid input types that are in the inputTypes.simple list', () => {
-    inputTypes.map(type => {
+  it("Renders with all valid input types that are in the inputTypes.simple list", () => {
+    inputTypes.map((type) => {
       cleanup()
 
-      if (type === 'button' || type === 'file' || type === 'submit') {
+      if (type === "button" || type === "file" || type === "submit") {
         const { getByTestId } = render(
           <Input type={type}>{({ input }) => <span>{input}</span>}</Input>,
         )
-        const input = getByTestId('component-input')
-        const wrapper = getByTestId('component-input-wrapper')
-        const label = getByTestId('component-input-label')
+        const input = getByTestId("component-input")
+        const wrapper = getByTestId("component-input-wrapper")
+        const label = getByTestId("component-input-label")
 
         expect(input.type).toBe(type)
         expect(wrapper).toBeDefined()
         expect(label).toBeDefined()
       } else {
         const { getByTestId } = render(<Input type={type} />)
-        const input = getByTestId('component-input')
+        const input = getByTestId("component-input")
         expect(input.type).toBe(type)
       }
     })
   })
 
-  it('Input with a type of `file` renders correctly, and provides the user with file contents onChange', async () => {
-    const fileContents = 'dummy content'
-    const file = new File([fileContents], 'example.png', { type: 'image/png' })
+  it("Input with a type of `file` renders correctly, and provides the user with file contents onChange", async () => {
+    const fileContents = "dummy content"
+    const file = new File([fileContents], "example.png", { type: "image/png" })
 
     io.readUploadedFileAsText = jest.fn(() => Promise.resolve(fileContents))
 
@@ -76,9 +76,9 @@ describe('Button Component Test', () => {
       </Input>,
     )
 
-    const input = getByTestId('component-input')
+    const input = getByTestId("component-input")
 
-    Object.defineProperty(input, 'files', {
+    Object.defineProperty(input, "files", {
       value: [file],
     })
 
@@ -91,7 +91,7 @@ describe('Button Component Test', () => {
       expect.any(Object), // the react ref, but not sure how to get that here yet.
       fileContents,
     )
-    expect(input.nodeName).toBe('INPUT')
+    expect(input.nodeName).toBe("INPUT")
   })
 })
 

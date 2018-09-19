@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment } from "react"
+import PropTypes from "prop-types"
 //
-import { ArrowDown } from '../Icons'
-import { SubItemsList } from './SubItemsList'
-import { setHtml } from '../../utils'
+import { ArrowDown } from "../Icons"
+import { SubItemsList } from "./SubItemsList"
+import { setHtml } from "../../utils"
 
 export const Item = ({
   item,
@@ -30,7 +30,7 @@ export const Item = ({
       <Fragment>
         <button
           className={`item-has-children ${
-            buttonWithArrow ? 'button-has-icon' : ''
+            buttonWithArrow ? "button-has-icon" : ""
           }`}
           onClick={() => toggleSubMenu(item.id)}
         >

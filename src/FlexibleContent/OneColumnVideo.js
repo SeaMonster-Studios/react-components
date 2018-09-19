@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
-import { Video } from '../Video'
+import { Wrapper } from "./style"
+import { Video } from "../Video"
 
 export const OneColumnVideo = ({
   columnSpace,
@@ -16,7 +16,7 @@ export const OneColumnVideo = ({
 }) => (
   <Wrapper
     {...{
-      'data-testid': 'component-one-column-video',
+      "data-testid": "component-one-column-video",
       className: `${className} ${adminclass}`,
       columnSpace,
       style,
@@ -49,17 +49,17 @@ OneColumnVideo.propTypes = {
 }
 
 OneColumnVideo.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,
   breakpoint: 992,
   videoProps: {
-    className: '',
+    className: "",
     style: {
-      maxWidth: '720px',
-      margin: '0 auto',
+      maxWidth: "720px",
+      margin: "0 auto",
     },
   },
 }

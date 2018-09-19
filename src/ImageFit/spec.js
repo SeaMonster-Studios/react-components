@@ -1,18 +1,18 @@
-import React from 'react'
-import { createSerializer } from 'jest-emotion'
-import * as emotion from 'emotion'
+import React from "react"
+import { createSerializer } from "jest-emotion"
+import * as emotion from "emotion"
 //
-import { render, cleanup } from 'react-testing-library'
-import { ImageFit } from './'
+import { render, cleanup } from "react-testing-library"
+import { ImageFit } from "./"
 
 afterEach(cleanup)
 
 expect.addSnapshotSerializer(createSerializer(emotion))
 
-describe('ImageFit', () => {
-  it('Renders with the correct object styles applied from `fit` and `position` props.', () => {
+describe("ImageFit", () => {
+  it("Renders with the correct object styles applied from `fit` and `position` props.", () => {
     const { getByTestId, props } = renderSetup()
-    const imageFit = getByTestId('component-image-fit')
+    const imageFit = getByTestId("component-image-fit")
 
     const renderedStyles = window.getComputedStyle(imageFit)
 
@@ -28,10 +28,10 @@ describe('ImageFit', () => {
 
 function renderSetup(overrides) {
   const props = {
-    src: 'https://picsum.photos/1200/500',
-    alt: 'something descriptive about my random image',
-    fit: 'cover',
-    position: 'top center',
+    src: "https://picsum.photos/1200/500",
+    alt: "something descriptive about my random image",
+    fit: "cover",
+    position: "top center",
 
     ...overrides,
   }

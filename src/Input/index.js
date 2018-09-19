@@ -1,8 +1,8 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
+import * as React from "react"
+import PropTypes from "prop-types"
 //
-import { readUploadedFileAsText } from '../../utils/io'
-import { Wrapper } from './style'
+import { readUploadedFileAsText } from "../../utils/io"
+import { Wrapper } from "./style"
 
 export class Input extends React.Component {
   static propTypes = {
@@ -27,25 +27,25 @@ export class Input extends React.Component {
       'file'
      */
     type: PropTypes.oneOf([
-      'color',
-      'date',
-      'datetime',
-      'datetime-local',
-      'email',
-      'hidden',
-      'month',
-      'number',
-      'password',
-      'range',
-      'search',
-      'tel',
-      'text',
-      'time',
-      'url',
-      'week',
-      'button',
-      'submit',
-      'file',
+      "color",
+      "date",
+      "datetime",
+      "datetime-local",
+      "email",
+      "hidden",
+      "month",
+      "number",
+      "password",
+      "range",
+      "search",
+      "tel",
+      "text",
+      "time",
+      "url",
+      "week",
+      "button",
+      "submit",
+      "file",
     ]),
     /** It's provided the new value each time it changes */
     valueHasChanged: PropTypes.func,
@@ -61,15 +61,15 @@ export class Input extends React.Component {
     label: PropTypes.string,
   }
   static defaultProps = {
-    type: 'text',
+    type: "text",
     style: {},
-    label: 'Upload',
-    className: '',
+    label: "Upload",
+    className: "",
   }
   state = {
-    value: '',
+    value: "",
   }
-  handleChange = async event => {
+  handleChange = async (event) => {
     event.persist()
     if (event.currentTarget instanceof HTMLInputElement) {
       this.setState({ value: event.currentTarget.value })
@@ -82,7 +82,7 @@ export class Input extends React.Component {
       }
     }
   }
-  handleFileChange = async event => {
+  handleFileChange = async (event) => {
     event.persist()
     if (
       event.currentTarget instanceof HTMLInputElement &&
@@ -96,7 +96,7 @@ export class Input extends React.Component {
           this.props.valueHasChanged(event.currentTarget, fileContents)
         } else {
           console.error(
-            'You must provide an valueHasChanged to retrieve file info for inputs with a type of `file`',
+            "You must provide an valueHasChanged to retrieve file info for inputs with a type of `file`",
           )
         }
       } catch (e) {
@@ -122,17 +122,17 @@ export class Input extends React.Component {
     }
 
     const innerProps = {
-      'data-testid': 'component-input',
+      "data-testid": "component-input",
       type,
       value: value || this.state.value,
       onChange:
-        type === 'file' ? this.handleFileChange : onChange || this.handleChange,
+        type === "file" ? this.handleFileChange : onChange || this.handleChange,
     }
 
     switch (type) {
-      case 'file':
-      case 'button':
-      case 'submit':
+      case "file":
+      case "button":
+      case "submit":
         if (children) {
           return children({
             input: (

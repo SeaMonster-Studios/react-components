@@ -1,16 +1,16 @@
-import React from 'react'
-import { Spring, animated } from 'react-spring'
-import PropTypes from 'prop-types'
+import React from "react"
+import { Spring, animated } from "react-spring"
+import PropTypes from "prop-types"
 //
-import { setHtml } from '../../utils'
+import { setHtml } from "../../utils"
 
 export const SubItemsList = ({ items }) => {
   return (
     <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} native>
-      {styles => (
+      {(styles) => (
         <animated.div style={styles} className="subitem">
           <div className="subitem-inner">
-            {items.map(item => (
+            {items.map((item) => (
               <SubItem item={item} key={item.id} />
             ))}
           </div>
@@ -47,7 +47,7 @@ const SubItem = ({ item }) => {
           {title}
         </a>
         <ul>
-          {items.map(subItem => (
+          {items.map((subItem) => (
             <li key={subItem.id}>
               <a href={subItem.url} {...setHtml(subItem.title)} />
             </li>
@@ -60,7 +60,7 @@ const SubItem = ({ item }) => {
       <div className="subitem-section items-only">
         <span className="section-title">{title}</span>
         <ul>
-          {items.map(subItem => (
+          {items.map((subItem) => (
             <li key={subItem.id}>
               <a href={subItem.url} {...setHtml(subItem.title)} />
             </li>

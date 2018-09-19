@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { setHtml } from '../../utils'
-import { LazyLoadImage } from '../LazyLoadImage'
-import { Wrapper } from './style'
+import { setHtml } from "../../utils"
+import { LazyLoadImage } from "../LazyLoadImage"
+import { Wrapper } from "./style"
 
 export const TwoColumnsImageGrid = ({
   rowSpace,
@@ -16,7 +16,7 @@ export const TwoColumnsImageGrid = ({
 }) => (
   <Wrapper
     {...{
-      'data-testid': 'component-two-columns-image-grid',
+      "data-testid": "component-two-columns-image-grid",
       rowSpace,
       columnSpace,
       breakpoint,
@@ -31,7 +31,7 @@ export const TwoColumnsImageGrid = ({
         <h3 className="subtitle" {...setHtml(props.subtitle)} />
       )}
     <div className="row bp-align-center">
-      {typeof props.content === 'string' ? (
+      {typeof props.content === "string" ? (
         <div
           className="column column-half column-content"
           {...setHtml(props.content)}
@@ -83,12 +83,12 @@ TwoColumnsImageGrid.propTypes = {
   ).isRequired,
   /** Custom render prop for each image in the grid (passes image object) */
   renderImage: PropTypes.func,
-  image_grid_position: PropTypes.oneOf(['right', 'left']),
+  image_grid_position: PropTypes.oneOf(["right", "left"]),
 }
 
 TwoColumnsImageGrid.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,

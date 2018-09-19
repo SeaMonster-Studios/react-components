@@ -1,18 +1,18 @@
-import React from 'react'
-import { createSerializer } from 'jest-emotion'
-import * as emotion from 'emotion'
+import React from "react"
+import { createSerializer } from "jest-emotion"
+import * as emotion from "emotion"
 //
-import { render, cleanup } from 'react-testing-library'
-import { Marquee } from './'
+import { render, cleanup } from "react-testing-library"
+import { Marquee } from "./"
 
 afterEach(cleanup)
 
 expect.addSnapshotSerializer(createSerializer(emotion))
 
-describe('Marquee', () => {
-  it('Renders', () => {
+describe("Marquee", () => {
+  it("Renders", () => {
     const { getByTestId } = renderSetup()
-    const Marquee = getByTestId('component-content-marquee')
+    const Marquee = getByTestId("component-content-marquee")
 
     expect(Marquee).toBeDefined()
     expect(Marquee).toMatchSnapshot()
@@ -21,7 +21,7 @@ describe('Marquee', () => {
 
 function renderSetup(overrides) {
   const props = {
-    image: 'https://picsum.photos/1200/500',
+    image: "https://picsum.photos/1200/500",
     styles: ``,
     ...overrides,
   }

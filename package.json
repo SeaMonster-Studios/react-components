@@ -31,6 +31,12 @@
       "<rootDir>/src/**/*.js"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "always"
+  },
   "peerDependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

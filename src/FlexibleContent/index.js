@@ -1,28 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Trail, animated } from 'react-spring'
-import Component from '@reactions/component'
+import React from "react"
+import PropTypes from "prop-types"
+import { Trail, animated } from "react-spring"
+import Component from "@reactions/component"
 //
-import { OneColumn } from './OneColumn'
-import { TwoColumns } from './TwoColumns'
-import { TwoColumnsImageGrid } from './TwoColumnsImageGrid'
-import { TwoColumnsImageLeads } from './TwoColumnsImageLeads'
-import { TwoColumnsStacked } from './TwoColumnsStacked'
-import { TwoColumnsThreeColumnList } from './TwoColumnsThreeColumnList'
-import { OneColumnVideo } from './OneColumnVideo'
-import { Grid123 } from './Grid123'
-import { wrapIframesInResponsiveVideo } from '../../utils/wrap-iframe-in-responsive-video'
+import { OneColumn } from "./OneColumn"
+import { TwoColumns } from "./TwoColumns"
+import { TwoColumnsImageGrid } from "./TwoColumnsImageGrid"
+import { TwoColumnsImageLeads } from "./TwoColumnsImageLeads"
+import { TwoColumnsStacked } from "./TwoColumnsStacked"
+import { TwoColumnsThreeColumnList } from "./TwoColumnsThreeColumnList"
+import { OneColumnVideo } from "./OneColumnVideo"
+import { Grid123 } from "./Grid123"
+import { wrapIframesInResponsiveVideo } from "../../utils/wrap-iframe-in-responsive-video"
 
 const layoutTypes = [
-  'one_column',
-  'two_columns',
-  'two_columns_image_leads',
-  'two_columns_stacked',
-  'two_columns_three_column_list',
-  'two_columns_image_grid',
-  'video',
-  'content_grid',
-  'image_grid',
+  "one_column",
+  "two_columns",
+  "two_columns_image_leads",
+  "two_columns_stacked",
+  "two_columns_three_column_list",
+  "two_columns_image_grid",
+  "video",
+  "content_grid",
+  "image_grid",
 ]
 
 class FlexibleContentItem extends React.Component {
@@ -34,23 +34,23 @@ class FlexibleContentItem extends React.Component {
   render() {
     const { layout, layoutProps } = this.props
     switch (layout) {
-      case 'content_grid':
+      case "content_grid":
         return <Grid123 {...layoutProps} type="cms-content" />
-      case 'image_grid':
+      case "image_grid":
         return <Grid123 {...layoutProps} type="cms-images" />
-      case 'one_column':
+      case "one_column":
         return <OneColumn {...layoutProps} />
-      case 'two_columns':
+      case "two_columns":
         return <TwoColumns {...layoutProps} />
-      case 'two_columns_image_leads':
+      case "two_columns_image_leads":
         return <TwoColumnsImageLeads {...layoutProps} />
-      case 'two_columns_stacked':
+      case "two_columns_stacked":
         return <TwoColumnsStacked {...layoutProps} />
-      case 'two_columns_three_column_list':
+      case "two_columns_three_column_list":
         return <TwoColumnsThreeColumnList {...layoutProps} />
-      case 'two_columns_image_grid':
+      case "two_columns_image_grid":
         return <TwoColumnsImageGrid {...layoutProps} />
-      case 'video':
+      case "video":
         return <OneColumnVideo {...layoutProps} />
       default:
         return null
@@ -61,7 +61,7 @@ class FlexibleContentItem extends React.Component {
 const AnimatedFlexibleContentItem = animated(FlexibleContentItem)
 
 function getitemsProps(itemsProps, layout, animatedStyles) {
-  const item = itemsProps.filter(item => item.item === layout)[0]
+  const item = itemsProps.filter((item) => item.item === layout)[0]
 
   // There are default props for each item. However, if the user only passes in one prop for that layout type (say a className for one_column) but doesn't pass in the others (say style) then the defaultProp will be completely overridden and style wiill be undefined.
 
@@ -111,11 +111,11 @@ export function FlexibleContent({
     >
       <Component didMount={wrapIframesInResponsiveVideo}>
         <Trail
-          from={{ opacity: 0, transform: 'scale(0.99)' }}
-          to={{ opacity: 1, transform: 'scale(1)' }}
+          from={{ opacity: 0, transform: "scale(0.99)" }}
+          to={{ opacity: 1, transform: "scale(1)" }}
           keys={items.map(({ acf_fc_layout: layout }, i) => `${layout}-${i}`)}
         >
-          {items.map(({ acf_fc_layout: layout, ...content }) => styles => (
+          {items.map(({ acf_fc_layout: layout, ...content }) => (styles) => (
             <AnimatedFlexibleContentItem
               {...{
                 layout,
@@ -170,15 +170,15 @@ FlexibleContent.propTypes = {
 }
 
 FlexibleContent.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,
   breakpoint: 992,
-  itemsProps: layoutTypes.map(type => ({
+  itemsProps: layoutTypes.map((type) => ({
     item: type,
-    className: '',
+    className: "",
     style: {},
   })),
 }

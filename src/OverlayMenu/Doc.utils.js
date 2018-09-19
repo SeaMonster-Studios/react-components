@@ -1,10 +1,10 @@
 // @flow
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "react-emotion"
 //
 
-export const Wrapper = styled('header')`
+export const Wrapper = styled("header")`
   padding: 15px;
 
   display: flex;
@@ -106,7 +106,7 @@ export const overlayClassName = css`
   }
 `
 
-const MobileBar = props => (
+const MobileBar = (props) => (
   <React.Fragment>
     <div className="left">
       <div className="logo-wrapper">
@@ -115,11 +115,11 @@ const MobileBar = props => (
     </div>
     <div className="right">
       <button
-        className={`${props.overlayIsActive ? 'is-active' : ''}`}
+        className={`${props.overlayIsActive ? "is-active" : ""}`}
         type="button"
         onClick={props.toggleOverlay}
       >
-        {props.overlayIsActive ? 'Close' : 'Open'}
+        {props.overlayIsActive ? "Close" : "Open"}
       </button>
     </div>
   </React.Fragment>
@@ -136,7 +136,7 @@ export class ExampleHeader extends React.Component {
     children: PropTypes.func.isRequired,
   }
   toggleOverlay = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       overlayIsActive: !prevState.overlayIsActive,
     }))
   }

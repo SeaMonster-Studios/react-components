@@ -1,7 +1,7 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
+import * as React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
+import { Wrapper } from "./style"
 
 export function Marquee({ children, ...props }) {
   return (
@@ -20,9 +20,9 @@ Marquee.propTypes = {
 }
 
 Marquee.defaultProps = {
-  gradient: 'linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))',
+  gradient: "linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 0))",
   style: {
-    minHeight: '510px',
-    padding: '45px 0',
+    minHeight: "510px",
+    padding: "45px 0",
   },
 }

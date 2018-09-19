@@ -1,25 +1,25 @@
-import React from 'react'
-import { render, cleanup } from 'react-testing-library'
+import React from "react"
+import { render, cleanup } from "react-testing-library"
 //
-import { Button } from './'
+import { Button } from "./"
 
 afterEach(cleanup)
 
-describe('Button Component Test', () => {
-  it('Renders', () => {
+describe("Button Component Test", () => {
+  it("Renders", () => {
     const { getByTestId, getByText, props } = renderSetup()
-    const button = getByTestId('component-button')
+    const button = getByTestId("component-button")
 
     expect(getByText(props.children)).toBeDefined()
-    expect(button.nodeName).toBe('BUTTON')
+    expect(button.nodeName).toBe("BUTTON")
   })
 })
 
 function renderSetup(overrides) {
   const props = {
-    children: 'Contact Us',
-    baseColor: 'rgb(0,0,0)',
-    textColor: 'rgb(255,255,255)',
+    children: "Contact Us",
+    baseColor: "rgb(0,0,0)",
+    textColor: "rgb(255,255,255)",
     ...overrides,
   }
 

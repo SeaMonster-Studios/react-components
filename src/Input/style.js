@@ -1,6 +1,6 @@
-import styled from 'react-emotion'
+import styled from "react-emotion"
 
-export const Wrapper = styled('span')`
+export const Wrapper = styled("span")`
   position: relative;
   display: inline-block;
 

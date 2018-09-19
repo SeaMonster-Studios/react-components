@@ -1,4 +1,4 @@
-import styled, { injectGlobal, css } from 'react-emotion'
+import styled, { injectGlobal, css } from "react-emotion"
 
 injectGlobal(`
   body {
@@ -6,12 +6,12 @@ injectGlobal(`
   }
 `)
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   position: relative;
   width: 100%;
 
-  ${props => scrollingProps(props)};
-  ${props => props.styles};
+  ${(props) => scrollingProps(props)};
+  ${(props) => props.styles};
 `
 
 function scrollingProps(props) {
@@ -24,14 +24,14 @@ function scrollingProps(props) {
   `
 
   switch (props.position) {
-    case 'hidden':
+    case "hidden":
       return css`
         ${common};
         transform: translateY(-${props.selfHeight}px);
 
         ${props.hiddenClassName};
       `
-    case 'ready':
+    case "ready":
       return css`
         ${common};
         transition: transform 0.5s ease;
@@ -39,7 +39,7 @@ function scrollingProps(props) {
 
         ${props.readyClassName};
       `
-    case 'active': {
+    case "active": {
       return css`
         ${common};
         transition: transform 0.5s ease;
@@ -47,6 +47,6 @@ function scrollingProps(props) {
       `
     }
     default:
-      return ''
+      return ""
   }
 }

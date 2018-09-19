@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Wrapper } from './style'
-import { setHtml } from '../../utils'
+import { Wrapper } from "./style"
+import { setHtml } from "../../utils"
 
 export const OneColumn = ({
   className,
@@ -15,7 +15,7 @@ export const OneColumn = ({
 }) => (
   <Wrapper
     {...{
-      'data-testid': 'component-one-column',
+      "data-testid": "component-one-column",
       className: `column-single ${className} ${adminclass}`,
       style,
       columnSpace,
@@ -23,7 +23,7 @@ export const OneColumn = ({
       rowSpace,
     }}
   >
-    {typeof content === 'string' ? (
+    {typeof content === "string" ? (
       <div {...setHtml(content)} />
     ) : (
       <div>{content()}</div>
@@ -47,8 +47,8 @@ OneColumn.propTypes = {
 }
 
 OneColumn.defaultProps = {
-  className: '',
-  adminclass: '',
+  className: "",
+  adminclass: "",
   style: {},
   rowSpace: 60,
   columnSpace: 30,
