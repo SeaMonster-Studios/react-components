@@ -177,17 +177,6 @@
         "mainFile": "src/components/OverlayMenuItem.js",
         "origin": "AUTHORED"
     },
-    "seamonster-studios.react/components/flexible-content@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/FlexibleContent.js",
-                "test": false,
-                "name": "FlexibleContent.js"
-            }
-        ],
-        "mainFile": "src/components/FlexibleContent.js",
-        "origin": "AUTHORED"
-    },
     "components/styled-containers@0.0.2": {
         "files": [
             {
@@ -210,92 +199,56 @@
         "mainFile": "src/utils/styles.js",
         "origin": "AUTHORED"
     },
-    "seamonster-studios.react/components/one-column@1.0.2": {
+    "components/flexible-layout@0.0.1": {
         "files": [
             {
-                "relativePath": "src/components/OneColumn.js",
-                "test": false,
-                "name": "OneColumn.js"
-            }
-        ],
-        "mainFile": "src/components/OneColumn.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/two-columns-three-column-list@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/TwoColumnsThreeColumnList.js",
-                "test": false,
-                "name": "TwoColumnsThreeColumnList.js"
-            }
-        ],
-        "mainFile": "src/components/TwoColumnsThreeColumnList.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/two-columns@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/TwoColumns.js",
-                "test": false,
-                "name": "TwoColumns.js"
-            }
-        ],
-        "mainFile": "src/components/TwoColumns.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/one-column-video@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/OneColumnVideo.js",
-                "test": false,
-                "name": "OneColumnVideo.js"
-            }
-        ],
-        "mainFile": "src/components/OneColumnVideo.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/two-columns-image-grid@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/TwoColumnsImageGrid.js",
-                "test": false,
-                "name": "TwoColumnsImageGrid.js"
-            }
-        ],
-        "mainFile": "src/components/TwoColumnsImageGrid.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/two-columns-stacked@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/TwoColumnsStacked.js",
-                "test": false,
-                "name": "TwoColumnsStacked.js"
-            }
-        ],
-        "mainFile": "src/components/TwoColumnsStacked.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/two-columns-image-leads@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/TwoColumnsImageLeads.js",
-                "test": false,
-                "name": "TwoColumnsImageLeads.js"
-            }
-        ],
-        "mainFile": "src/components/TwoColumnsImageLeads.js",
-        "origin": "AUTHORED"
-    },
-    "seamonster-studios.react/components/grid123@1.0.2": {
-        "files": [
-            {
-                "relativePath": "src/components/Grid123.js",
+                "relativePath": "src/components/FlexibleLayout/Grid123.js",
                 "test": false,
                 "name": "Grid123.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/OneColumn.js",
+                "test": false,
+                "name": "OneColumn.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/OneColumnVideo.js",
+                "test": false,
+                "name": "OneColumnVideo.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/TwoColumns.js",
+                "test": false,
+                "name": "TwoColumns.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/TwoColumnsImageGrid.js",
+                "test": false,
+                "name": "TwoColumnsImageGrid.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/TwoColumnsImageLeads.js",
+                "test": false,
+                "name": "TwoColumnsImageLeads.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/TwoColumnsStacked.js",
+                "test": false,
+                "name": "TwoColumnsStacked.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/TwoColumnsThreeColumnList.js",
+                "test": false,
+                "name": "TwoColumnsThreeColumnList.js"
+            },
+            {
+                "relativePath": "src/components/FlexibleLayout/index.js",
+                "test": false,
+                "name": "index.js"
             }
         ],
-        "mainFile": "src/components/Grid123.js",
+        "mainFile": "src/components/FlexibleLayout/index.js",
+        "trackDir": "src/components/FlexibleLayout",
         "origin": "AUTHORED"
     },
     "version": "13.0.4"
