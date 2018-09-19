@@ -1,0 +1,58 @@
+---
+name: OverlayMenu
+---
+
+import { Playground, PropsTable } from 'docz'
+import { OverlayMenu } from './'
+import { OverlayMenuItem } from '../OverlayMenuItem'
+import { ExampleHeader } from './Doc.utils.js'
+import faker from 'faker'
+import _ from 'lodash'
+
+# OverlayMenu
+
+<PropsTable of={OverlayMenu} />
+
+# OverlayMenuItem
+<PropsTable of={OverlayMenuItem} />
+
+# ExampleHeader
+
+<PropsTable of={ExampleHeader} />
+
+## Basic usage
+
+<Playground>
+  <ExampleHeader>
+    {({ isActive, className, bar, toggle}) => (
+      <OverlayMenu
+        isActive={isActive}
+        items={_.times(6, () => ({
+          url: faker.internet.url(),
+          id: faker.random.number() + faker.lorem.words(),
+          title: faker.random.word(),
+          items: _.times(faker.random.number(10), () => ({
+            url: faker.internet.url(),
+            id: faker.random.number() + faker.lorem.words(),
+            title: faker.random.word(),
+          }))
+        }))}
+        className={className}
+        aboveMenuRender={() => (
+          <div className="above">
+            {bar}
+          </div>
+        )}
+        belowMenuRender={() => (
+          <div className="below">
+            <div className="services">
+              <span>SeaMonster Studios Presents:</span>{' '}
+              <span>React Components</span>
+            </div>
+          </div>
+        )}
+        itemRender={itemProps => <OverlayMenuItem {...itemProps} />}
+      />
+    )}
+  </ExampleHeader>
+</Playground>

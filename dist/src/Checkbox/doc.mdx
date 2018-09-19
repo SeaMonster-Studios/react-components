@@ -1,0 +1,29 @@
+---
+name: Checkbox
+---
+
+import { Playground, PropsTable } from 'docz'
+import { Checkbox } from './'
+import { Check, Close } from '../Icons'
+
+# Checkbox
+
+<PropsTable of={Checkbox} />
+
+## Basic usage
+
+<Playground>
+  <Checkbox />
+</Playground>
+
+## With On and Off Icons
+
+<Playground>
+  <Checkbox OnIcon={Check} OffIcon={Close}/>
+</Playground>
+
+## Custom Transitions
+
+<Playground>
+  <Checkbox OnIcon={Check} OffIcon={Close} iconsTransitionFrom={{ opacity: 0, transform: 'scale(0)' }} iconsTransitionEnter={{ opacity: 1, transform: 'scale(1)' }} iconsTransitionLeave={{ opacity: 0, transform: 'scale(0)' }} />
+</Playground>

@@ -1,7 +1,6 @@
 import React from "react"
 import { createSerializer } from "jest-emotion"
 import * as emotion from "emotion"
-//
 import { render, cleanup } from "react-testing-library"
 import { ImageFit } from "./"
 
@@ -19,8 +18,7 @@ describe("ImageFit", () => {
     expect(renderedStyles.fontFamily).toBe(
       `'object-fit: ${props.fit}; object-position: ${props.position}'`,
     )
-    expect(renderedStyles.objectFit).toBe(props.fit)
-    expect(renderedStyles.objectPosition).toBe(props.position)
+
     expect(imageFit).toBeDefined()
     expect(imageFit).toMatchSnapshot()
   })

@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/SeaMonster-Studios/react-components#readme",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watch ./src",
     "test:coverage": "jest --coverage",
     "start:doc": "docz dev",
     "build:doc": "docz build",

@@ -1,0 +1,74 @@
+---
+name: MegaMenu
+---
+
+import { Playground, PropsTable } from 'docz'
+import { MegaMenu } from './'
+import _ from 'lodash'
+import faker from 'faker'
+
+# MegaMenu
+
+<PropsTable of={MegaMenu} />
+
+## Basic usage
+
+<Playground style={{minHeight: '600px'}}>
+  <MegaMenu items={ _.times(6, count => ({
+    id: faker.random.uuid(),
+    title: faker.lorem.word(),
+    url: count % 2 ? "" : faker.internet.url(),
+    items: _.times(faker.random.number(8), () => ({
+      id: faker.random.uuid(),
+      title: faker.lorem.word(),
+      url: count % 3 ? "" : faker.internet.url(),
+      items: _.times(faker.random.number(8), () => ({
+        id: faker.random.uuid(),
+        title: faker.lorem.word(),
+        url: faker.internet.url()
+      }))
+    }))
+  }))} />
+</Playground>
+
+## Items that don't have a link will not have an arrow
+
+The title will still act as a button for the menu
+
+<Playground style={{minHeight: '600px'}}>
+  <MegaMenu buttonWithArrow={false} items={ _.times(6, count => ({
+    id: faker.random.uuid(),
+    title: faker.lorem.word(),
+    url: count % 2 ? "" : faker.internet.url(),
+    items: _.times(faker.random.number(8), () => ({
+      id: faker.random.uuid(),
+      title: faker.lorem.word(),
+      url: count % 3 ? "" : faker.internet.url(),
+      items: _.times(faker.random.number(8), () => ({
+        id: faker.random.uuid(),
+        title: faker.lorem.word(),
+        url: faker.internet.url()
+      }))
+    }))
+  }))} />
+</Playground>
+
+## Custom x & y spacing
+
+<Playground style={{minHeight: '600px'}}>
+  <MegaMenu xSpacing={30} ySpacing={5} items={ _.times(3, count => ({
+    id: faker.random.uuid(),
+    title: faker.lorem.word(),
+    url: count % 2 ? "" : faker.internet.url(),
+    items: _.times(faker.random.number(8), () => ({
+      id: faker.random.uuid(),
+      title: faker.lorem.word(),
+      url: count % 3 ? "" : faker.internet.url(),
+      items: _.times(faker.random.number(8), () => ({
+        id: faker.random.uuid(),
+        title: faker.lorem.word(),
+        url: faker.internet.url()
+      }))
+    }))
+  }))} />
+</Playground>
