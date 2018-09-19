@@ -10,7 +10,7 @@ import { TwoColumnsStacked } from "./TwoColumnsStacked"
 import { TwoColumnsThreeColumnList } from "./TwoColumnsThreeColumnList"
 import { OneColumnVideo } from "./OneColumnVideo"
 import { Grid123 } from "./Grid123"
-import { wrapIframesInResponsiveVideo} from "../utils/index";
+import { wrapIframesInResponsiveVideo } from "../utils/index"
 
 import styled, { css } from "react-emotion"
 
@@ -255,7 +255,6 @@ export const Grid123Wrapper = styled("section")`
     }
   `};
 `
-
 
 const layoutTypes = [
   "one_column",

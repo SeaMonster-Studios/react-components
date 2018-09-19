@@ -11,7 +11,6 @@ const Wrapper = styled("img")`
   object-position: ${(props) => props.position};
 `
 
-
 export class ImageFit extends React.Component {
   static propTypes = {
     alt: PropTypes.string,

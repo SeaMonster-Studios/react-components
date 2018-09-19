@@ -32,7 +32,6 @@ export const Wrapper = styled("span")`
   }
 `
 
-
 export class Input extends React.Component {
   static propTypes = {
     /** 'color',

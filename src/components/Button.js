@@ -1,3 +1,9 @@
+/**
+ * @name Button
+ * @example
+ *  <Button baseColor='rgb(255,127,104)' textColor='rgb(255,255,255)' hoverStyle='ripple'>Contact Us</Button>
+ */
+
 import * as React from "react"
 import PropTypes from "prop-types"
 import styled, { keyframes, css } from "react-emotion"
@@ -71,8 +77,8 @@ function hoverProps(props) {
           text-decoration: none;
           color: ${props.inverse ? props.hoverBaseColor : props.hoverTextColor};
           background-color: ${props.inverse
-        ? props.hoverTextColor
-        : props.hoverBaseColor};
+            ? props.hoverTextColor
+            : props.hoverBaseColor};
 
           &::after {
             animation: ${rippleOut} 0.5s;
@@ -88,15 +94,14 @@ function hoverProps(props) {
         &:focus {
           color: ${props.inverse ? props.hoverBaseColor : props.hoverTextColor};
           background-color: ${props.inverse
-        ? props.hoverTextColor
-        : props.hoverBaseColor};
+            ? props.hoverTextColor
+            : props.hoverBaseColor};
 
           border-color: ${props.hoverBorderColor};
         }
       `
   }
 }
-
 
 export const Button = (props) => {
   const {

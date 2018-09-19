@@ -53,7 +53,6 @@ function scrollingProps(props) {
   }
 }
 
-
 export class StickyBar extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,

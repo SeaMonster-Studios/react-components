@@ -88,7 +88,6 @@ export const Wrapper = styled("div")`
   }
 `
 
-
 export class Video extends React.Component {
   state = {
     videoIsPlaying: false,

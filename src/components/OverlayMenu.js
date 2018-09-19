@@ -31,7 +31,6 @@ export const defaultClassName = css`
   }
 `
 
-
 export class OverlayMenu extends React.Component {
   static propTypes = {
     isActive: PropTypes.bool.isRequired,

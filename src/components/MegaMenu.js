@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import { Spring, animated } from "react-spring"
 import PropTypes from "prop-types"
 import { css } from "emotion"
-import { ArrowDown } from "./Icons";
+import { ArrowDown } from "./Icons"
 import { setHtml } from "../utils/index"
 
 export class MegaMenu extends React.Component {

@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Grid123Wrapper } from "./FlexibleContent"
 import { setHtml } from "../utils/index"
-import { ImageFit} from "./ImageFit";
+import { ImageFit } from "./ImageFit"
 
 export const Grid123 = ({
   className,

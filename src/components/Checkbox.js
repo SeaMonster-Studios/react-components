@@ -72,7 +72,6 @@ function setActiveStyles(props) {
   }
 }
 
-
 export class Checkbox extends React.Component {
   static propTypes = {
     /** Height and Width */
