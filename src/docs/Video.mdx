@@ -4,7 +4,12 @@ name: Video
 
 import { Playground, PropsTable } from 'docz'
 import { Video } from '../components/Video'
+import faker from 'faker'
 
 # Video
 
 <PropsTable of={Video} />
+
+<Playground>
+  <Video caption={faker.lorem.paragraph()} thumbnail="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png" video={'<iframe width="500" height="281" src="https://www.youtube.com/embed/KVZ-P-ZI6W4?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'} />
+</Playground>

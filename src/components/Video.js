@@ -4,7 +4,6 @@ import { setHtml } from "../utils/index"
 import { LazyLoadImage } from "./LazyLoadImage"
 import { Play as PlayIcon } from "./Icons"
 import styled, { injectGlobal } from "react-emotion"
-//
 
 injectGlobal(`
   .video-responsive {
@@ -46,6 +45,7 @@ export const Wrapper = styled("div")`
     img {
       position: relative;
       z-index: 1;
+      max-width: 100%;
     }
 
     .toggle-bg {
