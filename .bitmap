@@ -67,17 +67,6 @@
         "mainFile": "src/components/ImageFit.js",
         "origin": "AUTHORED"
     },
-    "seamonster-studios.react/components/error-boundary@1.0.0": {
-        "files": [
-            {
-                "relativePath": "src/components/ErrorBoundary.js",
-                "test": false,
-                "name": "ErrorBoundary.js"
-            }
-        ],
-        "mainFile": "src/components/ErrorBoundary.js",
-        "origin": "AUTHORED"
-    },
     "seamonster-studios.react/utils/io@1.0.0": {
         "files": [
             {
@@ -238,6 +227,17 @@
             }
         ],
         "mainFile": "src/utils/styles.js",
+        "origin": "AUTHORED"
+    },
+    "seamonster-studios.react/components/error-boundary@1.0.1": {
+        "files": [
+            {
+                "relativePath": "src/components/ErrorBoundary.js",
+                "test": false,
+                "name": "ErrorBoundary.js"
+            }
+        ],
+        "mainFile": "src/components/ErrorBoundary.js",
         "origin": "AUTHORED"
     },
     "version": "13.0.4"
