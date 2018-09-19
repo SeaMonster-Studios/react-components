@@ -11,7 +11,7 @@ import { TwoColumnsStacked } from "./TwoColumnsStacked"
 import { TwoColumnsThreeColumnList } from "./TwoColumnsThreeColumnList"
 import { OneColumnVideo } from "./OneColumnVideo"
 import { Grid123 } from "./Grid123"
-import { wrapIframesInResponsiveVideo } from "../../utils/wrap-iframe-in-responsive-video"
+import { wrapIframesInResponsiveVideo } from "../../utils"
 
 const layoutTypes = [
   "one_column",

@@ -25,7 +25,7 @@ export { Grid123 } from "./FlexibleContent/Grid123"
 export { LazyLoadImage } from "./LazyLoadImage"
 
 // Utils
-export { setHtml, documentReady, slugify, scrollIt } from "../utils"
+export { setHtml, scrollIt } from "../utils"
 
 // Styles
 import "../styles"

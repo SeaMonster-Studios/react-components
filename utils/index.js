@@ -3,17 +3,6 @@ import sanitizeHtml from 'sanitize-html'
 export const callAll = (...fns) => (...args) =>
   fns.forEach(fn => fn && fn(...args))
 
-export function slugify(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
-}
-
 export function setHtml(content) {
   return {
     dangerouslySetInnerHTML: {
@@ -39,15 +28,26 @@ export function setHtml(content) {
   }
 }
 
-export function documentReady(fn) {
-  if (
-    typeof document !== 'undefined' && document.attachEvent
-      ? document.readyState === 'complete'
-      : document.readyState !== 'loading'
-  ) {
-    fn()
-  } else {
-    document.addEventListener('DOMContentLoaded', fn)
+export function wrapIframesInResponsiveVideo() {
+  if (typeof document !== 'undefined') {
+    const iframes = document.getElementsByTagName('iframe')
+
+    Object.keys(iframes).map(i => {
+      const iframe = iframes[i]
+      const src = iframe.getAttribute('src')
+
+      if (src && src.includes('youtube.com' || src.includes('vimeo.com'))) {
+        const wrapper = document.createElement('div')
+
+        wrapper.className = 'video-responsive'
+
+        wrapper.innerHTML = iframe.outerHTML
+
+        iframe.parentNode.insertBefore(wrapper, iframe)
+
+        iframe.remove()
+      }
+    })
   }
 }
 

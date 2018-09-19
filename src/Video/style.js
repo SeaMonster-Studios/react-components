@@ -1,6 +1,22 @@
-import styled from "react-emotion"
+import styled, { injectGlobal } from "react-emotion"
 //
-import "../../styles/responsive-video"
+
+injectGlobal(`
+  .video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+  }
+
+  .video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+`)
 
 export const Wrapper = styled("div")`
   .caption {
