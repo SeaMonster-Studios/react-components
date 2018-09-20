@@ -229,12 +229,12 @@
         "mainFile": "src/utils/styles.js",
         "origin": "AUTHORED"
     },
-    "seamonster-studios.react/components/error-boundary@1.0.2": {
+    "seamonster-studios.react/components/error-boundary@1.0.4": {
         "files": [
             {
+                "name": "ErrorBoundary.js",
                 "relativePath": "src/components/ErrorBoundary.js",
-                "test": false,
-                "name": "ErrorBoundary.js"
+                "test": false
             }
         ],
         "mainFile": "src/components/ErrorBoundary.js",
