@@ -4,6 +4,6 @@
         "tester": "bit.envs/testers/jest@0.0.34"
     },
     "dependencies": {},
-    "componentsDefaultDirectory": "components/{namespace}/{name}",
+    "componentsDefaultDirectory": "src/{namespace}/{name}",
     "packageManager": "yarn"
 }

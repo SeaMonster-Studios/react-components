@@ -51,7 +51,7 @@ export class ErrorBoundary extends React.Component {
     hasError: false,
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error, info) {
     this.setState(() => {
       return {
         hasError: true,
@@ -64,7 +64,7 @@ export class ErrorBoundary extends React.Component {
       error.message != "IDontExist is not defined"
     ) {
       /* eslint-disable-next-line no-console */
-      console.error("Errors sent to Sentry.io", error, errorInfo)
+      console.error("Errors sent to Sentry.io", error, info)
 
       Sentry.configureScope((scope) => {
         Object.keys(errorInfo).forEach((key) => {
@@ -112,7 +112,7 @@ const ReportForm = () =>
 const Form = () => (
   <p data-testid="component-error-boundary-form">
     This error has been reported to our development team. Please{" "}
-    <button onClick={() => Sentry.lastEventId() && Sentry.showReportDialog()}>
+    <button onClick={() => Sentry.showReportDialog()}>
       click here to fill out a report.
     </button>
   </p>

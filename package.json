@@ -23,10 +23,14 @@
     "test:coverage": "jest --coverage",
     "start": "docz dev",
     "build": "docz build",
-    "tag": "bit tag --all",
-    "export": "bit export seamonster-studios.react",
-    "import:components": "bit add src/components/* -t 'src/__tests__/{PARENT}.spec.js'",
-    "import:utils": "bit add src/utils/* -t 'src/__tests__/{PARENT}.spec.js'"
+    "export": "bit tag --all && bit export seamonster-studios.react",
+    "include": "yarn run include:components && yarn run include:utils",
+    "include:components": "bit add src/components/* -t 'src/__tests__/{PARENT}.spec.js'",
+    "include:utils": "bit add src/utils/* -t 'src/__tests__/{PARENT}.spec.js'",
+    "add:component": "node package.sms.bit.js add components",
+    "add:util": "node package.sms.bit.js add utils",
+    "import:component": "node package.sms.bit.js import components",
+    "import:util": "node package.sms.bit.js import utils"
   },
   "jest": {
     "collectCoverageFrom": [
