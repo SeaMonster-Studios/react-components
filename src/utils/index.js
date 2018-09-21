@@ -9,6 +9,9 @@ export function setHtml(content) {
       __html: sanitizeHtml(content, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat([
           "img",
+          "span",
+          "p",
+          "hr",
           "h1",
           "h2",
           "h3",
